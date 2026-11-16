@@ -249,14 +249,15 @@ function saveLocal(){try{localStorage.setItem('lp_data_v2',JSON.stringify(S))}ca
 function dbErr(e){if(e&&e.code==='invalid_argument'){readOnly=true;toast('Kamu hanya punya akses lihat. Minta pemilik membagikan sebagai Contributor.')}else if(e&&e.code==='quota_exceeded')toast('Penyimpanan penuh — hapus data lama di menu Admin.');else toast('Gagal menyimpan, coba lagi.');render()}
 const clean=o=>JSON.parse(JSON.stringify(o));
 async function put(c,o){const i=S[c].findIndex(x=>x.id===o.id);if(i>=0)S[c][i]=o;else S[c].push(o);
+ if(MODE==='api'){const r=await api('put',{col:c,doc:clean(o)});if(!r.ok){toast(r.error||'Gagal menyimpan');await refreshAll();softRender()}return}
  if(DB){try{await DB.collection(c).doc(o.id).set(clean(o))}catch(e){try{await new Promise(r=>setTimeout(r,400+Math.random()*600));await DB.collection(c).doc(o.id).set(clean(o))}catch(e2){dbErr(e2)}}}else saveLocal()}
-async function del(c,id){S[c]=S[c].filter(x=>x.id!==id);if(DB){try{await DB.collection(c).doc(id).delete()}catch(e){dbErr(e)}}else saveLocal()}
+async function del(c,id){S[c]=S[c].filter(x=>x.id!==id);if(MODE==='api'){const r=await api('del',{col:c,id});if(!r.ok){toast(r.error||'Gagal menghapus');await refreshAll()}return}if(DB){try{await DB.collection(c).doc(id).delete()}catch(e){dbErr(e)}}else saveLocal()}
 async function notify(to,text){if(!to)return;await put('notif',{id:uid('n'),to,text,t:TODAY,ts:Date.now(),read:false})}
 
 async function init(){
  const timer=setTimeout(()=>{if(MODE==='loading'){if(DB){MODE='shared';stale=true}else{MODE='local';loadLocal()}render()}},10000);
  try{if(window.claude&&claude.use){[DB,USER,SAMPLE]=await Promise.all([claude.use('db'),claude.use('user'),claude.use('sample')])}}catch(e){}
- if(!DB){clearTimeout(timer);MODE='local';loadLocal();return render()}
+ if(!DB){if(await tryApi()){clearTimeout(timer);return}clearTimeout(timer);MODE='local';loadLocal();return render()}
  try{myUid=await USER?.id()}catch(e){}
  try{isOwner=!!(await USER?.isOwner())}catch(e){}
  try{const w=await USER?.can('data.write');if(w===false)readOnly=true}catch(e){}
@@ -271,6 +272,23 @@ async function init(){
 function softRender(){const a=document.activeElement;const typing=a&&a.closest&&a.closest('#app,#mbox')&&/INPUT|TEXTAREA|SELECT/.test(a.tagName);
  if($('modal').style.display==='flex'||typing){pend=true;return}render()}
 document.addEventListener('focusout',()=>setTimeout(()=>{if(pend){pend=false;softRender()}},500));
+
+
+// ---------- Mode server (Vercel API) ----------
+let TOKEN=null,apiVer=-1,adminSet=true;try{TOKEN=localStorage.getItem('lp_tok')}catch(e){}
+const tokP=()=>{try{return JSON.parse(atob(TOKEN.split('.')[0].replace(/-/g,'+').replace(/_/g,'/')))}catch(e){return null}};
+function setTok(t){TOKEN=t;try{t?localStorage.setItem('lp_tok',t):localStorage.removeItem('lp_tok')}catch(e){}}
+async function api(op,body={}){try{const r=await fetch('/api/db',{method:'POST',headers:{'Content-Type':'application/json',...(TOKEN?{Authorization:'Bearer '+TOKEN}:{})},body:JSON.stringify({op,...body})});const j=await r.json().catch(()=>({ok:false}));return{status:r.status,...j}}catch(e){return{ok:false,error:'Koneksi gagal, coba lagi'}}}
+function applyAll(j){COLS.forEach(c=>S[c]=(j.data&&j.data[c])||[]);apiVer=j.ver;adminSet=j.adminSet}
+async function refreshAll(){try{const r=await fetch('/api/db?op=all',{headers:TOKEN?{Authorization:'Bearer '+TOKEN}:{}});const j=await r.json();if(j.ok){if(TOKEN&&!j.me)setTok(null);applyAll(j)}}catch(e){}}
+async function tryApi(){if(location.protocol==='file:')return false;try{const r=await fetch('/api/db?op=all',{headers:TOKEN?{Authorization:'Bearer '+TOKEN}:{}});if(!r.ok)return false;const j=await r.json();if(!j.ok)return false;
+ if(TOKEN&&!j.me)setTok(null);applyAll(j);MODE='api';
+ setInterval(async()=>{try{const v=await (await fetch('/api/db?op=ver')).json();if(v.ok&&v.ver!==apiVer){await refreshAll();softRender()}}catch(e){}},7000);
+ render();return true}catch(e){return false}}
+function adminLoginView(){openM(adminSet?`<h3>🛡️ Masuk sebagai Admin</h3><label>PIN Admin</label><input id="ad_p" type="password" inputmode="numeric" onkeydown="if(event.key==='Enter')adminGo()"><div class="row" style="margin-top:14px"><button class="btn" onclick="adminGo()">Masuk</button><button class="btn gh" onclick="closeM()">Batal</button></div>`
+ :`<h3>🛡️ Buat PIN Admin (pertama kali)</h3><p class="mut">Belum ada admin. PIN yang kamu buat sekarang menjadi PIN pemilik aplikasi — <b>simpan baik-baik</b>. Setelah dibuat, tidak bisa dibuat ulang dari sini.</p><label>PIN Admin (min. 6 angka)</label><input id="ad_p" type="password" inputmode="numeric"><label>Ulangi PIN</label><input id="ad_p2" type="password" inputmode="numeric"><div class="row" style="margin-top:14px"><button class="btn or" onclick="adminGo(true)">Buat & masuk</button><button class="btn gh" onclick="closeM()">Batal</button></div>`)}
+async function adminGo(setup){const p=$('ad_p').value.trim();if(!/^\d{6,}$/.test(p))return toast('PIN minimal 6 angka');if(setup&&p!==$('ad_p2').value.trim())return toast('PIN tidak sama');
+ const r=await api(setup?'adminSetup':'adminLogin',{pin:p});if(!r.ok)return toast(r.error||'Gagal');setTok(r.token);closeM();await refreshAll();me='a:admin';view='beranda';landView='home';toast('Selamat datang, Admin!');render()}
 
 // ================== HELPERS ==================
 const $=id=>document.getElementById(id);
@@ -385,6 +403,7 @@ const normHp=h=>{let d=String(h||'').replace(/\D/g,'');if(d.startsWith('62'))d='
 async function hashPin(id,pin){const b=new TextEncoder().encode('lesgo:'+id+':'+pin);const h=await crypto.subtle.digest('SHA-256',b);return[...new Uint8Array(h)].map(x=>x.toString(16).padStart(2,'0')).join('')}
 function setSess(v){SESS=v;try{if(v){localStorage.setItem('lp_sess',v);localStorage.removeItem('lp_out')}else{localStorage.removeItem('lp_sess');localStorage.setItem('lp_out','1')}}catch(e){}}
 function resolveMe(){
+ if(MODE==='api'){const tp=tokP();me=tp?(tp.r==='a'?'a:admin':tp.r+':'+tp.id):'new:';if(me!=='new:'&&me!=='a:admin'&&!(role()==='g'?G(myId()):O(myId()))){me='new:'}return}
  if(!canSwitch()){
   if(!SESS&&MODE==='shared'&&myUid){let out=null;try{out=localStorage.getItem('lp_out')}catch(e){}if(!out){const g=S.guru.find(x=>x.uid===myUid),o=S.ortu.find(x=>x.uid===myUid);if(g)setSess('g:'+g.id);else if(o)setSess('o:'+o.id)}}
   me=SESS||'new:'}
@@ -400,12 +419,12 @@ function render(){
  if(canSwitch()){
   const o=[['a:admin','🛠️ Admin Lembaga'],...S.ortu.map(x=>['o:'+x.id,(x.tipe==='murid'?'🎒 ':'👪 ')+x.nama]),...S.guru.map(x=>['g:'+x.id,'🧑‍🏫 '+x.nama]),['login:','🔐 Lihat halaman Masuk'],['new:guru','➕ Daftar Guru baru'],['new:ortu','➕ Daftar Mau Les (murid/ortu)']];
   $('whoBox').innerHTML=`<select onchange="switchPersona(this.value)" title="${isOwner?'Sebagai pemilik, kamu bisa melihat dari sisi siapa pun':'Mode demo'}">${opt(o,me==='new:'?'login:':me)}</select>`;
- }else $('whoBox').innerHTML=r==='new'?`<div class="row" style="gap:6px"><button class="btn sm gh" onclick="showLogin()">Masuk</button><button class="btn sm or" onclick="daftarPilih()">Daftar</button></div>`:`<span class="who" style="cursor:pointer" onclick="akunMenu()">${r==='g'?'🧑‍🏫 '+esc(N(G(myId()))):(O(myId())?.tipe==='murid'?'🎒 ':'👪 ')+esc(N(O(myId())))} ▾</span>`;
+ }else $('whoBox').innerHTML=r==='a'?`<span class="who" style="cursor:pointer" onclick="logout()">🛡️ Admin · Keluar</span>`:r==='new'?`<div class="row" style="gap:6px"><button class="btn sm gh" onclick="showLogin()">Masuk</button><button class="btn sm or" onclick="daftarPilih()">Daftar</button></div>`:`<span class="who" style="cursor:pointer" onclick="akunMenu()">${r==='g'?'🧑‍🏫 '+esc(N(G(myId()))):(O(myId())?.tipe==='murid'?'🎒 ':'👪 ')+esc(N(O(myId())))} ▾</span>`;
  $('banner').innerHTML=MODE==='local'?'<div class="banner">Mode demo: data hanya tersimpan di browser ini.</div>':readOnly?'<div class="banner">Akses lihat saja — minta pemilik membagikan halaman ini sebagai Contributor agar bisa mengisi data.</div>':stale?'<div class="banner">Data mungkin belum terbaru, menunggu koneksi…</div>':'';
  if(!NAVS[r].find(n=>n[0]===view)&&view!=='notif'&&!(r==='a'&&view==='gdetail'))view='beranda';
  const items=NAVS[r];
  const vOn=view==='gdetail'?'guru':view;
- $('side').innerHTML=`<img class="lg" src="logo.png" alt="LesGo!" onclick="go('beranda')">${nm?`<div class="cab">${esc(nm)}</div>`:''}`+items.map(([k,ic,t])=>`<button class="${vOn===k?'on':''}" onclick="go('${k}')"><span class="ic" style="background:${TILE[k]||'#f1f5f9'}">${ic}</span>${t}${badge(k)}</button>`).join('')+((r==='g'||r==='o')?`<div style="border-top:1px solid var(--line);margin:10px 0"></div><button onclick="akunMenu()"><span class="ic" style="background:#f1f5f9">🔑</span>Ganti PIN</button><button onclick="logout()"><span class="ic" style="background:#fee2e2">🚪</span>Keluar</button>`:'');
+ $('side').innerHTML=`<img class="lg" src="logo.png" alt="LesGo!" onclick="go('beranda')">${nm?`<div class="cab">${esc(nm)}</div>`:''}`+items.map(([k,ic,t])=>`<button class="${vOn===k?'on':''}" onclick="go('${k}')"><span class="ic" style="background:${TILE[k]||'#f1f5f9'}">${ic}</span>${t}${badge(k)}</button>`).join('')+(r==='a'&&MODE==='api'?`<div style="border-top:1px solid var(--line);margin:10px 0"></div><button onclick="logout()"><span class="ic" style="background:#fee2e2">🚪</span>Keluar</button>`:'')+((r==='g'||r==='o')?`<div style="border-top:1px solid var(--line);margin:10px 0"></div><button onclick="akunMenu()"><span class="ic" style="background:#f1f5f9">🔑</span>Ganti PIN</button><button onclick="logout()"><span class="ic" style="background:#fee2e2">🚪</span>Keluar</button>`:'');
  $('bottom').innerHTML=r==='new'?'':(BOTTOM[r].map(k=>{const it=items.find(i=>i[0]===k);return`<button class="${view===k?'on':''}" onclick="go('${k}')"><span>${it[1]}</span>${it[2].split(' ')[0]}${badge(k)}</button>`}).join('')+`<button class="${BOTTOM[r].includes(view)?'':'on'}" onclick="openMenu()"><span>☰</span>Menu</button>`);
  const cur=items.find(i=>i[0]===vOn);$('ptitle').textContent=view==='gdetail'?'Data Guru › Detail':cur?cur[2]:'';
  const n=S.notif.filter(x=>x.to===myId()&&!x.read).length;
@@ -445,29 +464,31 @@ function loginView(){const g=loginRole==='g';const demo=S.guru.some(x=>x.demo&&x
  <p style="text-align:center;margin:14px 0 4px">Belum punya akun? <a style="color:var(--pri);font-weight:700;cursor:pointer" onclick="${g?'formGuru()':'formOrtu()'}">${g?'Daftar jadi Guru Les':'Daftar untuk Les'}</a></p>
  <p class="mut" style="text-align:center;font-size:12px;margin:0">Lupa PIN? Hubungi admin lembaga untuk reset.</p>
  ${demo?`<div class="aibox" style="margin-top:14px;white-space:normal;font-size:12px"><b>Akun demo</b> (PIN semua: <b>123456</b>)<br>${g?'Guru: 081211112222 (Pak Andi) · 081333334444 (Bu Sari)':'Orang tua: 081122223333 (Bu Rina) · 081744445555 (Pak Budi)'+(S.ortu.some(x=>x.demo&&x.tipe==='murid')?'<br>Murid: 081966667777 (Dinda, daftar sendiri)':'')}</div>`:''}
- <p style="text-align:center;margin-top:14px"><a class="mut" style="cursor:pointer" onclick="landView='home';render()">← Kembali ke beranda</a></p></div></div>`}
+ <p style="text-align:center;margin-top:14px"><a class="mut" style="cursor:pointer" onclick="landView='home';render()">← Kembali ke beranda</a>${MODE==='api'?` · <a class="mut" style="cursor:pointer" onclick="adminLoginView()">🛡️ Admin</a>`:''}</p></div></div>`}
 async function doLogin(){
  if(Date.now()<lockUntil)return toast(`Terlalu banyak percobaan. Coba lagi dalam ${Math.ceil((lockUntil-Date.now())/1000)} detik`);
  const hp=normHp($('li_hp').value),pin=$('li_pin').value.trim();if(!hp)return toast('Isi No. HP');if(!/^\d{6}$/.test(pin))return toast('PIN harus 6 angka');
+ if(MODE==='api'){const r=await api('login',{role:loginRole,hp,pin});if(!r.ok)return toast(r.error||'Gagal masuk');setTok(r.token);await refreshAll();view='beranda';landView='home';const a=(loginRole==='g'?G:O)(r.id);toast('Selamat datang, '+(a?.nama||'')+'!');return render()}
  const list=loginRole==='g'?S.guru:S.ortu;const acc=list.filter(a=>normHp(a.hp)===hp);
  let ok=null;for(const a of acc){if(a.pinHash&&a.pinHash===await hashPin(a.id,pin)){ok=a;break}}
  if(!ok){fails++;if(fails>=5){lockUntil=Date.now()+30000;fails=0}
   return toast(acc.length?(acc.some(a=>a.pinHash)?'PIN salah':'Akun ini belum punya PIN — minta admin membuatkan PIN'):`No. HP belum terdaftar sebagai ${loginRole==='g'?'guru les':'murid / orang tua'}`)}
  if(ok.nonaktif)return toast('Akun ini sedang dinonaktifkan admin. Hubungi admin LesGo!');fails=0;const v=(loginRole==='g'?'g:':'o:')+ok.id;setSess(v);me=v;view='beranda';landView='home';try{localStorage.setItem('lp_me',me)}catch(e){}
  toast('Selamat datang, '+ok.nama+'!');render()}
-function logout(){setSess(null);me='new:';landView='login';view='beranda';try{localStorage.setItem('lp_me','a:admin')}catch(e){}closeM();toast('Kamu sudah keluar');render()}
+function logout(){setSess(null);setTok(null);me='new:';landView='login';view='beranda';try{localStorage.setItem('lp_me','a:admin')}catch(e){}closeM();toast('Kamu sudah keluar');render()}
 function akunMenu(focus){const r=role();if(r!=='g'&&r!=='o')return;const a=r==='g'?G(myId()):O(myId());
  openM(`<div class="row">${av(a.nama)}<div><h3 style="margin:0">${esc(a.nama)}</h3><div class="mut">${r==='g'?'Guru les':a.tipe==='murid'?'Murid':'Orang tua'} · ${esc(a.hp||'')}</div></div></div>
  ${r==='o'?`<h3 style="margin-top:16px">📍 Lokasi ${a.tipe==='murid'?'kamu':'rumah'}</h3>${lokFields('ak',a)}<button class="btn sm or" style="margin-top:8px" onclick="simpanLokasi()">Simpan lokasi</button>`:`<p class="mut" style="margin-top:12px">📍 ${esc(lokStr(a))} — ubah lokasi & jangkauan mengajar di menu <a style="color:var(--pri);cursor:pointer" onclick="closeM();go('profil')">Profil</a>.</p>`}
- <h3 style="margin-top:16px">🔑 Ganti PIN</h3>${a.pinHash?`<label>PIN lama</label><input id="cp_o" type="password" inputmode="numeric" maxlength="6">`:''}<label>PIN baru (6 angka)</label><input id="cp_n" type="password" inputmode="numeric" maxlength="6"><label>Ulangi PIN baru</label><input id="cp_n2" type="password" inputmode="numeric" maxlength="6">
+ <h3 style="margin-top:16px">🔑 Ganti PIN</h3>${a.pinHash||MODE==='api'?`<label>PIN lama</label><input id="cp_o" type="password" inputmode="numeric" maxlength="6">`:''}<label>PIN baru (6 angka)</label><input id="cp_n" type="password" inputmode="numeric" maxlength="6"><label>Ulangi PIN baru</label><input id="cp_n2" type="password" inputmode="numeric" maxlength="6">
  <div class="row" style="margin-top:14px"><button class="btn" onclick="gantiPin()">Simpan PIN</button><button class="btn gh" onclick="closeM()">Tutup</button><div class="sp"></div><button class="btn bad" onclick="logout()">🚪 Keluar</button></div>`)}
 async function simpanLokasi(){let L;try{L=readLok('ak')}catch(e){return}if(!L)return toast('Pilih kota & kecamatan');const a=O(myId());closeM();await put('ortu',{...a,...L});fG.kota=L.kota;toast('Lokasi disimpan');render()}
 async function gantiPin(){const r=role(),c=r==='g'?'guru':'ortu',a=r==='g'?G(myId()):O(myId());
+ if(MODE==='api'){const n=$('cp_n').value;if(!/^\d{6}$/.test(n))return toast('PIN baru harus 6 angka');if(n!==$('cp_n2').value)return toast('PIN baru tidak sama');const x=await api('setpin',{old:$('cp_o')?.value||'',pin:n});if(!x.ok)return toast(x.error||'Gagal');closeM();return toast('PIN berhasil diganti')}
  if(a.pinHash&&a.pinHash!==await hashPin(a.id,$('cp_o').value))return toast('PIN lama salah');
  const n=$('cp_n').value;if(!/^\d{6}$/.test(n))return toast('PIN baru harus 6 angka');if(n!==$('cp_n2').value)return toast('PIN baru tidak sama');
  closeM();await put(c,{...a,pinHash:await hashPin(a.id,n)});toast('PIN berhasil diganti')}
 function resetPin(c,id){openM(`<h3>Reset PIN</h3><p class="mut">${esc(N(c==='guru'?G(id):O(id)))}</p><label>PIN baru (6 angka)</label><input id="rp_n" inputmode="numeric" maxlength="6" placeholder="cth: 246810"><p class="mut" style="font-size:12px">Beritahukan PIN ini ke pemilik akun, lalu minta mereka menggantinya.</p><div class="row" style="margin-top:14px"><button class="btn" onclick="simpanResetPin('${c}','${id}')">Simpan</button><button class="btn gh" onclick="closeM()">Batal</button></div>`)}
-async function simpanResetPin(c,id){const n=$('rp_n').value.trim();if(!/^\d{6}$/.test(n))return toast('PIN harus 6 angka');const a=c==='guru'?G(id):O(id);closeM();await put(c,{...a,pinHash:await hashPin(id,n)});toast('PIN direset');render()}
+async function simpanResetPin(c,id){const n=$('rp_n').value.trim();if(!/^\d{6}$/.test(n))return toast('PIN harus 6 angka');if(MODE==='api'){const x=await api('resetpin',{col:c,id,pin:n});closeM();return toast(x.ok?'PIN direset':(x.error||'Gagal'))}const a=c==='guru'?G(id):O(id);closeM();await put(c,{...a,pinHash:await hashPin(id,n)});toast('PIN direset');render()}
 const pinFields=()=>`<div class="split"><div><label>Buat PIN masuk (6 angka)</label><input id="rg_p" type="password" inputmode="numeric" maxlength="6" placeholder="••••••"></div><div><label>Ulangi PIN</label><input id="rg_p2" type="password" inputmode="numeric" maxlength="6" placeholder="••••••"></div></div><p class="mut" style="font-size:12px;margin:4px 0 0">Kamu akan masuk dengan No. HP + PIN ini.</p>`;
 function cekDaftar(hp,list){const p=$('rg_p').value;if(!normHp(hp))return'Isi No. HP / WhatsApp';if(list.some(a=>normHp(a.hp)===normHp(hp)))return'No. HP ini sudah terdaftar — silakan Masuk';if(!/^\d{6}$/.test(p))return'PIN harus 6 angka';if(p!==$('rg_p2').value)return'PIN tidak sama';return''}
 
@@ -839,7 +860,9 @@ async function simpanGuru(id){let d;try{d=readGuru()}catch(e){return}const noI=$
  const gid=id||uid('g'),old=myDok(gid),foto=_ijz||old?.foto||'';
  const changed=!old||old.noIjazah!==noI||!!_ijz||G(gid)?.gelar!==d.gelar;
  if(id){const g=G(id);const reset=g.verif&&changed;await put('guru',{...g,...d,...(reset?{verif:false,verifStatus:'Menunggu'}:{}),...(g.verifStatus==='Ditolak'&&changed?{verifStatus:'Menunggu',verifAlasan:''}:{})});if(changed)await put('dokumen',{id:old?.id||dokId(gid),guruId:gid,noIjazah:noI,foto,tahunLulus:d.tahunLulus,updated:TODAY});toast(reset?'Tersimpan — data ijazah berubah, menunggu verifikasi ulang admin':'Profil tersimpan')}
- else{const g={id:gid,...d,rating:null,verif:false,verifStatus:'Menunggu',uid:MODE==='shared'?myUid:null,daftar:TODAY,pinHash:await hashPin(gid,$('rg_p').value)};closeM();await put('guru',g);await put('dokumen',{id:dokId(gid),guruId:gid,noIjazah:noI,foto,tahunLulus:d.tahunLulus,updated:TODAY});_ijz=null;me='g:'+g.id;setSess(me);landView='home';view='beranda';try{localStorage.setItem('lp_me',me)}catch(e){}toast('Selamat bergabung! Data ijazahmu sedang diverifikasi admin.')}render()}
+ else{const PIN=$('rg_p').value;const g={id:gid,...d,rating:null,verif:false,verifStatus:'Menunggu',uid:MODE==='shared'?myUid:null,daftar:TODAY,pinHash:await hashPin(gid,PIN)};
+ if(MODE==='api'){const{pinHash,...gd}=g;const r=await api('register',{col:'guru',doc:gd,pin:PIN,extras:[{col:'dokumen',doc:{id:dokId(gid),guruId:gid,noIjazah:noI,foto,tahunLulus:d.tahunLulus,updated:TODAY}}]});if(!r.ok)return toast(r.error||'Gagal mendaftar');closeM();_ijz=null;setTok(r.token);await refreshAll();landView='home';view='beranda';toast('Selamat bergabung! Data ijazahmu sedang diverifikasi admin.');return render()}
+ closeM();await put('guru',g);await put('dokumen',{id:dokId(gid),guruId:gid,noIjazah:noI,foto,tahunLulus:d.tahunLulus,updated:TODAY});_ijz=null;me='g:'+g.id;setSess(me);landView='home';view='beranda';try{localStorage.setItem('lp_me',me)}catch(e){}toast('Selamat bergabung! Data ijazahmu sedang diverifikasi admin.')}render()}
 function formGuru(){openM(`<h3>Daftar sebagai Guru</h3><p class="mut">Daftar <b>gratis</b>. Profil langsung tampil di pencarian orang tua dan kamu bisa melamar kebutuhan les.</p><div class="card" style="background:#f0fdf4;box-shadow:none;padding:12px">🤝 <b>LesGo! untuk kesejahteraan guru:</b> hanya biaya platform <b>${feeLabel()}</b>. Tidak ada potongan persentase — SPP bulanan sepenuhnya milikmu.</div>${guruFields({nama:'',mapel:[],jenjang:['SD'],lokasi:'',mode:'Offline',tarif:'',pengalaman:'',hp:'',bio:''})}${pinFields()}<div class="row" style="margin-top:16px"><button class="btn or" onclick="simpanGuru('')">Daftar</button><button class="btn gh" onclick="closeM()">Batal</button></div>`)}
 function daftarPilih(){openM(`<h3 style="text-align:center">Daftar LesGo! — kamu mau jadi apa?</h3><div class="rp" style="margin-top:12px"><button onclick="closeM();formOrtu()"><span>🎒</span><b>Saya Mau Les</b><small>Cari guru & ikut les (murid / orang tua)</small></button><button onclick="closeM();formGuru()"><span>🧑‍🏫</span><b>Saya Guru Les</b><small>Mengajar, buka kelas, cari murid</small></button></div><p style="text-align:center;margin-top:14px">Sudah punya akun? <a style="color:var(--pri);font-weight:700;cursor:pointer" onclick="closeM();showLogin()">Masuk</a></p>`)}
 let regTipe='murid';
@@ -849,10 +872,12 @@ function formOrtu(t){if(t)regTipe=t;const m=regTipe==='murid';
  ${m?`<div class="split"><div><label>Kelas kamu</label><input id="of_k" placeholder="cth: 11 SMA"></div><div><label>Sekolah (opsional)</label><input id="of_s"></div></div>`:`<div class="split"><div><label>Nama anak</label><input id="of_a"></div><div><label>Kelas anak</label><input id="of_k" placeholder="cth: 3 SD"></div></div><p class="mut" style="font-size:12px">Anak lain bisa ditambahkan nanti di Beranda.</p>`}
  ${pinFields()}<div class="row" style="margin-top:16px"><button class="btn or" onclick="simpanOrtu()">Daftar</button><button class="btn gh" onclick="closeM()">Batal</button></div>`)}
 function regSwap(t){const ids=['of_n','of_h','of_kota','of_ko','rg_p','rg_p2'],keep=ids.map(id=>$(id)?.value||''),kec=$('of_kec')?.value;formOrtu(t);ids.forEach((id,i)=>{if($(id))$(id).value=keep[i]});if(keep[2]){$('of_kec').innerHTML=kecOpts(keep[2],kec)}}
-async function simpanOrtu(){const n=$('of_n').value.trim();if(!n)return toast('Isi nama');const er=cekDaftar($('of_h').value,S.ortu);if(er)return toast(er);const m=regTipe==='murid';
+async function simpanOrtu(){const n=$('of_n').value.trim();if(!n)return toast('Isi nama');const er=cekDaftar($('of_h').value,S.ortu);if(er)return toast(er);const PIN=$('rg_p').value;const m=regTipe==='murid';
  let L;try{L=readLok('of')}catch(e){return}if(!L)return toast('Pilih kota & kecamatan supaya bisa direkomendasikan guru terdekat');const oid=uid('o');const o={id:oid,nama:n,tipe:m?'murid':'ortu',hp:$('of_h').value,...L,uid:MODE==='shared'?myUid:null,daftar:TODAY,pinHash:await hashPin(oid,$('rg_p').value)};
  const an=m?n:($('of_a')?.value||'').trim(),ak=$('of_k')?.value||'',sk=$('of_s')?.value||'';closeM();
- await put('ortu',o);if(an)await put('murid',{id:uid('m'),nama:an,kelas:ak,sekolah:sk,ortuId:o.id,diriSendiri:m});me='o:'+o.id;setSess(me);landView='home';view='beranda';try{localStorage.setItem('lp_me',me)}catch(e){}toast(m?'Selamat datang, siap belajar! 🎒':'Selamat datang!');render()}
+ const mu=an?{id:uid('m'),nama:an,kelas:ak,sekolah:sk,ortuId:o.id,diriSendiri:m}:null;
+ if(MODE==='api'){const{pinHash,...od}=o;const r=await api('register',{col:'ortu',doc:od,pin:PIN,extras:mu?[{col:'murid',doc:mu}]:[]});if(!r.ok)return toast(r.error||'Gagal mendaftar');setTok(r.token);await refreshAll();landView='home';view='beranda';toast(m?'Selamat datang, siap belajar! 🎒':'Selamat datang!');return render()}
+ await put('ortu',o);if(mu)await put('murid',mu);me='o:'+o.id;setSess(me);landView='home';view='beranda';try{localStorage.setItem('lp_me',me)}catch(e){}toast(m?'Selamat datang, siap belajar! 🎒':'Selamat datang!');render()}
 
 // ================== ADMIN ==================
 

@@ -20,11 +20,11 @@ Aplikasi web les privat: menghubungkan **guru les** dengan **murid / orang tua**
 | `logo.png`, `icon.png` | Logo & ikon LesGo! |
 
 ## Menjalankan
-Buka `index.html` di browser, atau aktifkan **GitHub Pages** (Settings → Pages → Deploy from branch `main` / root).
+**Di Vercel (mode server, data bersama):**
+1. Import repo ini ke Vercel (preset *Other*).
+2. Vercel → proyek → **Storage** → buat **Upstash for Redis** (gratis) dan hubungkan ke proyek. Variabel `KV_REST_API_URL` & `KV_REST_API_TOKEN` (atau `UPSTASH_REDIS_REST_URL` & `UPSTASH_REDIS_REST_TOKEN`) otomatis terisi.
+3. Redeploy. Buka situs → **Masuk → 🛡️ Admin** → buat **PIN Admin** (hanya bisa sekali, oleh orang pertama — lakukan segera setelah deploy).
 
-> **Catatan penyimpanan data:** versi utama berjalan sebagai artifact di claude.ai dengan database bersama (semua guru & orang tua melihat data yang sama).
-> Saat dibuka di luar claude.ai (mis. GitHub Pages), aplikasi berjalan dalam **mode demo**: data hanya tersimpan di browser masing-masing.
-> Untuk dipakai banyak orang di luar claude.ai, lapisan data (`put`, `del`, dan `init` di `index.html`) perlu dihubungkan ke backend sendiri (mis. Firebase/Supabase) + login OTP.
+`api/db.js` menangani login guru / murid / orang tua / admin (No. HP + PIN, token bertanda tangan), penyimpanan data, dan aturan akses: penulisan wajib login, data ijazah hanya untuk admin & guru pemiliknya, PIN tidak pernah dikirim ke browser, guru tidak bisa memverifikasi dirinya sendiri.
 
-## Akses admin
-Di claude.ai, pemilik artifact otomatis menjadi admin. Di mode demo, gunakan pilihan peran di pojok kanan atas.
+**Tanpa server** (buka `index.html` langsung / GitHub Pages): berjalan dalam mode demo, data hanya di browser.

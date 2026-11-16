@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LesGo! — Belajar Seru, Prestasi Melaju!</title>
+<link rel="icon" type="image/png" href="icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f7fd;--card:#fff;--ink:#0f2350;--mut:#64748b;--line:#e2e8f0;--pri:#1d4ed8;--pri2:#e6eeff;--navy:#0f2a6b;--or:#f97316;--or2:#fff1e6;--yel:#fbbf24;--ok:#059669;--okb:#d1fae5;--warn:#b45309;--warnb:#fef3c7;--bad:#dc2626;--badb:#fee2e2;--r:14px}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:14px}
+header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.top{display:flex;align-items:center;gap:12px;padding:12px 20px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer}
+.logo img{height:46px;display:block}
+.logo small{font-family:Fredoka,sans-serif;font-weight:600;color:var(--navy);font-size:14px;border-left:2px solid var(--line);padding-left:10px}
+h2,h3,.stat b,.score{font-family:Fredoka,"Plus Jakarta Sans",sans-serif;font-weight:700}
+h2{color:var(--navy)}
+header{border-top:4px solid var(--or)}
+.sp{flex:1}
+.who{font-weight:600;font-size:13px;background:var(--pri2);color:var(--pri);padding:6px 12px;border-radius:99px}
+select,input,textarea{font:inherit;border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:#fff;color:var(--ink);width:100%}
+textarea{min-height:70px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--pri2);border-color:var(--pri)}
+label{font-size:12px;font-weight:600;color:var(--mut);display:block;margin:10px 0 4px}
+.btn{font:inherit;font-weight:700;border:0;border-radius:12px;padding:8px 14px;cursor:pointer;background:var(--pri);color:#fff;white-space:nowrap;text-decoration:none;display:inline-block}
+.btn.sec{background:var(--pri2);color:var(--pri)}
+.btn.or{background:var(--or)}
+.btn.ok{background:var(--ok)}.btn.bad{background:var(--bad)}.btn.gh{background:transparent;color:var(--mut);border:1px solid var(--line)}
+.btn.wa{background:#22c55e}.btn.ai{background:linear-gradient(90deg,#7c3aed,#4f46e5)}
+.btn.sm{padding:5px 10px;font-size:12px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+nav{display:flex;gap:2px;padding:0 16px;overflow-x:auto;scrollbar-width:none}
+nav button{font:inherit;font-weight:600;background:none;border:0;padding:10px 11px;color:var(--mut);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+nav button.on{color:var(--navy);border-color:var(--or)}
+main{max-width:1150px;margin:0 auto;padding:20px}
+h2{margin:0 0 4px;font-size:22px}
+.sub{color:var(--mut);margin:0 0 18px}
+h3{margin:0 0 10px;font-size:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:14px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.stat b{font-size:22px;display:block;margin-top:4px}
+.stat small{color:var(--mut);font-weight:600}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 8px;border-radius:99px;background:var(--pri2);color:var(--pri);margin:2px 4px 2px 0}
+.tag.ok{background:var(--okb);color:var(--ok)}.tag.warn{background:var(--warnb);color:var(--warn)}.tag.bad{background:var(--badb);color:var(--bad)}.tag.gr{background:#f3f4f6;color:var(--mut)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.between{justify-content:space-between}
+.mut{color:var(--mut)}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;color:var(--mut);font-weight:700}
+.av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#fff;flex:none}
+.empty{text-align:center;color:var(--mut);padding:24px}
+.rep{border-left:4px solid var(--pri);padding-left:12px}
+.score{font-size:28px;font-weight:800}
+.bar{height:8px;background:#eef0f4;border-radius:99px;overflow:hidden;margin:4px 0}.bar i{display:block;height:100%;background:var(--ok)}
+.att{display:flex;gap:6px;flex-wrap:wrap}
+.att label{margin:0;display:flex;align-items:center;gap:4px;font-weight:600;color:var(--ink);font-size:12px;border:1px solid var(--line);padding:5px 8px;border-radius:8px;cursor:pointer}
+.att input{width:auto}
+.stars label{font-size:26px;cursor:pointer;margin:0;color:#d1d5db}
+.stars input{display:none}
+.stars input:checked~label,.stars label:hover,.stars label:hover~label{color:#f59e0b}
+.stars{display:flex;flex-direction:row-reverse;justify-content:flex-end}
+#modal{position:fixed;inset:0;background:rgba(15,23,42,.45);display:none;align-items:center;justify-content:center;z-index:50;padding:16px}
+#modal .box{background:#fff;border-radius:16px;max-width:540px;width:100%;max-height:90vh;overflow:auto;padding:20px}
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;font-weight:600;display:none;z-index:60;max-width:90vw;text-align:center}
+.bell{position:relative;cursor:pointer;font-size:20px;background:none;border:0}
+.bell em{position:absolute;top:-4px;right:-6px;background:var(--bad);color:#fff;font-style:normal;font-size:10px;border-radius:99px;padding:1px 5px;font-weight:700}
+.wabox{background:#f0fdf4;border:1px dashed #86efac;border-radius:10px;padding:10px;white-space:pre-wrap;font-size:13px}
+.aibox{background:#f5f3ff;border:1px solid #ddd6fe;border-radius:12px;padding:12px;white-space:pre-wrap}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.week{display:grid;grid-template-columns:repeat(7,minmax(120px,1fr));gap:8px;overflow-x:auto}
+.day{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px;min-height:120px}
+.day.today{border-color:var(--pri);box-shadow:0 0 0 2px var(--pri2)}
+.day h4{margin:0 0 6px;font-size:13px}
+.slot{background:var(--pri2);border-radius:8px;padding:6px;margin-bottom:6px;font-size:12px}
+.slot.u{background:var(--or2)}
+.banner{background:var(--warnb);color:var(--warn);padding:8px 20px;font-weight:600;font-size:13px}
+.hero{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.pick{cursor:pointer;text-align:center;padding:28px 16px;border:2px solid var(--line);border-radius:16px;background:#fff}
+.pick:hover{border-color:var(--or);transform:translateY(-2px)}
+.pick{transition:.15s}
+.heroLogo{width:min(380px,80vw);display:block;margin:0 auto 6px}
+.pick div{font-size:44px}
+
+/* ===== App shell (gaya super-app) ===== */
+:root{--r:18px;--sh:0 4px 18px rgba(15,42,107,.07);--bg:#f3f6fc}
+header{display:none}
+.card,.stat{border:0!important;box-shadow:var(--sh);border-radius:var(--r)}
+.card{padding:18px}
+#layout{display:flex;min-height:100vh}
+#side{width:248px;background:#fff;border-right:1px solid var(--line);position:sticky;top:0;height:100vh;overflow:auto;padding:14px 12px 24px;flex:none}
+#side .lg{display:block;width:160px;margin:2px auto 14px;cursor:pointer}
+#side .cab{text-align:center;font-family:Fredoka;font-weight:600;color:var(--navy);margin:-8px 0 12px;font-size:13px}
+#side button{display:flex;gap:10px;align-items:center;width:100%;padding:8px 10px;border:0;background:none;border-radius:14px;font:inherit;font-weight:600;color:#475569;cursor:pointer;text-align:left;margin-bottom:2px;position:relative}
+#side button .ic{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;font-size:17px;flex:none}
+#side button:hover{background:#f6f8fc}
+#side button.on{background:var(--pri2);color:var(--navy)}
+#side button.on:before{content:'';position:absolute;left:-12px;top:8px;bottom:8px;width:4px;border-radius:0 4px 4px 0;background:var(--or)}
+.nb{margin-left:auto;background:var(--bad);color:#fff;font-size:10px;font-weight:800;border-radius:99px;padding:2px 7px}
+#wrap{flex:1;min-width:0}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(243,246,252,.92);backdrop-filter:blur(8px);display:flex;align-items:center;gap:12px;padding:12px 28px}
+.topbar .mlogo{display:none;height:36px;cursor:pointer}
+.topbar .pt{font-family:Fredoka;font-weight:600;font-size:15px;color:var(--mut)}
+.topbar select{max-width:260px;border-radius:99px;background:#fff}
+main{max-width:1120px;padding:6px 28px 48px}
+#bottom{display:none}
+.hero2{background:linear-gradient(135deg,#0f2a6b 0%,#1d4ed8 62%,#3b82f6 100%);color:#fff;border-radius:26px;padding:24px 24px 20px;position:relative;overflow:hidden;margin-bottom:18px}
+.hero2:before,.hero2:after{content:'';position:absolute;border-radius:50%}
+.hero2:before{width:280px;height:280px;right:-70px;top:-110px;background:rgba(255,255,255,.08)}
+.hero2:after{width:150px;height:150px;right:140px;bottom:-80px;background:rgba(251,191,36,.28)}
+.hero2 .in{position:relative;z-index:1}
+.hero2 h2{color:#fff;font-size:26px;margin:2px 0}
+.hero2 p{opacity:.88;margin:0 0 16px}
+.hero2 .hi{font-size:13px;font-weight:600;opacity:.8}
+.hstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;position:relative;z-index:1}
+.hstats div{background:rgba(255,255,255,.14);border-radius:16px;padding:10px 14px;cursor:pointer}
+.hstats div:hover{background:rgba(255,255,255,.22)}
+.hstats small{opacity:.85;font-size:12px;font-weight:600}
+.hstats b{display:block;font-family:Fredoka;font-size:21px}
+.menuGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:10px;margin-bottom:22px}
+.mtile{background:#fff;border-radius:18px;padding:14px 6px 12px;text-align:center;cursor:pointer;box-shadow:var(--sh);border:0;font:inherit;font-size:12px;font-weight:700;color:var(--ink);position:relative;transition:.15s}
+.mtile:hover{transform:translateY(-3px)}
+.mtile i{display:grid;place-items:center;width:48px;height:48px;border-radius:16px;margin:0 auto 8px;font-size:23px;font-style:normal}
+.mtile .nb{position:absolute;top:8px;right:10px}
+.banners{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-bottom:22px;padding-bottom:6px;scrollbar-width:thin}
+.bn{flex:0 0 min(400px,86%);scroll-snap-align:start;border-radius:22px;padding:18px 110px 18px 18px;color:#fff;position:relative;overflow:hidden;cursor:pointer;min-height:124px}
+.bn h4{font-family:Fredoka;font-size:19px;margin:0 0 4px}
+.bn p{margin:0 0 10px;opacity:.92;font-size:13px}
+.bn .go{display:inline-block;background:#fff;color:var(--navy);font-weight:800;font-size:12px;padding:6px 12px;border-radius:99px}
+.bn .emo{position:absolute;right:14px;bottom:2px;font-size:64px}
+.bn:after{content:'';position:absolute;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.12);right:-40px;top:-50px}
+.b1{background:linear-gradient(120deg,#f97316,#fb923c)}.b2{background:linear-gradient(120deg,#1d4ed8,#3b82f6)}.b3{background:linear-gradient(120deg,#059669,#10b981)}.b4{background:linear-gradient(120deg,#7c3aed,#a78bfa)}
+.sech{display:flex;justify-content:space-between;align-items:center;margin:6px 0 10px}
+.sech h3{margin:0}.sech a{color:var(--pri);font-weight:700;cursor:pointer;font-size:13px}
+.gcard{position:relative;overflow:hidden}
+.gcard:before{content:'';position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--pri),var(--or))}
+.gcard .av{width:56px;height:56px;border-radius:18px;font-size:18px}
+.price{font-family:Fredoka;font-size:20px;color:var(--or)}
+/* landing */
+.landing #side,.landing .topbar .pt{display:none}
+.landing .topbar .mlogo{display:block}
+.landing main{max-width:1160px}
+.lh{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center;padding:20px 0 30px}
+.chip{display:inline-block;background:var(--or2);color:var(--or);font-weight:800;font-size:12px;padding:6px 12px;border-radius:99px;margin-bottom:12px}
+.lh h1{font-family:Fredoka;font-size:clamp(32px,5vw,50px);line-height:1.08;margin:0 0 14px;color:var(--navy)}
+.lh h1 span{color:var(--or)}
+.lh p.lead{font-size:16px;color:#475569;margin:0 0 20px;max-width:520px}
+.btn.lg{padding:13px 22px;font-size:15px;border-radius:14px}
+.blob{position:relative;aspect-ratio:1/1;max-width:440px;margin:0 auto;width:100%}
+.blob .c{position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle at 30% 30%,#dbe7ff,#bcd2ff)}
+.blob img{position:absolute;inset:18% 8%;width:84%;filter:drop-shadow(0 12px 20px rgba(15,42,107,.18))}
+.fl{position:absolute;background:#fff;border-radius:14px;padding:8px 12px;box-shadow:0 8px 24px rgba(15,42,107,.14);font-size:12px;font-weight:700;animation:float 4s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px)}}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.feat .card i{display:grid;place-items:center;width:50px;height:50px;border-radius:16px;font-size:24px;font-style:normal;margin-bottom:10px}
+.feat h4{margin:0 0 4px;font-family:Fredoka;font-size:17px}
+.strip{background:linear-gradient(120deg,#0f2a6b,#1d4ed8);border-radius:26px;color:#fff;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;padding:22px;margin:26px 0;text-align:center}
+.strip b{display:block;font-family:Fredoka;font-size:32px;color:var(--yel)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.steps .n{width:36px;height:36px;border-radius:50%;background:var(--or);color:#fff;display:grid;place-items:center;font-family:Fredoka;font-weight:700;margin-bottom:8px}
+.lsec{margin:34px 0 14px;text-align:center}.lsec h2{font-size:28px}.lsec p{color:var(--mut);margin:4px 0 0}
+.testi{display:flex;gap:14px;overflow-x:auto;padding-bottom:6px}.testi .card{flex:0 0 min(320px,85%)}
+.foot{background:#0f2a6b;color:#cbd5e1;border-radius:26px 26px 0 0;padding:26px;margin-top:34px;text-align:center}
+.foot img{width:150px;background:#fff;border-radius:18px;padding:8px}
+.login{display:grid;place-items:center;padding:24px 0 40px;border-radius:30px;background:radial-gradient(circle at 20% 10%,#dbe7ff 0,transparent 40%),radial-gradient(circle at 90% 80%,#ffe4cc 0,transparent 40%)}
+.lcard{background:#fff;border-radius:26px;box-shadow:0 14px 40px rgba(15,42,107,.12);padding:26px;width:min(440px,100%)}
+.nn{width:24px;height:24px;border-radius:50%;background:var(--or);color:#fff;display:grid;place-items:center;font-weight:800;font-size:12px;flex:none}
+.ncard{flex:0 0 170px;scroll-snap-align:start;cursor:pointer;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px;margin:0;padding:14px}
+.ncard .av{width:52px;height:52px;border-radius:18px;margin-bottom:4px}
+.lokbox{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:14px;padding:4px 12px 12px;margin-top:6px}
+.vbox{background:#f5f8ff;border:1px dashed #b9cdf7;border-radius:14px;padding:10px 12px 12px;margin-top:12px}
+.tf_row,.tfh{display:grid;grid-template-columns:1.1fr 1.3fr 1fr auto;gap:6px;margin-top:6px;align-items:center}.tfh{font-size:11px;font-weight:700;color:var(--mut);margin-top:10px}
+.ttab{padding:6px 0;border-top:1px solid var(--line)}.tchip{display:inline-block;background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:4px 8px;margin:4px 6px 0 0;font-size:12px}.tchip b{color:#c2410c}
+.ajh{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:10px 12px;margin-top:10px}
+@media(max-width:600px){.tf_row,.tfh{grid-template-columns:1fr 1fr}.tf_row .tf_t{grid-column:1}.tf_row .btn{justify-self:start;width:auto;padding:5px 12px}.tfh span:nth-child(3),.tfh span:nth-child(4){display:none}}
+.alrt{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}.alrt:last-child{border-bottom:0}
+.alrt .ai{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:20px;flex:none;background:#f1f5f9}
+.alrt.l3 .ai{background:var(--badb)}.alrt.l2 .ai{background:var(--warnb)}
+.fl2{cursor:pointer}.fl2:hover{transform:translateY(-2px)}.fl2{transition:.15s}
+.fbar{display:flex;height:12px;border-radius:99px;overflow:hidden;margin:10px 0 8px;background:#eef0f4;gap:2px}.fbar i{display:block;min-width:2px}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px}
+.fi{width:30px;height:30px;border-radius:10px;background:#f1f5f9;display:grid;place-items:center;flex:none}
+table.hov tr:hover td{background:#f8fafc}
+table.kv td:first-child{color:var(--mut);font-weight:600;width:130px;font-size:13px}
+.rp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:4px 0 8px}
+.rp button{border:2px solid var(--line);background:#fff;border-radius:18px;padding:14px 8px;cursor:pointer;font:inherit;display:flex;flex-direction:column;align-items:center;gap:2px;transition:.15s}
+.rp button span{font-size:34px}.rp button b{font-family:Fredoka;font-size:16px;color:var(--navy)}.rp button small{color:var(--mut);font-size:11px;font-weight:600;text-align:center}
+.rp button:hover{border-color:#c7d6ff}.rp button.on{border-color:var(--or);background:var(--or2);box-shadow:0 4px 14px rgba(249,115,22,.18)}
+.rp.sm button{padding:10px 6px}.rp.sm button span{font-size:24px}.rp.sm button b{font-size:14px}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:#f1f5f9;border-radius:14px;padding:4px;gap:4px;margin-bottom:6px}
+.seg button{border:0;background:none;font:inherit;font-weight:700;padding:10px;border-radius:11px;cursor:pointer;color:var(--mut)}
+.seg button.on{background:#fff;color:var(--navy);box-shadow:0 2px 8px rgba(15,42,107,.1)}
+@media(max-width:860px){
+ #side{display:none}.topbar .mlogo{display:block}.topbar .pt{display:none}
+ .topbar{padding:10px 14px;background:#fff;border-bottom:1px solid var(--line)}
+ .topbar select{max-width:44vw;font-size:12px}
+ main{padding:14px 14px 100px}
+ #bottom{display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);z-index:30;padding:6px 4px 8px;box-shadow:0 -6px 18px rgba(15,42,107,.07)}
+ #bottom button{flex:1;border:0;background:none;font:inherit;font-size:11px;font-weight:700;color:#94a3b8;display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 0;cursor:pointer;position:relative}
+ #bottom button span{font-size:21px;filter:grayscale(1);opacity:.65}
+ #bottom button.on{color:var(--pri)}#bottom button.on span{filter:none;opacity:1}
+ #bottom button span.nb{position:absolute;top:0;left:56%;font-size:10px;filter:none;opacity:1}
+ .landing #bottom{display:none}.landing main{padding-bottom:20px}
+ .lh{grid-template-columns:1fr;text-align:center}.lh .row{justify-content:center}.blob{max-width:340px}.lh p.lead{margin-left:auto;margin-right:auto}
+ .hero2{padding:20px 18px 16px;border-radius:22px}.hero2 h2{font-size:22px}
+ .menuGrid{grid-template-columns:repeat(4,1fr);gap:8px}.mtile{padding:10px 2px;font-size:11px;border-radius:16px}.mtile i{width:42px;height:42px;font-size:20px}
+}
+
+@media(max-width:600px){.split{grid-template-columns:1fr}main{padding:12px}.top{padding:10px 12px}}
+</style>
+</head>
+<body>
+<header><small id="lname"></small><em id="bellN"></em><nav id="nav"></nav></header>
+<div id="layout">
+ <aside id="side"></aside>
+ <div id="wrap">
+  <div class="topbar"><img class="mlogo" src="logo.png" alt="LesGo!" onclick="go('beranda')"><span class="pt" id="ptitle"></span><div class="sp"></div>
+   <button class="bell" id="bell" onclick="go('notif')" title="Notifikasi">🔔<em id="bellN2" style="display:none"></em></button><div id="whoBox"></div></div>
+  <div id="banner"></div>
+  <main id="app"><div class="empty">Memuat data…</div></main>
+ </div>
+</div>
+<nav id="bottom"></nav>
+<div id="modal" onclick="if(event.target===this)closeM()"><div class="box" id="mbox"></div></div>
+<div id="toast"></div>
+
+<script>
+// ================== STATE & DATA LAYER ==================
+const COLS=['dokumen','potongan','cabang','guru','ortu','murid','kelas','materi','pr','kumpul','absensi','laporan','spp','lowongan','lamaran','req','notif','ulasan','config'];
+const HARI=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+const BULAN=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+const COLORS=['#4f46e5','#059669','#d97706','#db2777','#0891b2','#7c3aed','#ea580c'];
+const ymd=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const TODAY=ymd(new Date()),BLN=TODAY.slice(0,7),DOW=new Date().getDay();
+let S={};COLS.forEach(c=>S[c]=[]);
+let DB=null,USER=null,SAMPLE=null,myUid=null,isOwner=false,MODE='loading',readOnly=false,stale=false;
+let me='a:admin',view='beranda',pend=false;
+try{me=localStorage.getItem('lp_me')||me}catch(e){}
+
+function loadLocal(){try{const d=JSON.parse(localStorage.getItem('lp_data_v2'));if(d)COLS.forEach(c=>S[c]=d[c]||[])}catch(e){}}
+function saveLocal(){try{localStorage.setItem('lp_data_v2',JSON.stringify(S))}catch(e){}}
+function dbErr(e){if(e&&e.code==='invalid_argument'){readOnly=true;toast('Kamu hanya punya akses lihat. Minta pemilik membagikan sebagai Contributor.')}else if(e&&e.code==='quota_exceeded')toast('Penyimpanan penuh — hapus data lama di menu Admin.');else toast('Gagal menyimpan, coba lagi.');render()}
+const clean=o=>JSON.parse(JSON.stringify(o));
+async function put(c,o){const i=S[c].findIndex(x=>x.id===o.id);if(i>=0)S[c][i]=o;else S[c].push(o);
+ if(DB){try{await DB.collection(c).doc(o.id).set(clean(o))}catch(e){try{await new Promise(r=>setTimeout(r,400+Math.random()*600));await DB.collection(c).doc(o.id).set(clean(o))}catch(e2){dbErr(e2)}}}else saveLocal()}
+async function del(c,id){S[c]=S[c].filter(x=>x.id!==id);if(DB){try{await DB.collection(c).doc(id).delete()}catch(e){dbErr(e)}}else saveLocal()}
+async function notify(to,text){if(!to)return;await put('notif',{id:uid('n'),to,text,t:TODAY,ts:Date.now(),read:false})}
+
+async function init(){
+ const timer=setTimeout(()=>{if(MODE==='loading'){if(DB){MODE='shared';stale=true}else{MODE='local';loadLocal()}render()}},10000);
+ try{if(window.claude&&claude.use){[DB,USER,SAMPLE]=await Promise.all([claude.use('db'),claude.use('user'),claude.use('sample')])}}catch(e){}
+ if(!DB){clearTimeout(timer);MODE='local';loadLocal();return render()}
+ try{myUid=await USER?.id()}catch(e){}
+ try{isOwner=!!(await USER?.isOwner())}catch(e){}
+ try{const w=await USER?.can('data.write');if(w===false)readOnly=true}catch(e){}
+ const got=new Set();
+ COLS.forEach(c=>{DB.collection(c).onSnapshot(snap=>{
+   S[c]=snap.docs.map(d=>({...clean(d.data()),id:d.id}));got.add(c);
+   if(!snap.metadata.fromCache&&stale&&got.size===COLS.length)stale=false;
+   if(MODE==='loading'&&got.size===COLS.length){MODE='shared';clearTimeout(timer);render()}else if(MODE!=='loading')softRender();
+  },err=>{got.add(c);if(MODE==='loading'&&got.size===COLS.length){MODE='shared';clearTimeout(timer);render()}})});
+}
+
+function softRender(){const a=document.activeElement;const typing=a&&a.closest&&a.closest('#app,#mbox')&&/INPUT|TEXTAREA|SELECT/.test(a.tagName);
+ if($('modal').style.display==='flex'||typing){pend=true;return}render()}
+document.addEventListener('focusout',()=>setTimeout(()=>{if(pend){pend=false;softRender()}},500));
+
+// ================== HELPERS ==================
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const rp=n=>'Rp'+Number(n||0).toLocaleString('id-ID');
+const uid=p=>p+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const fdate=d=>{if(!d)return'-';const[y,m,dd]=d.split('-');return dd?`${+dd} ${BULAN[+m-1]} ${y}`:`${BULAN[+m-1]} ${y}`};
+const G=id=>S.guru.find(x=>x.id===id),O=id=>S.ortu.find(x=>x.id===id),M=id=>S.murid.find(x=>x.id===id),K=id=>S.kelas.find(x=>x.id===id);
+const N=o=>o?o.nama:'(terhapus)';
+const CFG=()=>S.config.find(x=>x.id==='main')||{};
+const FEE=()=>{const v=CFG().feeNominal;return v==null?10000:+v};
+const FEEMODE=()=>CFG().feeMode||'sekali';
+const feeLabel=()=>FEEMODE()==='bulanan'?`${rp(FEE())} per murid per bulan`:`${rp(FEE())} sekali per murid baru`;
+async function catatPotongan(gid,mid,kid,ket){if(!FEE())return;if(FEEMODE()!=='sekali')return;const id=`${gid}_${mid}`;if(S.potongan.find(x=>x.id===id))return;
+ await put('potongan',{id,guruId:gid,muridId:mid,kelasId:kid,nominal:FEE(),jenis:'Murid baru',ket,tanggal:TODAY,status:'Belum'});
+ await notify(gid,`💰 Biaya platform ${rp(FEE())} tercatat untuk murid baru ${N(M(mid))}. Bayar di menu Penghasilan.`)}
+const role=()=>me.split(':')[0],myId=()=>me.split(':')[1];
+const av=(nama,i=0)=>`<div class="av" style="background:${COLORS[((nama||'?').charCodeAt(0)+i)%COLORS.length]}">${esc((nama||'?').replace(/^(Pak|Bu|Kak|Ibu|Bapak)\s/,'').split(' ').map(w=>w[0]).slice(0,2).join(''))}</div>`;
+function toast(t){const e=$('toast');e.textContent=t;e.style.display='block';clearTimeout(e._t);e._t=setTimeout(()=>e.style.display='none',2600)}
+function openM(html){$('mbox').innerHTML=html;$('modal').style.display='flex'}
+function closeM(){$('modal').style.display='none';if(pend){pend=false;render()}}
+const myKids=()=>S.murid.filter(m=>m.ortuId===myId());
+const kelasOfMurid=mid=>S.kelas.filter(k=>(k.murid||[]).includes(mid));
+const myKelas=()=>S.kelas.filter(k=>k.guruId===myId());
+const myMurid=()=>[...new Set(myKelas().flatMap(k=>k.murid||[]))].map(M).filter(Boolean);
+const stTag=s=>{const c={Hadir:'ok',Lunas:'ok',Dinilai:'ok',Diterima:'ok',Buka:'ok',Izin:'warn',Sakit:'warn','Menunggu Konfirmasi':'warn',Menunggu:'warn',Dikumpulkan:'warn',Alfa:'bad',Belum:'bad',Ditolak:'bad',Tutup:'gr'}[s]||'';return`<span class="tag ${c}">${esc(s)}</span>`};
+const tipeTag=t=>`<span class="tag ${t==='Private'?'':'warn'}">${t==='Private'?'PRIVATE':'UMUM'}</span>`;
+function attendance(mid,{kelasId,bulan}={}){let h=0,t=0;S.absensi.forEach(a=>{if(kelasId&&a.kelasId!==kelasId)return;if(bulan&&!a.tanggal.startsWith(bulan))return;const v=a.data&&a.data[mid];if(v){t++;if(v==='Hadir')h++}});return{h,t,p:t?Math.round(h/t*100):0}}
+function avgNilai(mid,bulan){const l=S.laporan.filter(x=>x.muridId===mid&&(!bulan||x.tanggal.startsWith(bulan)));return l.length?Math.round(l.reduce((a,b)=>a+ +b.nilai,0)/l.length):0}
+function opt(list,val){return list.map(o=>{const[v,t]=Array.isArray(o)?o:[o,o];return`<option value="${esc(v)}" ${String(v)===String(val)?'selected':''}>${esc(t)}</option>`}).join('')}
+const fmtJadwal=k=>k.hari&&k.hari.length?`${k.hari.map(h=>HARI[h]).join(', ')} · ${k.jam||''}`:(k.jadwal||'Belum diatur');
+const KP=(pid,mid)=>S.kumpul.find(x=>x.id===pid+'_'+mid)||{id:pid+'_'+mid,prId:pid,muridId:mid,status:'Belum',jawaban:'',nilai:null,catatan:''};
+function rating(gid){const u=S.ulasan.filter(x=>x.guruId===gid);if(!u.length){const g=G(gid);return{v:g?.rating||null,n:0}}return{v:(u.reduce((a,b)=>a+b.bintang,0)/u.length).toFixed(1),n:u.length}}
+const rStr=gid=>{const r=rating(gid);return r.v?`⭐ ${r.v}${r.n?` (${r.n} ulasan)`:''}`:'⭐ Guru baru'};
+function waLink(hp,text){const d=String(hp||'').replace(/\D/g,'').replace(/^0/,'62');return d?`https://wa.me/${d}?text=${encodeURIComponent(text||'')}`:''}
+function copyTxt(t){navigator.clipboard.writeText(t).then(()=>toast('Disalin')).catch(()=>toast('Salin manual dari kotak teks'))}
+const tw=h=>`<div class="tw">${h}</div>`;
+
+const WIL={
+'Jakarta Selatan':[['Tebet',-6.2264,106.8556],['Kebayoran Baru',-6.2433,106.799],['Kebayoran Lama',-6.247,106.776],['Pasar Minggu',-6.284,106.844],['Cilandak',-6.29,106.8],['Jagakarsa',-6.334,106.823],['Mampang Prapatan',-6.243,106.826],['Pancoran',-6.252,106.845],['Setiabudi',-6.215,106.83],['Pesanggrahan',-6.25,106.755]],
+'Jakarta Timur':[['Matraman',-6.205,106.862],['Jatinegara',-6.225,106.87],['Duren Sawit',-6.233,106.91],['Cakung',-6.185,106.94],['Kramat Jati',-6.27,106.87],['Pasar Rebo',-6.315,106.855],['Ciracas',-6.325,106.875],['Makasar',-6.265,106.885],['Pulo Gadung',-6.19,106.9],['Cipayung',-6.32,106.9]],
+'Jakarta Barat':[['Kebon Jeruk',-6.193,106.768],['Palmerah',-6.2,106.795],['Grogol Petamburan',-6.165,106.79],['Kembangan',-6.19,106.74],['Cengkareng',-6.15,106.735],['Kalideres',-6.14,106.7],['Tambora',-6.145,106.8],['Taman Sari',-6.145,106.818]],
+'Jakarta Pusat':[['Menteng',-6.195,106.835],['Gambir',-6.175,106.82],['Tanah Abang',-6.205,106.81],['Senen',-6.18,106.845],['Cempaka Putih',-6.175,106.87],['Kemayoran',-6.16,106.85],['Sawah Besar',-6.155,106.83],['Johar Baru',-6.185,106.855]],
+'Jakarta Utara':[['Kelapa Gading',-6.16,106.905],['Tanjung Priok',-6.13,106.875],['Koja',-6.115,106.905],['Penjaringan',-6.125,106.78],['Pademangan',-6.135,106.84],['Cilincing',-6.12,106.945]],
+'Depok':[['Beji',-6.375,106.82],['Pancoran Mas',-6.4,106.815],['Sukmajaya',-6.395,106.845],['Cimanggis',-6.365,106.87],['Sawangan',-6.41,106.76],['Cinere',-6.335,106.78],['Limo',-6.365,106.78],['Tapos',-6.415,106.895],['Cilodong',-6.43,106.84],['Bojongsari',-6.4,106.74],['Cipayung',-6.43,106.8]],
+'Kota Tangerang':[['Tangerang',-6.178,106.63],['Karawaci',-6.19,106.615],['Cipondoh',-6.185,106.68],['Ciledug',-6.23,106.71],['Pinang',-6.22,106.67],['Batuceper',-6.16,106.66],['Larangan',-6.235,106.73],['Karang Tengah',-6.215,106.715],['Cibodas',-6.205,106.61],['Jatiuwung',-6.205,106.58],['Benda',-6.13,106.67],['Periuk',-6.165,106.59],['Neglasari',-6.135,106.63]],
+'Tangerang Selatan':[['Serpong',-6.315,106.665],['Serpong Utara',-6.27,106.68],['Pondok Aren',-6.27,106.71],['Ciputat',-6.31,106.75],['Ciputat Timur',-6.295,106.755],['Pamulang',-6.345,106.73],['Setu',-6.34,106.68]],
+'Kab. Tangerang':[['Kelapa Dua',-6.23,106.62],['Cikupa',-6.23,106.51],['Curug',-6.26,106.56],['Pasar Kemis',-6.17,106.53],['Pagedangan',-6.3,106.63],['Legok',-6.3,106.6],['Balaraja',-6.2,106.45],['Tigaraksa',-6.265,106.48]],
+'Kota Bekasi':[['Bekasi Barat',-6.24,106.99],['Bekasi Timur',-6.245,107.015],['Bekasi Selatan',-6.255,106.99],['Bekasi Utara',-6.215,107.0],['Jatiasih',-6.3,106.96],['Pondok Gede',-6.28,106.92],['Pondok Melati',-6.295,106.92],['Rawalumbu',-6.28,107.02],['Medan Satria',-6.195,106.98],['Mustika Jaya',-6.295,107.05],['Bantar Gebang',-6.315,107.0],['Jatisampurna',-6.365,106.925]],
+'Kab. Bekasi':[['Tambun',-6.26,107.06],['Cibitung',-6.26,107.1],['Cikarang',-6.26,107.15]],
+'Kota Bogor':[['Bogor Tengah',-6.595,106.795],['Bogor Barat',-6.57,106.77],['Bogor Utara',-6.57,106.81],['Bogor Selatan',-6.63,106.81],['Bogor Timur',-6.615,106.83],['Tanah Sareal',-6.555,106.79]],
+'Kab. Bogor':[['Cibinong',-6.485,106.845],['Bojonggede',-6.49,106.795],['Gunung Putri',-6.43,106.92],['Citeureup',-6.485,106.885],['Ciomas',-6.6,106.76]],
+'Bandung':[['Pusat kota',-6.9175,107.6191]],'Surabaya':[['Pusat kota',-7.2575,112.7521]],'Semarang':[['Pusat kota',-6.9667,110.4167]],'Yogyakarta':[['Pusat kota',-7.7956,110.3695]],'Solo':[['Pusat kota',-7.5755,110.8243]],'Malang':[['Pusat kota',-7.9666,112.6326]],'Medan':[['Pusat kota',3.5952,98.6722]],'Makassar':[['Pusat kota',-5.1477,119.4327]],'Palembang':[['Pusat kota',-2.9761,104.7754]],'Denpasar':[['Pusat kota',-8.6705,115.2126]],'Serang':[['Pusat kota',-6.12,106.1503]],'Cilegon':[['Pusat kota',-6.0025,106.0111]],'Karawang':[['Pusat kota',-6.3227,107.3376]],'Cirebon':[['Pusat kota',-6.732,108.5523]],'Pekanbaru':[['Pusat kota',0.5071,101.4478]],'Padang':[['Pusat kota',-0.9471,100.4172]],'Batam':[['Pusat kota',1.1301,104.0529]],'Bandar Lampung':[['Pusat kota',-5.45,105.2667]],'Balikpapan':[['Pusat kota',-1.2379,116.8529]],'Pontianak':[['Pusat kota',-0.0263,109.3425]]
+};
+const KOTA_LIST=Object.keys(WIL);
+const GA=()=>S.guru.filter(g=>!g.nonaktif);
+const baseK=k=>k.toLowerCase().replace(/^kota |^kab\. /,'');
+function guessKota(str){const l=String(str||'').toLowerCase();if(!l)return'';return[...KOTA_LIST].sort((a,b)=>baseK(b).length-baseK(a).length).find(k=>l.includes(baseK(k)))||''}
+const kotaOf=x=>x?(x.kota||guessKota(x.lokasi)):'';
+function locOf(x){if(!x)return null;if(typeof x.lat==='number'&&typeof x.lng==='number')return{lat:x.lat,lng:x.lng};const k=kotaOf(x),L=WIL[k];if(!L)return null;const kc=L.find(r=>r[0]===x.kec)||L.find(r=>String(x.lokasi||'').toLowerCase().includes(r[0].toLowerCase()));if(kc)return{lat:kc[1],lng:kc[2]};return{lat:L.reduce((a,r)=>a+r[1],0)/L.length,lng:L.reduce((a,r)=>a+r[2],0)/L.length}}
+function dist(a,b){if(!a||!b)return null;const R=6371,t=Math.PI/180,dLa=(b.lat-a.lat)*t,dLo=(b.lng-a.lng)*t,h=Math.sin(dLa/2)**2+Math.cos(a.lat*t)*Math.cos(b.lat*t)*Math.sin(dLo/2)**2;return 2*R*Math.asin(Math.sqrt(h))}
+const fmtKm=d=>d==null?'':d<1?Math.round(d*1000/50)*50+' m':(d<10?d.toFixed(1).replace('.',','):Math.round(d))+' km';
+function viewerLoc(){const r=role();return r==='o'?locOf(O(myId())):r==='g'?locOf(G(myId())):null}
+const lokStr=x=>x?(x.kec&&x.kota?`${x.kec}, ${x.kota}`:(x.lokasi||kotaOf(x)||'-')):'-';
+const cabangOf=k=>S.cabang.find(c=>(c.wilayah||[]).includes(k));
+const cabTag=x=>{const c=cabangOf(kotaOf(x));return c?`<span class="tag" style="background:#e6eeff;color:var(--navy)">🏢 ${esc(c.nama)}</span>`:''};
+const gmaps=l=>l?`https://www.google.com/maps/search/?api=1&query=${l.lat},${l.lng}`:'';
+function parseCoord(t){t=String(t||'');const P=[/@(-?\d+\.\d+),\s*(-?\d+\.\d+)/,/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/,/[?&](?:q|ll|query|destination|center)=(-?\d+\.\d+)(?:,|%2C)\s*(-?\d+\.\d+)/i,/(-?\d{1,2}\.\d{2,})\s*,\s*(-?\d{2,3}\.\d{2,})/];
+ for(const r of P){const m=t.match(r);if(m){const la=+m[1],lo=+m[2];if(la>-11.5&&la<6.5&&lo>94&&lo<142)return{lat:+la.toFixed(6),lng:+lo.toFixed(6)}}}return null}
+const kecOpts=(k,v)=>(WIL[k]||[]).map(r=>`<option ${r[0]===v?'selected':''}>${esc(r[0])}</option>`).join('')||'<option value="">— pilih kota dulu —</option>';
+function lokFields(p,o={}){const k=kotaOf(o);return`<div class="lokbox"><div class="split"><div><label>Kota / Kabupaten</label><select id="${p}_kota" onchange="$('${p}_kec').innerHTML=kecOpts(this.value)">${opt([['','— pilih kota —'],...KOTA_LIST],k)}</select></div><div><label>Kecamatan</label><select id="${p}_kec">${kecOpts(k,o.kec)}</select></div></div>
+ <label>📍 Titik lokasi tepat <span style="font-weight:500">(opsional, biar rekomendasi lebih akurat)</span></label><input id="${p}_ko" placeholder="Tempel koordinat / link Google Maps — cth: -6.2264, 106.8556" value="${o.exact?o.lat+', '+o.lng:''}">
+ <div class="mut" style="font-size:11px;margin-top:4px">Cara: buka Google Maps → tekan lama titik rumah/tempat mengajar → salin angka koordinat yang muncul → tempel di sini.</div></div>`}
+function readLok(p){const kota=$(p+'_kota')?.value;if(!kota)return null;const kec=$(p+'_kec').value,raw=$(p+'_ko').value.trim(),c=raw?parseCoord(raw):null;if(raw&&!c){toast('Koordinat tidak dikenali — contoh: -6.2264, 106.8556');throw'coord'}
+ const base=locOf({kota,kec});return{kota,kec,lat:(c||base).lat,lng:(c||base).lng,exact:!!c,lokasi:`${kec}, ${kota}`}}
+function radar(center,items,title){
+ if(!center)return'';const ds=items.map(i=>({...i,d:dist(center,i.loc)})).filter(i=>i.d!=null).sort((a,b)=>a.d-b.d);
+ const R=[3,5,10,20,40,80].find(r=>ds.filter(i=>i.d<=r).length>=Math.min(5,ds.length))||80;
+ const W=320,c=W/2,sc=(c-18)/R,cos=Math.cos(center.lat*Math.PI/180);
+ const pts=ds.filter(i=>i.d<=R).map(i=>({...i,x:c+(i.loc.lng-center.lng)*111.32*cos*sc,y:c-(i.loc.lat-center.lat)*110.57*sc}));
+ const ring=f=>`<circle cx="${c}" cy="${c}" r="${(c-18)*f}" fill="none" stroke="#c7d6ff" stroke-dasharray="4 4"/><text x="${c+4}" y="${c-(c-18)*f+12}" font-size="10" fill="#64748b">${fmtKm(R*f)}</text>`;
+ return`<svg viewBox="0 0 ${W} ${W}" style="width:100%;max-width:340px;display:block;margin:0 auto"><defs><radialGradient id="rg"><stop offset="0" stop-color="#eef4ff"/><stop offset="1" stop-color="#dfe9ff"/></radialGradient></defs>
+ <circle cx="${c}" cy="${c}" r="${c-6}" fill="url(#rg)"/>${ring(1/3)}${ring(2/3)}${ring(1)}<line x1="${c}" y1="12" x2="${c}" y2="${W-12}" stroke="#d6e2ff"/><line x1="12" y1="${c}" x2="${W-12}" y2="${c}" stroke="#d6e2ff"/><text x="${c}" y="10" text-anchor="middle" font-size="10" font-weight="700" fill="#64748b">U</text>
+ ${pts.map((p,i)=>`<g style="cursor:pointer" onclick="${p.act}"><title>${esc(p.nama)} · ${fmtKm(p.d)}</title><circle cx="${p.x}" cy="${p.y}" r="13" fill="${p.color||COLORS[i%COLORS.length]}" stroke="#fff" stroke-width="2.5"/><text x="${p.x}" y="${p.y+4}" text-anchor="middle" font-size="10" font-weight="800" fill="#fff">${esc(p.ini)}</text></g>`).join('')}
+ <g><circle cx="${c}" cy="${c}" r="16" fill="#f97316" opacity=".25"/><circle cx="${c}" cy="${c}" r="9" fill="#f97316" stroke="#fff" stroke-width="3"/></g><text x="${c}" y="${c+30}" text-anchor="middle" font-size="11" font-weight="800" fill="#0f2a6b">Kamu</text></svg>
+ <p class="mut" style="text-align:center;font-size:12px;margin:6px 0 0">${pts.length} ${title} dalam radius ${fmtKm(R)} · ketuk titik untuk detail</p>`}
+const ini=n=>(n||'?').replace(/^(Pak|Bu|Kak|Ibu|Bapak)\s/,'').split(' ').map(w=>w[0]).slice(0,2).join('');
+
+// ================== SHELL ==================
+const NAVS={
+ o:[['beranda','🏠','Beranda'],['cariguru','🔍','Cari Guru'],['lowongan','📢','Kebutuhan Les'],['jadwal','🗓️','Jadwal'],['kelas','🏫','Kelas & Materi'],['laporan','📊','Laporan Harian'],['rapor','📈','Rapor Bulanan'],['pr','📝','PR'],['absensi','✅','Absensi'],['spp','💳','SPP'],['notif','🔔','Notifikasi']],
+ g:[['beranda','🏠','Beranda'],['carimurid','🔍','Cari Murid'],['jadwal','🗓️','Jadwal'],['kelas','🏫','Kelas Saya'],['materi','📚','Materi'],['pr','📝','PR'],['absensi','✅','Absensi'],['laporan','📊','Laporan Harian'],['rapor','📈','Rapor Murid'],['spp','💳','SPP'],['penghasilan','💰','Penghasilan'],['profil','👤','Profil'],['notif','🔔','Notifikasi']],
+ a:[['beranda','🛡️','Pusat Kontrol'],['aktivitas','📡','Aktivitas'],['pendapatan','💰','Pendapatan Platform'],['cabang','🏢','Cabang'],['guru','🧑‍🏫','Data Guru'],['ortu','🎒','Murid & Orang Tua'],['kelas','🏫','Kelas'],['spp','💳','SPP'],['pengaturan','⚙️','Pengaturan']],
+ new:[]
+};
+const BOTTOM={o:['beranda','cariguru','laporan','spp'],g:['beranda','carimurid','jadwal','laporan'],a:['beranda','aktivitas','guru','cabang']};
+const TILE={penghasilan:'#dcfce7',pendapatan:'#dcfce7',aktivitas:'#fce7f3',cabang:'#e0f2fe',cariguru:'#e0ebff',carimurid:'#e0ebff',lowongan:'#ffedd5',jadwal:'#dcfce7',kelas:'#ede9fe',materi:'#ede9fe',laporan:'#cffafe',rapor:'#fef3c7',pr:'#ffe4e6',absensi:'#d1fae5',spp:'#ffedd5',notif:'#e0e7ff',profil:'#f1f5f9',guru:'#e0ebff',ortu:'#fce7f3',pengaturan:'#f1f5f9',beranda:'#e0ebff'};
+function badge(k){const r=role(),id=myId();let n=0;
+ if(k==='notif')n=S.notif.filter(x=>x.to===id&&!x.read).length;
+ if(r==='o'){const ids=myKids().map(m=>m.id);if(k==='laporan')n=S.laporan.filter(l=>ids.includes(l.muridId)&&!l.dibaca).length;if(k==='pr')n=S.pr.reduce((a,p)=>a+(p.murid||[]).filter(m=>ids.includes(m)&&KP(p.id,m).status==='Belum').length,0);if(k==='spp')n=S.spp.filter(s=>ids.includes(s.muridId)&&s.status==='Belum').length}
+ if(r==='g'){const ks=myKelas();if(k==='pr')n=S.kumpul.filter(x=>x.status==='Dikumpulkan'&&ks.some(kk=>kk.id===S.pr.find(p=>p.id===x.prId)?.kelasId)).length;if(k==='spp')n=S.spp.filter(s=>ks.some(kk=>kk.id===s.kelasId)&&s.status==='Menunggu Konfirmasi').length;if(k==='beranda')n=S.req.filter(q=>q.guruId===id&&q.status==='Menunggu').length;if(k==='carimurid')n=S.lowongan.filter(w=>w.status==='Buka'&&!S.lamaran.some(l=>l.lowonganId===w.id&&l.guruId===id)).length}
+ if(r==='a'&&k==='guru')n=S.guru.filter(g=>!g.verif).length;if(r==='a'&&k==='pendapatan')n=S.potongan.filter(x=>x.status==='Menunggu Konfirmasi').length;if(r==='g'&&k==='penghasilan')n=S.potongan.filter(x=>x.guruId===id&&x.status==='Belum').length;
+ return n?`<span class="nb">${n>99?'99+':n}</span>`:''}
+function menuGrid(){return`<div class="menuGrid">${NAVS[role()].filter(n=>n[0]!=='beranda').map(([k,ic,t])=>`<button class="mtile" onclick="go('${k}')"><i style="background:${TILE[k]||'#f1f5f9'}">${ic}</i>${t}${badge(k)}</button>`).join('')}</div>`}
+function openMenu(){openM(`<div class="row between"><h3 style="margin:0">Semua menu</h3><button class="btn sm gh" onclick="closeM()">Tutup</button></div>${(role()==='g'||role()==='o')?`<div class="row" style="margin-top:10px"><button class="btn sm gh" onclick="closeM();akunMenu()">🔑 Ganti PIN</button><button class="btn sm bad" onclick="closeM();logout()">🚪 Keluar</button></div>`:''}<div class="menuGrid" style="margin-top:14px">${NAVS[role()].map(([k,ic,t])=>`<button class="mtile" onclick="closeM();go('${k}')"><i style="background:${TILE[k]||'#f1f5f9'}">${ic}</i>${t}${badge(k)}</button>`).join('')}</div>`)}
+const greet=()=>{const h=new Date().getHours();return h<11?'Selamat pagi ☀️':h<15?'Selamat siang 🌤️':h<18?'Selamat sore 🌇':'Selamat malam 🌙'};
+function banners(list){return`<div class="banners">${list.map(([c,t,d,emo,act,go_])=>`<div class="bn ${c}" onclick="${act}"><h4>${t}</h4><p>${d}</p><span class="go">${go_||'Lihat'} ›</span><div class="emo">${emo}</div></div>`).join('')}</div>`}
+const canSwitch=()=>MODE==='local'||isOwner;
+let SESS=null;try{SESS=localStorage.getItem('lp_sess')}catch(e){}
+let landView='home',loginRole='o',fails=0,lockUntil=0;
+const normHp=h=>{let d=String(h||'').replace(/\D/g,'');if(d.startsWith('62'))d='0'+d.slice(2);return d};
+async function hashPin(id,pin){const b=new TextEncoder().encode('lesgo:'+id+':'+pin);const h=await crypto.subtle.digest('SHA-256',b);return[...new Uint8Array(h)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+function setSess(v){SESS=v;try{if(v){localStorage.setItem('lp_sess',v);localStorage.removeItem('lp_out')}else{localStorage.removeItem('lp_sess');localStorage.setItem('lp_out','1')}}catch(e){}}
+function resolveMe(){
+ if(!canSwitch()){
+  if(!SESS&&MODE==='shared'&&myUid){let out=null;try{out=localStorage.getItem('lp_out')}catch(e){}if(!out){const g=S.guru.find(x=>x.uid===myUid),o=S.ortu.find(x=>x.uid===myUid);if(g)setSess('g:'+g.id);else if(o)setSess('o:'+o.id)}}
+  me=SESS||'new:'}
+ const r=role();if((r==='g'&&!G(myId()))||(r==='o'&&!O(myId()))||(!canSwitch()&&((r==='g'&&G(myId())?.nonaktif)||(r==='o'&&O(myId())?.nonaktif)))){if(SESS===me)setSess(null);me=canSwitch()?'a:admin':'new:'}
+}
+function switchPersona(v){if(v==='login:'){me='new:';landView='login';view='beranda';return render()}if(v==='new:guru'){render();return formGuru()}if(v==='new:ortu'){render();return formOrtu()}me=v;view='beranda';try{localStorage.setItem('lp_me',me)}catch(e){}render()}
+function go(v){view=v;render();window.scrollTo&&window.scrollTo(0,0)}
+function render(){
+ if(MODE==='loading')return;
+ resolveMe();const r=role();
+ document.body.classList.toggle('landing',r==='new');
+ const nm=CFG().nama;
+ if(canSwitch()){
+  const o=[['a:admin','🛠️ Admin Lembaga'],...S.ortu.map(x=>['o:'+x.id,(x.tipe==='murid'?'🎒 ':'👪 ')+x.nama]),...S.guru.map(x=>['g:'+x.id,'🧑‍🏫 '+x.nama]),['login:','🔐 Lihat halaman Masuk'],['new:guru','➕ Daftar Guru baru'],['new:ortu','➕ Daftar Mau Les (murid/ortu)']];
+  $('whoBox').innerHTML=`<select onchange="switchPersona(this.value)" title="${isOwner?'Sebagai pemilik, kamu bisa melihat dari sisi siapa pun':'Mode demo'}">${opt(o,me==='new:'?'login:':me)}</select>`;
+ }else $('whoBox').innerHTML=r==='new'?`<div class="row" style="gap:6px"><button class="btn sm gh" onclick="showLogin()">Masuk</button><button class="btn sm or" onclick="daftarPilih()">Daftar</button></div>`:`<span class="who" style="cursor:pointer" onclick="akunMenu()">${r==='g'?'🧑‍🏫 '+esc(N(G(myId()))):(O(myId())?.tipe==='murid'?'🎒 ':'👪 ')+esc(N(O(myId())))} ▾</span>`;
+ $('banner').innerHTML=MODE==='local'?'<div class="banner">Mode demo: data hanya tersimpan di browser ini.</div>':readOnly?'<div class="banner">Akses lihat saja — minta pemilik membagikan halaman ini sebagai Contributor agar bisa mengisi data.</div>':stale?'<div class="banner">Data mungkin belum terbaru, menunggu koneksi…</div>':'';
+ if(!NAVS[r].find(n=>n[0]===view)&&view!=='notif'&&!(r==='a'&&view==='gdetail'))view='beranda';
+ const items=NAVS[r];
+ const vOn=view==='gdetail'?'guru':view;
+ $('side').innerHTML=`<img class="lg" src="logo.png" alt="LesGo!" onclick="go('beranda')">${nm?`<div class="cab">${esc(nm)}</div>`:''}`+items.map(([k,ic,t])=>`<button class="${vOn===k?'on':''}" onclick="go('${k}')"><span class="ic" style="background:${TILE[k]||'#f1f5f9'}">${ic}</span>${t}${badge(k)}</button>`).join('')+((r==='g'||r==='o')?`<div style="border-top:1px solid var(--line);margin:10px 0"></div><button onclick="akunMenu()"><span class="ic" style="background:#f1f5f9">🔑</span>Ganti PIN</button><button onclick="logout()"><span class="ic" style="background:#fee2e2">🚪</span>Keluar</button>`:'');
+ $('bottom').innerHTML=r==='new'?'':(BOTTOM[r].map(k=>{const it=items.find(i=>i[0]===k);return`<button class="${view===k?'on':''}" onclick="go('${k}')"><span>${it[1]}</span>${it[2].split(' ')[0]}${badge(k)}</button>`}).join('')+`<button class="${BOTTOM[r].includes(view)?'':'on'}" onclick="openMenu()"><span>☰</span>Menu</button>`);
+ const cur=items.find(i=>i[0]===vOn);$('ptitle').textContent=view==='gdetail'?'Data Guru › Detail':cur?cur[2]:'';
+ const n=S.notif.filter(x=>x.to===myId()&&!x.read).length;
+ $('bellN2').style.display=n?'block':'none';$('bellN2').textContent=n;$('bell').style.display=(r==='a'||r==='new')?'none':'';
+ const fn=r==='new'?onboarding:window[r+'_'+view];
+ $('app').innerHTML=fn?fn():'<div class="empty">Halaman tidak ditemukan</div>';
+}
+
+function onboarding(){
+ if(landView==='login')return loginView();
+ const ul=S.ulasan.filter(u=>u.teks).sort((a,b)=>b.bintang-a.bintang).slice(0,6);
+ const rs=S.guru.map(g=>+rating(g.id).v).filter(Boolean),avgR=rs.length?(rs.reduce((a,b)=>a+b,0)/rs.length).toFixed(1):'5.0';
+ const F=[['🔍','#e0ebff','Cari guru les','Guru bebas daftar. Bandingkan mapel, tarif, rating & ulasan orang tua.'],['👤','#ede9fe','Private & Kelas Umum','Belajar 1:1 yang fokus, atau kelas grup yang lebih hemat.'],['📊','#cffafe','Laporan harian','Setiap selesai les, orang tua tahu anak belajar apa & sudah bisa apa.'],['📝','#ffe4e6','PR dari rumah','Guru beri PR, orang tua tandai selesai, guru langsung menilai.'],['✅','#d1fae5','Absensi otomatis','Notifikasi kehadiran anak di setiap pertemuan.'],['💳','#ffedd5','SPP praktis','Tagihan bulanan, konfirmasi bayar, dan kuitansi digital.'],['🤝','#dcfce7','Mensejahterakan guru',`Guru daftar gratis, hanya biaya platform ${feeLabel()} — SPP sepenuhnya milik guru.`]];
+ return`<section class="lh"><div><span class="chip">✨ Les privat & kelas umum dalam satu aplikasi</span><h1>Belajar Seru,<br><span>Prestasi Melaju!</span></h1><p class="lead">Temukan guru les terbaik untuk anak, pantau absensi, PR, dan nilai hariannya — langsung dari HP.${nm0()}</p>
+  <div class="row" style="justify-content:inherit"><button class="btn or lg" onclick="formOrtu()">🎒 Saya Mau Les</button><button class="btn sec lg" onclick="formGuru()">🧑‍🏫 Daftar Jadi Guru Les</button></div>
+  <p style="margin:14px 0 0;font-weight:600">Sudah punya akun? <a style="color:var(--pri);cursor:pointer" onclick="showLogin('o')">Masuk sebagai Murid / Orang Tua</a> · <a style="color:var(--pri);cursor:pointer" onclick="showLogin('g')">Masuk sebagai Guru</a></p>
+  <div class="row mut" style="margin-top:12px;justify-content:inherit;font-weight:600"><span>⭐ ${avgR} rating guru</span><span>·</span><span>${S.guru.length} guru</span><span>·</span><span>Gratis daftar</span></div></div>
+  <div class="blob"><div class="c"></div><img src="logo.png" alt="LesGo!"><div class="fl" style="left:0;top:14%">📊 Laporan Kevin: nilai 85</div><div class="fl" style="right:0;top:6%;animation-delay:1s">✅ Hadir hari ini</div><div class="fl" style="right:4%;bottom:12%;animation-delay:2s">⭐ 5.0 Pak Andi</div><div class="fl" style="left:6%;bottom:6%;animation-delay:1.5s">💳 SPP lunas</div></div></section>
+ <div class="lsec"><h2>Semua yang dibutuhkan untuk les</h2><p>Untuk orang tua, guru, dan lembaga les.</p></div>
+ <div class="feat">${F.map(([i,c,t,d])=>`<div class="card"><i style="background:${c}">${i}</i><h4>${t}</h4><div class="mut">${d}</div></div>`).join('')}</div>
+ <div class="strip"><div><b>${S.guru.length}</b>Guru terdaftar</div><div><b>${S.murid.length}</b>Murid belajar</div><div><b>${S.kelas.length}</b>Kelas aktif</div><div><b>${S.laporan.length}</b>Laporan terkirim</div></div>
+ <div class="lsec"><h2>Mulai dalam 3 langkah</h2></div>
+ <div class="steps">${[['Daftar gratis','Pilih sebagai orang tua atau guru, isi profil singkat.'],['Temukan yang cocok','Orang tua cari guru atau pasang kebutuhan les; guru melamar.'],['Belajar & pantau','Jadwal, absensi, PR, laporan harian, rapor & SPP — semua tercatat.']].map(([t,d],i)=>`<div class="card"><div class="n">${i+1}</div><h3>${t}</h3><div class="mut">${d}</div></div>`).join('')}</div>
+ ${S.cabang.length?`<div class="lsec"><h2>Cabang LesGo! di kotamu</h2><p>Guru les terdekat dari rumahmu, di setiap kota.</p></div><div class="grid g4">${S.cabang.map(c=>`<div class="card" style="text-align:center"><div style="font-size:34px">🏢</div><h3 style="margin:4px 0">${esc(c.nama.replace(/^LesGo!\s*/,''))}</h3><div class="mut" style="font-size:12px">${esc((c.wilayah||[]).join(' · '))}</div><div style="margin-top:8px"><span class="tag">${S.guru.filter(g=>(c.wilayah||[]).includes(kotaOf(g))).length} guru</span></div></div>`).join('')}</div>`:''}
+ ${ul.length?`<div class="lsec"><h2>Kata orang tua</h2></div><div class="testi">${ul.map(u=>`<div class="card"><div style="color:#f59e0b;font-size:18px">${'★'.repeat(u.bintang)}</div><p>"${esc(u.teks)}"</p><div class="row">${av(N(O(u.ortuId)))}<div><b>${esc(N(O(u.ortuId)))}</b><div class="mut">tentang ${esc(N(G(u.guruId)))}</div></div></div></div>`).join('')}</div>`:''}
+ <div class="foot"><img src="logo.png" alt="LesGo!"><p style="margin:12px 0 14px">Belajar Seru, Prestasi Melaju!</p><div class="row" style="justify-content:center"><button class="btn or" onclick="formOrtu()">🎒 Saya Mau Les</button><button class="btn gh" style="color:#fff;border-color:#ffffff55" onclick="formGuru()">🧑‍🏫 Jadi Guru Les</button></div></div>`;
+}
+function showLogin(r){if(r)loginRole=r;landView='login';me=canSwitch()?'new:':me;if(!canSwitch()&&!SESS)me='new:';render();window.scrollTo&&window.scrollTo(0,0)}
+function loginView(){const g=loginRole==='g';const demo=S.guru.some(x=>x.demo&&x.pinHash);
+ return`<div class="login"><div class="lcard">
+ <img src="logo.png" alt="LesGo!" style="width:190px;display:block;margin:0 auto 10px">
+ <h2 style="text-align:center;margin-bottom:2px">Masuk ke LesGo!</h2><p class="sub" style="text-align:center">Kamu masuk sebagai apa?</p>
+ <div class="rp"><button class="${g?'':'on'}" onclick="loginRole='o';render()"><span>🎒</span><b>Saya Mau Les</b><small>Murid atau orang tua</small></button><button class="${g?'on':''}" onclick="loginRole='g';render()"><span>🧑‍🏫</span><b>Saya Guru Les</b><small>Mengajar & cari murid</small></button></div>
+ <label>No. HP / WhatsApp</label><input id="li_hp" type="tel" inputmode="tel" placeholder="08xxxxxxxxxx" autocomplete="username">
+ <label>PIN (6 angka)</label><input id="li_pin" type="password" inputmode="numeric" maxlength="6" placeholder="••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+ <button class="btn or lg" style="width:100%;margin-top:16px" onclick="doLogin()" id="li_btn">${g?'Masuk sebagai Guru Les':'Masuk untuk Les'}</button>
+ <p style="text-align:center;margin:14px 0 4px">Belum punya akun? <a style="color:var(--pri);font-weight:700;cursor:pointer" onclick="${g?'formGuru()':'formOrtu()'}">${g?'Daftar jadi Guru Les':'Daftar untuk Les'}</a></p>
+ <p class="mut" style="text-align:center;font-size:12px;margin:0">Lupa PIN? Hubungi admin lembaga untuk reset.</p>
+ ${demo?`<div class="aibox" style="margin-top:14px;white-space:normal;font-size:12px"><b>Akun demo</b> (PIN semua: <b>123456</b>)<br>${g?'Guru: 081211112222 (Pak Andi) · 081333334444 (Bu Sari)':'Orang tua: 081122223333 (Bu Rina) · 081744445555 (Pak Budi)'+(S.ortu.some(x=>x.demo&&x.tipe==='murid')?'<br>Murid: 081966667777 (Dinda, daftar sendiri)':'')}</div>`:''}
+ <p style="text-align:center;margin-top:14px"><a class="mut" style="cursor:pointer" onclick="landView='home';render()">← Kembali ke beranda</a></p></div></div>`}
+async function doLogin(){
+ if(Date.now()<lockUntil)return toast(`Terlalu banyak percobaan. Coba lagi dalam ${Math.ceil((lockUntil-Date.now())/1000)} detik`);
+ const hp=normHp($('li_hp').value),pin=$('li_pin').value.trim();if(!hp)return toast('Isi No. HP');if(!/^\d{6}$/.test(pin))return toast('PIN harus 6 angka');
+ const list=loginRole==='g'?S.guru:S.ortu;const acc=list.filter(a=>normHp(a.hp)===hp);
+ let ok=null;for(const a of acc){if(a.pinHash&&a.pinHash===await hashPin(a.id,pin)){ok=a;break}}
+ if(!ok){fails++;if(fails>=5){lockUntil=Date.now()+30000;fails=0}
+  return toast(acc.length?(acc.some(a=>a.pinHash)?'PIN salah':'Akun ini belum punya PIN — minta admin membuatkan PIN'):`No. HP belum terdaftar sebagai ${loginRole==='g'?'guru les':'murid / orang tua'}`)}
+ if(ok.nonaktif)return toast('Akun ini sedang dinonaktifkan admin. Hubungi admin LesGo!');fails=0;const v=(loginRole==='g'?'g:':'o:')+ok.id;setSess(v);me=v;view='beranda';landView='home';try{localStorage.setItem('lp_me',me)}catch(e){}
+ toast('Selamat datang, '+ok.nama+'!');render()}
+function logout(){setSess(null);me='new:';landView='login';view='beranda';try{localStorage.setItem('lp_me','a:admin')}catch(e){}closeM();toast('Kamu sudah keluar');render()}
+function akunMenu(focus){const r=role();if(r!=='g'&&r!=='o')return;const a=r==='g'?G(myId()):O(myId());
+ openM(`<div class="row">${av(a.nama)}<div><h3 style="margin:0">${esc(a.nama)}</h3><div class="mut">${r==='g'?'Guru les':a.tipe==='murid'?'Murid':'Orang tua'} · ${esc(a.hp||'')}</div></div></div>
+ ${r==='o'?`<h3 style="margin-top:16px">📍 Lokasi ${a.tipe==='murid'?'kamu':'rumah'}</h3>${lokFields('ak',a)}<button class="btn sm or" style="margin-top:8px" onclick="simpanLokasi()">Simpan lokasi</button>`:`<p class="mut" style="margin-top:12px">📍 ${esc(lokStr(a))} — ubah lokasi & jangkauan mengajar di menu <a style="color:var(--pri);cursor:pointer" onclick="closeM();go('profil')">Profil</a>.</p>`}
+ <h3 style="margin-top:16px">🔑 Ganti PIN</h3>${a.pinHash?`<label>PIN lama</label><input id="cp_o" type="password" inputmode="numeric" maxlength="6">`:''}<label>PIN baru (6 angka)</label><input id="cp_n" type="password" inputmode="numeric" maxlength="6"><label>Ulangi PIN baru</label><input id="cp_n2" type="password" inputmode="numeric" maxlength="6">
+ <div class="row" style="margin-top:14px"><button class="btn" onclick="gantiPin()">Simpan PIN</button><button class="btn gh" onclick="closeM()">Tutup</button><div class="sp"></div><button class="btn bad" onclick="logout()">🚪 Keluar</button></div>`)}
+async function simpanLokasi(){let L;try{L=readLok('ak')}catch(e){return}if(!L)return toast('Pilih kota & kecamatan');const a=O(myId());closeM();await put('ortu',{...a,...L});fG.kota=L.kota;toast('Lokasi disimpan');render()}
+async function gantiPin(){const r=role(),c=r==='g'?'guru':'ortu',a=r==='g'?G(myId()):O(myId());
+ if(a.pinHash&&a.pinHash!==await hashPin(a.id,$('cp_o').value))return toast('PIN lama salah');
+ const n=$('cp_n').value;if(!/^\d{6}$/.test(n))return toast('PIN baru harus 6 angka');if(n!==$('cp_n2').value)return toast('PIN baru tidak sama');
+ closeM();await put(c,{...a,pinHash:await hashPin(a.id,n)});toast('PIN berhasil diganti')}
+function resetPin(c,id){openM(`<h3>Reset PIN</h3><p class="mut">${esc(N(c==='guru'?G(id):O(id)))}</p><label>PIN baru (6 angka)</label><input id="rp_n" inputmode="numeric" maxlength="6" placeholder="cth: 246810"><p class="mut" style="font-size:12px">Beritahukan PIN ini ke pemilik akun, lalu minta mereka menggantinya.</p><div class="row" style="margin-top:14px"><button class="btn" onclick="simpanResetPin('${c}','${id}')">Simpan</button><button class="btn gh" onclick="closeM()">Batal</button></div>`)}
+async function simpanResetPin(c,id){const n=$('rp_n').value.trim();if(!/^\d{6}$/.test(n))return toast('PIN harus 6 angka');const a=c==='guru'?G(id):O(id);closeM();await put(c,{...a,pinHash:await hashPin(id,n)});toast('PIN direset');render()}
+const pinFields=()=>`<div class="split"><div><label>Buat PIN masuk (6 angka)</label><input id="rg_p" type="password" inputmode="numeric" maxlength="6" placeholder="••••••"></div><div><label>Ulangi PIN</label><input id="rg_p2" type="password" inputmode="numeric" maxlength="6" placeholder="••••••"></div></div><p class="mut" style="font-size:12px;margin:4px 0 0">Kamu akan masuk dengan No. HP + PIN ini.</p>`;
+function cekDaftar(hp,list){const p=$('rg_p').value;if(!normHp(hp))return'Isi No. HP / WhatsApp';if(list.some(a=>normHp(a.hp)===normHp(hp)))return'No. HP ini sudah terdaftar — silakan Masuk';if(!/^\d{6}$/.test(p))return'PIN harus 6 angka';if(p!==$('rg_p2').value)return'PIN tidak sama';return''}
+
+const nm0=()=>CFG().nama?' Bersama '+esc(CFG().nama)+'.':'';
+
+// ================== SHARED VIEWS ==================
+function x_notif(){
+ const list=S.notif.filter(x=>x.to===myId()).sort((a,b)=>(b.ts||0)-(a.ts||0)).slice(0,100);
+ setTimeout(async()=>{for(const x of list.filter(x=>!x.read)){await put('notif',{...x,read:true})}},1200);
+ return`<div class="row between"><div><h2>Notifikasi</h2><p class="sub">Kabar terbaru untuk kamu.</p></div>${list.length?`<button class="btn sm gh" onclick="hapusNotif()">Bersihkan yang sudah dibaca</button>`:''}</div><div class="card">${list.length?list.map(x=>`<div class="row" style="padding:10px 0;border-bottom:1px solid var(--line)"><span>${x.read?'⚪':'🔵'}</span><div style="flex:1">${esc(x.text)}</div><small class="mut">${fdate(x.t)}</small></div>`).join(''):'<div class="empty">Belum ada notifikasi</div>'}</div>`;
+}
+async function hapusNotif(){for(const x of S.notif.filter(x=>x.to===myId()&&x.read))await del('notif',x.id);render()}
+const o_notif=x_notif,g_notif=x_notif;
+
+function guruCard(g,actions){
+ const wa=waLink(g.hp,'Halo '+g.nama+', saya tertarik les dengan Anda.');
+ return`<div class="card gcard"><div class="row">${av(g.nama)}<div style="flex:1"><b style="font-size:15px">${esc(namaG(g))}</b> ${g.verif?'<span class="tag ok">✔ Terverifikasi</span>':'<span class="tag gr">Belum verifikasi</span>'}<div class="mut">${rStr(g.id)} · ${g.pengalaman||0} th pengalaman</div><div class="mut">📍 ${(()=>{const d=dist(viewerLoc(),locOf(g));return(d!=null&&role()!=='g'?`<b style="color:var(--or)">${fmtKm(d)}</b> · `:'')})()}${esc(lokStr(g))}</div></div></div>
+ <div style="margin:10px 0">${(()=>{const d=dist(viewerLoc(),locOf(g));return role()==='o'&&d!=null&&/Offline/.test(g.mode||'')&&d<=(g.radius||5)?'<span class="tag ok">🏠 Bisa datang ke rumahmu</span>':''})()}${/Online/.test(g.mode||'')?'<span class="tag" style="background:#cffafe;color:#0e7490">💻 Bisa online</span>':''}${cabTag(g)}<br>${(g.mapel||[]).map(m=>`<span class="tag">${esc(m)}</span>`).join('')}${(g.jenjang||[]).map(m=>`<span class="tag gr">${esc(m)}</span>`).join('')}<span class="tag warn">${esc(g.mode)}</span></div>
+ <p class="mut" style="margin:0 0 10px">${esc(g.bio)}</p>${(()=>{if(role()!=='o')return'';const k=myKids()[0];if(!k)return'';const h=hargaUntuk(g,fG.q,k.kelas);return h.row&&!h.kira?`<div class="tag" style="background:#fff7ed;color:#c2410c">💡 Untuk ${esc(k.nama)} (${esc(k.kelas)}): ${esc(h.row.mapel)} ${rp(h.tarif)}/sesi</div>`:''})()}<div class="row between"><b class="price">${priceStr(g)}<span class="mut" style="font-weight:500;font-size:13px;font-family:'Plus Jakarta Sans'">/sesi</span></b><div class="row">${actions}${actions&&wa?`<a class="btn sm wa" href="${wa}" target="_blank" rel="noopener">WhatsApp</a>`:''}</div></div></div>`;
+}
+function laporanCard(l,showMurid=true){
+ const m=M(l.muridId),k=K(l.kelasId),g=k&&G(k.guruId);
+ return`<div class="card"><div class="row between"><div><b>${showMurid?esc(N(m))+' · ':''}${fdate(l.tanggal)}</b> ${!l.dibaca&&role()==='o'?'<span class="tag bad">BARU</span>':''}<div class="mut">${esc(k?.nama||'')} · oleh ${esc(N(g))}</div></div><div style="text-align:right"><div class="score" style="color:${l.nilai>=80?'var(--ok)':l.nilai>=65?'var(--warn)':'var(--bad)'}">${l.nilai}</div><small class="mut">nilai hari ini</small></div></div>
+ <div class="rep" style="margin-top:10px"><p style="margin:4px 0"><b>📖 Dikerjakan:</b> ${esc(l.dikerjakan)}</p><p style="margin:4px 0"><b>✅ Sudah bisa:</b> ${esc(l.bisa||'-')}</p><p style="margin:4px 0"><b>🎯 Perlu latihan:</b> ${esc(l.perlu||'-')}</p><p style="margin:4px 0"><b>😊 Sikap:</b> ${esc(l.sikap)}</p>${l.catatan?`<p style="margin:4px 0"><b>💬 Catatan guru:</b> ${esc(l.catatan)}</p>`:''}</div></div>`;
+}
+function jadwalView(ks,title,sub){
+ const order=[1,2,3,4,5,6,0];
+ const tanpa=ks.filter(k=>!k.hari||!k.hari.length);
+ return`<h2>${title}</h2><p class="sub">${sub}</p><div class="week">${order.map(d=>{const list=ks.filter(k=>(k.hari||[]).includes(d)).sort((a,b)=>(a.jam||'').localeCompare(b.jam||''));
+  return`<div class="day ${d===DOW?'today':''}"><h4>${HARI[d]}${d===DOW?' · hari ini':''}</h4>${list.map(k=>`<div class="slot ${k.tipe==='Umum'?'u':''}"><b>${esc(k.jam||'')}</b> ${esc(k.mapel)}<div>${esc(role()==='g'?k.nama:N(G(k.guruId)))}</div><div class="mut">${(k.murid||[]).map(x=>esc(N(M(x)))).join(', ')}</div></div>`).join('')||'<div class="mut" style="font-size:12px">Libur</div>'}</div>`}).join('')}</div>
+ ${tanpa.length?`<p class="mut">Belum ada jadwal: ${tanpa.map(k=>esc(k.nama)).join(', ')} — atur di menu Kelas.</p>`:''}`;
+}
+function todayList(ks){const l=ks.filter(k=>(k.hari||[]).includes(DOW)).sort((a,b)=>(a.jam||'').localeCompare(b.jam||''));return l}
+
+// ---------- Rapor bulanan (dipakai ortu & guru) ----------
+let rpM='',rpB=BLN,aiCache={};
+function raporView(kids,title){
+ if(!kids.length)return`<h2>${title}</h2><div class="card empty">Belum ada murid.</div>`;
+ if(!kids.find(k=>k.id===rpM))rpM=kids[0].id;const m=M(rpM);
+ const months=[...new Set([BLN,...S.laporan.filter(l=>l.muridId===rpM).map(l=>l.tanggal.slice(0,7))])].sort().reverse();
+ if(!months.includes(rpB))rpB=months[0];
+ const L=S.laporan.filter(l=>l.muridId===rpM&&l.tanggal.startsWith(rpB)).sort((a,b)=>a.tanggal.localeCompare(b.tanggal));
+ const at=attendance(rpM,{bulan:rpB}),avg=avgNilai(rpM,rpB);
+ const prs=S.pr.filter(p=>(p.murid||[]).includes(rpM)&&p.deadline.startsWith(rpB)),done=prs.filter(p=>KP(p.id,rpM).status!=='Belum').length;
+ const byMapel={};L.forEach(l=>{const mp=K(l.kelasId)?.mapel||'-';(byMapel[mp]=byMapel[mp]||[]).push(+l.nilai)});
+ const key=rpM+rpB;
+ return`<h2>${title}</h2><p class="sub">Rangkuman perkembangan satu bulan: nilai, kehadiran, PR, dan kemampuan yang sudah dikuasai.</p>
+ <div class="card row"><div style="width:200px"><select onchange="rpM=this.value;render()">${opt(kids.map(k=>[k.id,k.nama]),rpM)}</select></div><div style="width:160px"><select onchange="rpB=this.value;render()">${opt(months.map(b=>[b,fdate(b)]),rpB)}</select></div><div class="sp"></div><button class="btn sm sec" onclick="copyTxt(raporText())">📋 Salin rapor</button></div>
+ <div class="grid g4" style="margin-bottom:14px"><div class="stat"><small>Rata-rata nilai</small><b style="color:var(--pri)">${avg||'-'}</b></div><div class="stat"><small>Kehadiran</small><b>${at.p}%</b><small>${at.h}/${at.t} pertemuan</small></div><div class="stat"><small>PR dikerjakan</small><b>${done}/${prs.length}</b></div><div class="stat"><small>Pertemuan dilaporkan</small><b>${L.length}</b></div></div>
+ <div class="grid g2"><div class="card"><h3>📈 Grafik nilai harian</h3>${chart(L)}</div><div class="card"><h3>📘 Rata-rata per mata pelajaran</h3>${Object.entries(byMapel).map(([mp,v])=>{const a=Math.round(v.reduce((x,y)=>x+y,0)/v.length);return`<div style="margin-bottom:8px"><div class="row between"><b>${esc(mp)}</b><span>${a}</span></div><div class="bar"><i style="width:${a}%;background:var(--pri)"></i></div></div>`}).join('')||'<p class="mut">Belum ada data.</p>'}</div></div>
+ <div class="grid g2"><div class="card"><h3>✅ Sudah dikuasai</h3>${L.filter(l=>l.bisa).map(l=>`<div>• ${esc(l.bisa)} <small class="mut">(${fdate(l.tanggal)})</small></div>`).join('')||'<p class="mut">-</p>'}</div><div class="card"><h3>🎯 Perlu dilatih</h3>${L.filter(l=>l.perlu).map(l=>`<div>• ${esc(l.perlu)} <small class="mut">(${fdate(l.tanggal)})</small></div>`).join('')||'<p class="mut">-</p>'}</div></div>
+ ${SAMPLE?`<div class="card"><div class="row between"><h3 style="margin:0">✨ Ringkasan & saran dari AI</h3><button class="btn sm ai" onclick="aiRapor()" ${L.length?'':'disabled'}>${aiCache[key]?'Buat ulang':'Buat ringkasan'}</button></div><div id="aiOut" class="aibox" style="margin-top:10px;${aiCache[key]?'':'display:none'}">${esc(aiCache[key]||'')}</div></div>`:''}`;
+}
+function chart(L){
+ if(!L.length)return'<p class="mut">Belum ada laporan bulan ini.</p>';
+ const W=520,H=180,p=30,n=L.length,x=i=>p+(n===1?(W-2*p)/2:i*(W-2*p)/(n-1)),y=v=>H-p-(v/100)*(H-2*p);
+ const pts=L.map((l,i)=>`${x(i)},${y(l.nilai)}`).join(' ');
+ return`<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto">${[0,50,100].map(v=>`<line x1="${p}" x2="${W-p}" y1="${y(v)}" y2="${y(v)}" stroke="#e5e7eb"/><text x="4" y="${y(v)+4}" font-size="10" fill="#6b7280">${v}</text>`).join('')}
+ <polyline points="${pts}" fill="none" stroke="#4f46e5" stroke-width="2.5" stroke-linejoin="round"/>${L.map((l,i)=>`<circle cx="${x(i)}" cy="${y(l.nilai)}" r="4" fill="#4f46e5"><title>${fdate(l.tanggal)}: ${l.nilai}</title></circle><text x="${x(i)}" y="${y(l.nilai)-9}" font-size="10" text-anchor="middle" fill="#14213d" font-weight="700">${l.nilai}</text><text x="${x(i)}" y="${H-10}" font-size="9" text-anchor="middle" fill="#6b7280">${+l.tanggal.slice(8)}</text>`).join('')}</svg>`;
+}
+function raporText(){const m=M(rpM),L=S.laporan.filter(l=>l.muridId===rpM&&l.tanggal.startsWith(rpB)).sort((a,b)=>a.tanggal.localeCompare(b.tanggal)),at=attendance(rpM,{bulan:rpB});
+ return`RAPOR BULANAN — ${N(m)} (${m?.kelas||''})\n${fdate(rpB)} · ${'LesGo!'+(CFG().nama?' — '+CFG().nama:'')}\n\nRata-rata nilai: ${avgNilai(rpM,rpB)||'-'}\nKehadiran: ${at.p}% (${at.h}/${at.t})\n\nSudah dikuasai:\n${L.filter(l=>l.bisa).map(l=>'• '+l.bisa).join('\n')||'-'}\n\nPerlu dilatih:\n${L.filter(l=>l.perlu).map(l=>'• '+l.perlu).join('\n')||'-'}${aiCache[rpM+rpB]?'\n\nCatatan:\n'+aiCache[rpM+rpB]:''}`}
+async function aiRapor(){
+ const m=M(rpM),key=rpM+rpB,L=S.laporan.filter(l=>l.muridId===rpM&&l.tanggal.startsWith(rpB)).sort((a,b)=>a.tanggal.localeCompare(b.tanggal)),at=attendance(rpM,{bulan:rpB});
+ const data=L.map(l=>({tanggal:l.tanggal,mapel:K(l.kelasId)?.mapel,nilai:l.nilai,dikerjakan:l.dikerjakan,bisa:l.bisa,perlu:l.perlu,sikap:l.sikap}));
+ const box=$('aiOut');box.style.display='block';box.textContent='Sedang menyusun ringkasan…';
+ try{const r=await SAMPLE(`Kamu membantu aplikasi les privat LesGo! di Indonesia menulis rapor bulanan untuk orang tua. Tulis dalam Bahasa Indonesia yang hangat, jelas, dan jujur (tanpa markdown, tanpa judul).
+Format: 1 paragraf ringkasan perkembangan (3-4 kalimat), lalu baris "Saran untuk di rumah:" diikuti 3 poin pendek diawali "- ".
+Data murid: ${N(m)}, kelas ${m?.kelas}. Bulan: ${fdate(rpB)}. Kehadiran ${at.h}/${at.t}. Laporan harian: ${JSON.stringify(data)}`,{onText:({text})=>{box.textContent=text}});
+  aiCache[key]=r.text;box.textContent=r.text}
+ catch(e){box.textContent=e&&e.code==='rate_limited'?'Terlalu banyak permintaan, coba lagi sebentar lagi.':'AI belum bisa dipakai saat ini.'}}
+
+// ================== ORANG TUA ==================
+function o_beranda(){
+ const o=O(myId()),sis=o.tipe==='murid',kids=myKids(),kidIds=kids.map(k=>k.id);
+ const unread=S.laporan.filter(l=>kidIds.includes(l.muridId)&&!l.dibaca).length;
+ const tunggak=S.spp.filter(s=>kidIds.includes(s.muridId)&&s.status==='Belum');
+ const prSoon=S.pr.flatMap(p=>(p.murid||[]).filter(m=>kidIds.includes(m)&&KP(p.id,m).status==='Belum').map(m=>({p,m}))).sort((a,b)=>a.p.deadline.localeCompare(b.p.deadline));
+ const reqs=S.req.filter(r=>r.ortuId===myId()).sort((a,b)=>b.tanggal.localeCompare(a.tanggal));
+ const today=todayList(S.kelas.filter(k=>(k.murid||[]).some(m=>kidIds.includes(m))));
+ return`<div class="hero2"><div class="in"><div class="hi">${greet()}</div><h2>Halo, ${esc(o.nama)} 👋</h2><p>${sis?'Yuk lanjut belajar! Cek jadwal, PR, dan nilaimu di sini.':'Pantau perkembangan belajar anak setiap hari.'}</p></div>
+ <div class="hstats"><div onclick="go('kelas')"><small>${sis?'Kelas les':'Anak terdaftar'}</small><b>${sis?S.kelas.filter(k=>(k.murid||[]).some(m=>kidIds.includes(m))).length:kids.length}</b></div><div onclick="go('laporan')"><small>Laporan baru</small><b>${unread}</b></div><div onclick="go('pr')"><small>PR belum dikerjakan</small><b>${prSoon.length}</b></div><div onclick="go('spp')"><small>SPP belum dibayar</small><b>${rp(tunggak.reduce((a,b)=>a+b.nominal,0))}</b></div></div></div>
+ ${menuGrid()}
+ ${banners([['b1','Cari guru terbaik','Bandingkan rating, tarif & ulasan orang tua lain.','🧑‍🏫',"go('cariguru')",'Cari guru'],['b2','Kelas Umum lebih hemat','Belajar bareng teman seumuran, biaya lebih ringan.','👥',"go('cariguru')",'Lihat kelas'],['b3','Rapor bulanan + AI','Grafik nilai & saran belajar di rumah untuk anak.','📈',"go('rapor')",'Buka rapor'],['b4','Belum ketemu guru?','Pasang kebutuhan les, biar guru yang melamar.','📢',"go('lowongan')",'Pasang']])}
+ ${(()=>{const L=locOf(o);if(!L)return`<div class="card row between" style="margin-bottom:18px"><div><b>📍 Atur lokasi rumahmu</b><div class="mut">Supaya kami bisa merekomendasikan guru les terdekat.</div></div><button class="btn sm or" onclick="akunMenu('lokasi')">Atur lokasi</button></div>`;const nr=GA().map(g=>({g,d:dist(L,locOf(g))})).filter(x=>x.d!=null).sort((a,b)=>a.d-b.d).slice(0,6);return`<div class="sech"><h3>📍 Guru terdekat dari ${sis?'lokasimu':'rumahmu'}</h3><a onclick="fG.sort='jarak';go('cariguru')">Lihat peta ›</a></div><div class="banners">${nr.map(({g,d})=>`<div class="card ncard" onclick="lihatGuru('${g.id}')">${av(g.nama)}<b>${esc(g.nama)}</b><div class="mut">${esc((g.mapel||[]).slice(0,2).join(', '))}</div><div><b style="color:var(--or)">📍 ${fmtKm(d)}</b> · ${esc(g.kec||kotaOf(g))}</div><div class="mut">${rStr(g.id)}</div></div>`).join('')}</div>`})()}
+ <div class="grid g2"><div class="card"><h3>🗓️ Les hari ini (${HARI[DOW]})</h3>${today.map(k=>`<div class="row" style="padding:6px 0;border-top:1px solid var(--line)"><b style="width:52px">${esc(k.jam)}</b><div style="flex:1">${esc(k.mapel)} · ${esc(N(G(k.guruId)))}<div class="mut">${(k.murid||[]).filter(m=>kidIds.includes(m)).map(m=>esc(N(M(m)))).join(', ')}</div></div>${tipeTag(k.tipe)}</div>`).join('')||'<p class="mut">Tidak ada jadwal les hari ini.</p>'}</div>
+ <div class="card"><h3>📝 PR yang harus dikerjakan</h3>${prSoon.slice(0,5).map(({p,m})=>`<div class="row" style="padding:6px 0;border-top:1px solid var(--line)"><div style="flex:1"><b>${esc(p.judul)}</b><div class="mut">${esc(N(M(m)))} · ${esc(K(p.kelasId)?.mapel)}</div></div><span class="tag ${p.deadline<TODAY?'bad':p.deadline<=TODAY.slice(0,8)+String(+TODAY.slice(8)+2).padStart(2,'0')?'warn':'gr'}">${p.deadline<TODAY?'Terlambat':'s/d '+fdate(p.deadline)}</span></div>`).join('')||'<p class="mut">Semua PR sudah dikerjakan 🎉</p>'}${prSoon.length?`<button class="btn sm sec" style="margin-top:8px" onclick="go('pr')">Lihat semua PR</button>`:''}</div></div>
+ <div class="sech"><h3>${sis?'🎒 Profil belajarku':'👦 Anak saya'}</h3>${sis?'':'<a onclick="formAnak()">+ Tambah anak</a>'}</div>
+ <div class="grid g2">${kids.map((m,i)=>{const at=attendance(m.id),a=avgNilai(m.id),last=S.laporan.filter(l=>l.muridId===m.id).sort((a,b)=>b.tanggal.localeCompare(a.tanggal))[0];
+  return`<div class="card"><div class="row">${av(m.nama,i)}<div><b style="font-size:16px">${esc(m.nama)}</b><div class="mut">Kelas ${esc(m.kelas)} · ${kelasOfMurid(m.id).length} kelas les</div></div></div>
+  <div class="split" style="margin-top:12px"><div><small class="mut">Kehadiran ${at.h}/${at.t}</small><div class="bar"><i style="width:${at.p}%"></i></div><b>${at.p}%</b></div><div><small class="mut">Rata-rata nilai</small><div class="bar"><i style="width:${a}%;background:var(--pri)"></i></div><b>${a||'-'}</b></div></div>
+  ${last?`<div class="rep" style="margin-top:12px"><small class="mut">Laporan terakhir · ${fdate(last.tanggal)} · nilai ${last.nilai}</small><div>✅ ${esc(last.bisa||'-')}</div><div>🎯 ${esc(last.perlu||'-')}</div></div>`:'<p class="mut">Belum ada laporan.</p>'}
+  <div class="row" style="margin-top:12px"><button class="btn sm sec" onclick="go('laporan')">Laporan harian</button><button class="btn sm gh" onclick="rpM='${m.id}';go('rapor')">Rapor bulanan</button></div></div>`}).join('')||'<div class="card empty">Belum ada anak. <button class="btn sm" onclick="formAnak()">Tambah anak</button></div>'}</div>
+ <div class="sech"><h3>📨 Pengajuan les saya</h3><a onclick="go('cariguru')">Cari guru ›</a></div><div class="card">${reqs.length?tw(`<table><tr><th>Guru</th><th>Anak</th><th>Jenis</th><th>Status</th></tr>${reqs.map(r=>`<tr><td>${esc(N(G(r.guruId)))}</td><td>${esc(N(M(r.muridId)))}</td><td>${r.tipe}${r.kelasId?' · '+esc(K(r.kelasId)?.nama||''):''}</td><td>${stTag(r.status)}</td></tr>`).join('')}</table>`):'<div class="empty">Belum ada pengajuan. Cari guru di menu 🔍 Cari Guru.</div>'}</div>`;
+}
+function formAnak(){openM(`<h3>Tambah Anak</h3><label>Nama anak</label><input id="fa_n"><label>Kelas sekolah</label><input id="fa_k" placeholder="cth: 4 SD"><label>Sekolah (opsional)</label><input id="fa_s"><div class="row" style="margin-top:16px"><button class="btn" onclick="saveAnak()">Simpan</button><button class="btn gh" onclick="closeM()">Batal</button></div>`)}
+async function saveAnak(){const n=$('fa_n').value.trim();if(!n)return toast('Isi nama anak');const m={id:uid('m'),nama:n,kelas:$('fa_k').value,sekolah:$('fa_s').value,ortuId:myId()};closeM();await put('murid',m);toast('Anak ditambahkan');render()}
+
+let fG={q:'',jenjang:'',mode:'',sort:'jarak',kota:null,online:true};
+function o_cariguru(){
+ const me_=O(myId()),myL=locOf(me_),myK=kotaOf(me_);if(fG.kota===null)fG.kota=myK||'';
+ let list=GA().filter(g=>(!fG.q||(g.nama+' '+(g.mapel||[]).join(' ')+' '+lokStr(g)).toLowerCase().includes(fG.q.toLowerCase()))&&(!fG.jenjang||(g.jenjang||[]).includes(fG.jenjang))&&(!fG.mode||(g.mode||'').includes(fG.mode))&&(!fG.kota||kotaOf(g)===fG.kota||(fG.online&&/Online/.test(g.mode||''))));
+ const D=g=>dist(myL,locOf(g));
+ list.sort((a,b)=>fG.sort==='murah'?tarifMin(a)-tarifMin(b):fG.sort==='mahal'?tarifMin(b)-tarifMin(a):fG.sort==='rating'?(+rating(b.id).v||0)-(+rating(a.id).v||0):((D(a)??1e9)-(D(b)??1e9)));
+ const near=GA().filter(g=>/Offline/.test(g.mode||'')).map(g=>({g,d:D(g)})).filter(x=>x.d!=null).sort((a,b)=>a.d-b.d).slice(0,3);
+ const umum=S.kelas.filter(k=>k.tipe==='Umum'&&(k.murid||[]).length<k.kapasitas&&G(k.guruId)&&!G(k.guruId).nonaktif).map(k=>({k,d:dist(myL,locOf(G(k.guruId)))})).sort((a,b)=>(a.d??1e9)-(b.d??1e9));
+ const cab=cabangOf(myK);
+ return`<h2>Cari Guru Les</h2><p class="sub">Rekomendasi guru terdekat dari lokasimu — pilih yang cocok, lalu ajukan Private Class atau gabung Kelas Umum.</p>
+ <div class="card row between" style="background:linear-gradient(90deg,#fff,#fff7ef)"><div class="row"><div style="font-size:28px">📍</div><div><b>Lokasi kamu: ${myL?esc(lokStr(me_)):'<span style="color:var(--bad)">belum diatur</span>'}</b><div class="mut">${cab?`Kamu di wilayah <b>${esc(cab.nama)}</b>`:myL?'Belum ada cabang LesGo! resmi di kotamu — tetap bisa pilih guru terdekat.':'Atur lokasi supaya kami bisa merekomendasikan guru terdekat.'}</div></div></div><button class="btn sm ${myL?'gh':'or'}" onclick="akunMenu('lokasi')">${myL?'Ubah lokasi':'Atur lokasi'}</button></div>
+ ${myL?`<div class="grid g2"><div class="card"><div class="sech"><h3>🗺️ Peta guru di sekitarmu</h3><a href="${gmaps(myL)}" target="_blank" rel="noopener">Buka Google Maps ›</a></div>${radar(myL,GA().map(g=>({nama:g.nama,ini:ini(g.nama),loc:locOf(g),act:`lihatGuru('${g.id}')`,color:/Offline/.test(g.mode||'')?'#1d4ed8':'#0891b2'})),'guru')}</div>
+ <div class="card"><h3>⭐ Rekomendasi terdekat</h3>${near.map(({g,d},i)=>`<div class="row" style="padding:10px 0;border-top:1px solid var(--line);cursor:pointer" onclick="lihatGuru('${g.id}')"><div class="nn">${i+1}</div>${av(g.nama)}<div style="flex:1"><b>${esc(g.nama)}</b><div class="mut">${esc((g.mapel||[]).join(', '))} · ${rStr(g.id)}</div><div class="mut">📍 <b style="color:var(--or)">${fmtKm(d)}</b> · ${esc(lokStr(g))}</div></div><span class="price" style="font-size:15px">${rp(tarifMin(g))}+</span></div>`).join('')||'<p class="mut">Belum ada guru tatap muka di dekatmu.</p>'}
+ <p class="mut" style="font-size:12px;margin:8px 0 0">Jarak dihitung lurus dari titik lokasimu ke titik guru (perkiraan).</p></div></div>`:''}
+ <div class="card row"><div style="flex:2;min-width:180px"><input id="qG" placeholder="Cari mapel, nama, kecamatan…" value="${esc(fG.q)}" oninput="fG.q=this.value;clearTimeout(window._q);window._q=setTimeout(()=>{render();const i=$('qG');i.focus();i.setSelectionRange(99,99)},300)"></div>
+ <div style="flex:1;min-width:140px"><select onchange="fG.kota=this.value;render()">${opt([['','🌏 Semua kota'],...KOTA_LIST.map(k=>[k,'📍 '+k])],fG.kota)}</select></div>
+ <div style="flex:1;min-width:110px"><select onchange="fG.jenjang=this.value;render()">${opt([['','Semua jenjang'],'TK','SD','SMP','SMA'],fG.jenjang)}</select></div>
+ <div style="flex:1;min-width:120px"><select onchange="fG.mode=this.value;render()">${opt([['','Online/Offline'],'Online','Offline'],fG.mode)}</select></div>
+ <div style="flex:1;min-width:140px"><select onchange="fG.sort=this.value;render()">${opt([['jarak','📍 Terdekat'],['rating','⭐ Rating tertinggi'],['murah','Tarif termurah'],['mahal','Tarif tertinggi']],fG.sort)}</select></div>
+ ${fG.kota?`<label class="att" style="margin:0"><label><input type="checkbox" ${fG.online?'checked':''} onchange="fG.online=this.checked;render()">+ guru online kota lain</label></label>`:''}</div>
+ <div class="grid g2">${list.map(g=>guruCard(g,`<button class="btn sm gh" onclick="lihatGuru('${g.id}')">Detail</button><button class="btn sm or" onclick="ajukan('${g.id}')">Ajukan Les</button>`)).join('')||`<div class="card empty">Belum ada guru di ${esc(fG.kota||'pencarian ini')}. <button class="btn sm sec" onclick="fG.kota='';render()">Lihat semua kota</button></div>`}</div>
+ <h3 style="margin-top:10px">🏫 Kelas Umum yang masih buka</h3>
+ <div class="grid g3">${umum.map(({k,d})=>`<div class="card"><b>${esc(k.nama)}</b><div class="mut">${esc(N(G(k.guruId)))} · ${rStr(k.guruId)}</div><p style="margin:8px 0">🗓️ ${esc(fmtJadwal(k))}<br>📍 ${esc(k.lokasi||'-')}${d!=null?` · <b style="color:var(--or)">${fmtKm(d)}</b>`:''}<br>👥 ${(k.murid||[]).length}/${k.kapasitas} murid<br>💰 ${rp(k.harga)}/bulan</p><button class="btn sm" onclick="ajukan('${k.guruId}','${k.id}')">Daftarkan</button></div>`).join('')||'<div class="card empty">Belum ada kelas umum yang buka.</div>'}</div>`;
+}
+function lihatGuru(id){const g=G(id),ks=S.kelas.filter(k=>k.guruId===id),ul=S.ulasan.filter(u=>u.guruId===id).sort((a,b)=>b.tanggal.localeCompare(a.tanggal));
+ openM(`<div class="row">${av(g.nama)}<div><h3 style="margin:0">${esc(namaG(g))} ${g.verif?'<span class="tag ok">✔ Terverifikasi</span>':''}</h3><div class="mut">${rStr(id)} · 📍 ${esc(g.lokasi)}</div></div></div><p>${esc(g.bio)}</p><p><b>Mapel:</b> ${esc((g.mapel||[]).join(', '))}<br><b>Jenjang:</b> ${esc((g.jenjang||[]).join(', '))}<br><b>Mode:</b> ${esc(g.mode)}${/Offline/.test(g.mode||'')?` · datang s/d ${g.radius||5} km`:''}<br><b>Lokasi:</b> ${esc(lokStr(g))} ${(()=>{const d=dist(viewerLoc(),locOf(g));return d!=null&&role()!=='g'?`· <b style="color:var(--or)">${fmtKm(d)} dari kamu</b>`:''})()} ${locOf(g)?`· <a href="${gmaps(locOf(g))}" target="_blank" rel="noopener">Lihat di Google Maps</a>`:''}<br>${cabangOf(kotaOf(g))?`<b>Cabang:</b> ${esc(cabangOf(kotaOf(g)).nama)}<br>`:''}<b>Pendidikan:</b> ${esc(g.pendidikan||'-')}${g.gelar?' · '+esc(g.gelar):''}${g.tahunLulus?' (lulus '+esc(g.tahunLulus)+')':''}<br><b>Kontak:</b> ${esc(g.hp)}</p>
+ <h3>💰 Tarif per mapel & kelas</h3>${tarifTable(g)}<h3 style="margin-top:12px">Kelas yang diajar</h3>${ks.map(k=>`<div>• ${esc(k.nama)} ${tipeTag(k.tipe)} <span class="mut">${esc(fmtJadwal(k))}</span></div>`).join('')||'<p class="mut">Belum ada</p>'}
+ <h3 style="margin-top:14px">Ulasan orang tua</h3>${ul.map(u=>`<div style="padding:6px 0;border-top:1px solid var(--line)"><b>${'★'.repeat(u.bintang)}${'☆'.repeat(5-u.bintang)}</b> <small class="mut">${esc(N(O(u.ortuId)))} · ${fdate(u.tanggal)}</small><div>${esc(u.teks)}</div></div>`).join('')||'<p class="mut">Belum ada ulasan.</p>'}
+ <div class="row" style="margin-top:16px">${role()==='o'?`<button class="btn" onclick="ajukan('${id}')">Ajukan Les</button>`:''}<button class="btn gh" onclick="closeM()">Tutup</button></div>`)}
+function ajukan(gid,kid=''){
+ const kids=myKids();if(!kids.length){closeM();toast('Tambahkan data anak dulu');return formAnak()}
+ const ku=S.kelas.filter(k=>k.guruId===gid&&k.tipe==='Umum');
+ const gg=G(gid);openM(`<h3>Ajukan Les ke ${esc(namaG(gg))}</h3><div class="split"><div><label>Anak / murid</label><select id="aj_m" onchange="ajHarga('${gid}')">${opt(kids.map(k=>[k.id,k.nama+' ('+k.kelas+')']))}</select></div><div><label>Mata pelajaran</label><select id="aj_mp" onchange="ajHarga('${gid}')">${opt([...new Set(tarifRows(gg).map(r=>r.mapel))])}</select></div></div><div id="aj_h" class="ajh"></div>
+ <label>Jenis kelas</label><select id="aj_t" onchange="$('aj_kw').style.display=this.value==='Umum'?'':'none'">${opt([['Private','Private Class (1 guru : 1 murid)'],['Umum','Kelas Umum (belajar berkelompok)']],kid?'Umum':'Private')}</select>
+ <div id="aj_kw" style="display:${kid?'':'none'}"><label>Pilih kelas umum</label><select id="aj_k">${ku.length?opt(ku.map(k=>[k.id,`${k.nama} (${(k.murid||[]).length}/${k.kapasitas})`]),kid):'<option value="">Guru belum punya kelas umum</option>'}</select></div>
+ <label>Pesan untuk guru</label><textarea id="aj_p" placeholder="cth: Mohon jadwal sore hari, anak kesulitan di pecahan."></textarea>
+ <div class="row" style="margin-top:16px"><button class="btn or" onclick="kirimAjuan('${gid}')">Kirim Pengajuan</button><button class="btn gh" onclick="closeM()">Batal</button></div>`);ajHarga(gid)}
+function ajHarga(gid){const g=G(gid),m=M($('aj_m').value),mp=$('aj_mp').value,h=hargaUntuk(g,mp,m?.kelas);$('aj_h').innerHTML=`💰 Tarif ${esc(mp)} untuk <b>${esc(m?.nama||'')}</b> (${esc(m?.kelas||'-')}): <b class="price" style="font-size:18px">${rp(h.tarif)}</b>/sesi${h.row?` <span class="mut">· baris "${esc(h.row.kelas)}"</span>`:''}${h.kira?'<div class="mut" style="font-size:12px">Kelas anak belum ada di tabel tarif guru — ini tarif terendah, bisa dinegosiasikan.</div>':''}<div class="mut" style="font-size:12px">Perkiraan 8 sesi/bulan: ${rp(h.tarif*8)}</div>`}
+async function kirimAjuan(gid){const t=$('aj_t').value,k=t==='Umum'?$('aj_k').value:'';if(t==='Umum'&&!k)return toast('Pilih kelas umum');const mid=$('aj_m').value,pesan=$('aj_p').value;
+ if(S.req.find(r=>r.guruId===gid&&r.muridId===mid&&r.status==='Menunggu'))return toast('Pengajuan untuk anak ini masih menunggu jawaban guru');
+ const mp=$('aj_mp').value,tf=hargaUntuk(G(gid),mp,M(mid)?.kelas).tarif;closeM();await put('req',{id:uid('r'),ortuId:myId(),guruId:gid,muridId:mid,tipe:t,kelasId:k,mapel:mp,tarif:tf,pesan,status:'Menunggu',tanggal:TODAY});
+ await notify(gid,`${N(O(myId()))} mengajukan les ${t} untuk ${N(M(mid))}.`);toast('Pengajuan terkirim ke guru');render()}
+
+function o_lowongan(){
+ const mine=S.lowongan.filter(w=>w.ortuId===myId()).sort((a,b)=>b.tanggal.localeCompare(a.tanggal));
+ return`<h2>Kebutuhan Les</h2><p class="sub">Tulis kebutuhan les anak — guru yang cocok akan melamar, kamu tinggal pilih.</p>
+ <div class="card"><h3>📢 Pasang kebutuhan baru</h3><div class="split"><div><label>Anak</label><select id="lw_m">${opt(myKids().map(k=>[k.id,k.nama+' ('+k.kelas+')']))}</select></div><div><label>Mata pelajaran</label><input id="lw_mp" placeholder="cth: Matematika"></div>
+ <div><label>Jenjang</label><select id="lw_j">${opt(['TK','SD','SMP','SMA'])}</select></div><div><label>Mode</label><select id="lw_mo">${opt(['Offline','Online','Offline & Online'])}</select></div>
+ <div><label>Budget per bulan</label><input id="lw_b" type="number" placeholder="400000"></div></div><label style="margin-top:12px">Lokasi les</label>${lokFields('lw',O(myId()))}
+ <label>Catatan</label><textarea id="lw_c" placeholder="Jadwal yang diinginkan, kesulitan anak, dsb."></textarea><button class="btn" style="margin-top:12px" onclick="pasangLowongan()">Pasang</button></div>
+ <h3>Kebutuhan yang saya pasang</h3>${mine.map(w=>{const pel=S.lamaran.filter(l=>l.lowonganId===w.id);return`<div class="card"><div class="row between"><div><b>${esc(w.mapel)} · ${esc(N(M(w.muridId)))}</b> ${stTag(w.status)}<div class="mut">${w.jenjang} · ${esc(w.mode)} · 📍 ${esc(lokStr(w))} · ${rp(w.budget)}/bln</div></div><div class="row"><small class="mut">${fdate(w.tanggal)}</small>${w.status==='Buka'?`<button class="btn sm gh" onclick="tutupLowongan('${w.id}')">Tutup</button>`:''}</div></div><p class="mut">${esc(w.catatan)}</p>
+ <b>Pelamar (${pel.length})</b>${pel.map(l=>{const g=G(l.guruId);if(!g)return'';return`<div class="row between" style="padding:8px 0;border-top:1px solid var(--line)"><div class="row">${av(g.nama)}<div><b>${esc(g.nama)}</b><div class="mut">${rStr(g.id)} · ${rp(g.tarif)}/sesi${(()=>{const d=dist(locOf(w),locOf(g));return d!=null?` · 📍 ${fmtKm(d)} dari lokasi les`:''})()}</div>${l.pesan?`<div>"${esc(l.pesan)}"</div>`:''}</div></div><div class="row"><button class="btn sm gh" onclick="lihatGuru('${g.id}')">Profil</button>${w.status==='Buka'?`<button class="btn sm ok" onclick="terimaPelamar('${w.id}','${g.id}')">Pilih guru ini</button>`:''}</div></div>`}).join('')||'<p class="mut">Belum ada guru yang melamar.</p>'}</div>`}).join('')||'<div class="card empty">Belum ada.</div>'}`;
+}
+async function pasangLowongan(){const mp=$('lw_mp').value.trim();if(!$('lw_m').value)return toast('Tambah anak dulu di Beranda');if(!mp)return toast('Isi mata pelajaran');
+ let L;try{L=readLok('lw')}catch(e){return}if(!L)return toast('Pilih lokasi les');
+ await put('lowongan',{id:uid('w'),ortuId:myId(),muridId:$('lw_m').value,mapel:mp,jenjang:$('lw_j').value,...L,mode:$('lw_mo').value,budget:+$('lw_b').value||0,catatan:$('lw_c').value,status:'Buka',tanggal:TODAY});toast('Kebutuhan les dipasang');render()}
+async function tutupLowongan(id){const w=S.lowongan.find(x=>x.id===id);await put('lowongan',{...w,status:'Tutup'});render()}
+async function terimaPelamar(wid,gid){const w=S.lowongan.find(x=>x.id===wid),m=M(w.muridId),g=G(gid);
+ await put('lowongan',{...w,status:'Tutup'});
+ const k={id:uid('k'),nama:`${w.mapel} Private — ${m.nama}`,tipe:'Private',guruId:gid,mapel:w.mapel,hari:[],jam:'',lokasi:w.mode==='Online'?'Online':w.lokasi,harga:w.budget||hargaUntuk(g,w.mapel,m.kelas).tarif*8,kapasitas:1,murid:[m.id]};await put('kelas',k);await catatPotongan(gid,m.id,k.id,'Dipilih dari kebutuhan les');
+ await notify(gid,`Selamat! ${N(O(myId()))} memilih Anda untuk ${k.nama}. Silakan atur jadwal di menu Kelas.`);toast('Guru dipilih, kelas private dibuat');render()}
+
+function o_jadwal(){const ids=myKids().map(k=>k.id);return jadwalView(S.kelas.filter(k=>(k.murid||[]).some(m=>ids.includes(m))),'Jadwal Les Anak','Jadwal mingguan semua les anak. Kuning = kelas umum, ungu = private.')}
+function o_kelas(){
+ return`<h2>Kelas & Materi</h2><p class="sub">Semua kelas les yang diikuti anak, beserta materi pelajarannya.</p>${myKids().map(m=>`<h3>${esc(m.nama)}</h3><div class="grid g2">${kelasOfMurid(m.id).map(k=>{const mt=S.materi.filter(x=>x.kelasId===k.id).sort((a,b)=>b.tanggal.localeCompare(a.tanggal));const myU=S.ulasan.find(u=>u.id===myId()+'_'+k.guruId);return`<div class="card"><div class="row between"><b>${esc(k.nama)}</b>${tipeTag(k.tipe)}</div><div class="mut">🧑‍🏫 ${esc(N(G(k.guruId)))} · ${rStr(k.guruId)}</div><div class="mut">🗓️ ${esc(fmtJadwal(k))} · 📍 ${esc(k.lokasi||'-')}</div><div class="mut">💰 ${rp(k.harga)}/bulan ${k.tipe==='Umum'?`· 👥 ${(k.murid||[]).length}/${k.kapasitas}`:''}</div>
+ <div class="row" style="margin-top:8px"><button class="btn sm sec" onclick="formUlasan('${k.guruId}')">${myU?'Ubah ulasan':'⭐ Beri ulasan guru'}</button>${G(k.guruId)?.hp?`<a class="btn sm wa" target="_blank" rel="noopener" href="${waLink(G(k.guruId).hp,'Halo '+G(k.guruId).nama+', saya orang tua '+m.nama+'.')}">WhatsApp guru</a>`:''}</div>
+ <h4 style="margin:12px 0 6px">📚 Materi pelajaran (${mt.length})</h4>${mt.map(x=>`<div style="padding:6px 0;border-top:1px solid var(--line)"><b>${esc(x.judul)}</b> <small class="mut">${fdate(x.tanggal)}</small><div class="mut">${esc(x.isi)}</div></div>`).join('')||'<p class="mut">Belum ada materi.</p>'}</div>`}).join('')||'<div class="card empty">Belum ikut kelas. Cari guru di menu 🔍 Cari Guru.</div>'}</div>`).join('')||'<div class="card empty">Belum ada anak.</div>'}`;
+}
+function formUlasan(gid){const u=S.ulasan.find(x=>x.id===myId()+'_'+gid)||{bintang:5,teks:''};
+ openM(`<h3>Ulasan untuk ${esc(N(G(gid)))}</h3><div class="stars">${[5,4,3,2,1].map(i=>`<input type="radio" name="ul_b" id="st${i}" value="${i}" ${u.bintang===i?'checked':''}><label for="st${i}">★</label>`).join('')}</div><label>Ceritakan pengalamanmu</label><textarea id="ul_t" placeholder="cth: Anak jadi lebih semangat belajar.">${esc(u.teks)}</textarea><div class="row" style="margin-top:16px"><button class="btn" onclick="simpanUlasan('${gid}')">Kirim ulasan</button><button class="btn gh" onclick="closeM()">Batal</button></div>`)}
+async function simpanUlasan(gid){const b=+(document.querySelector('input[name="ul_b"]:checked')?.value||5);const u={id:myId()+'_'+gid,guruId:gid,ortuId:myId(),bintang:b,teks:$('ul_t').value,tanggal:TODAY};closeM();await put('ulasan',u);await notify(gid,`${N(O(myId()))} memberi ulasan ${b}★ untuk Anda.`);toast('Terima kasih atas ulasannya!');render()}
+
+let fLapM='';
+function o_laporan(){
+ const kids=myKids();const ids=fLapM?[fLapM]:kids.map(k=>k.id);
+ const list=S.laporan.filter(l=>ids.includes(l.muridId)).sort((a,b)=>b.tanggal.localeCompare(a.tanggal));
+ setTimeout(async()=>{for(const l of list.filter(l=>!l.dibaca))await put('laporan',{...l,dibaca:true})},2500);
+ return`<h2>Laporan Harian Anak</h2><p class="sub">Dikirim guru setiap selesai les: apa yang dikerjakan, apa yang sudah bisa, dan nilai hari itu.</p>
+ <div class="card row"><b>Anak:</b><div style="width:200px"><select onchange="fLapM=this.value;render()">${opt([['','Semua anak'],...kids.map(k=>[k.id,k.nama])],fLapM)}</select></div><div class="sp"></div><button class="btn sm gh" onclick="go('rapor')">📈 Lihat rapor bulanan</button></div>
+ ${list.map(l=>laporanCard(l)).join('')||'<div class="card empty">Belum ada laporan.</div>'}`;
+}
+function o_rapor(){return raporView(myKids(),'Rapor Bulanan')}
+function o_pr(){
+ return`<h2>PR (Pekerjaan Rumah)</h2><p class="sub">Tugas dari guru untuk dikerjakan di rumah. Tandai jika anak sudah mengerjakan.</p>${myKids().map(m=>{const prs=S.pr.filter(p=>(p.murid||[]).includes(m.id)).sort((a,b)=>b.deadline.localeCompare(a.deadline));return`<h3>${esc(m.nama)}</h3><div class="card">${prs.length?tw(`<table><tr><th>PR</th><th>Mapel</th><th>Deadline</th><th>Status</th><th></th></tr>${prs.map(p=>{const s=KP(p.id,m.id);const late=s.status==='Belum'&&p.deadline<TODAY;return`<tr><td><b>${esc(p.judul)}</b><div class="mut">${esc(p.desk)}</div>${s.jawaban?`<div style="font-size:12px">📝 ${esc(s.jawaban)}</div>`:''}${s.nilai!=null?`<div>Nilai: <b>${s.nilai}</b> ${s.catatan?'· '+esc(s.catatan):''}</div>`:''}</td><td>${esc(K(p.kelasId)?.mapel||'')}</td><td>${fdate(p.deadline)} ${late?'<span class="tag bad">Terlambat</span>':''}</td><td>${stTag(s.status)}</td><td>${s.status==='Belum'?`<button class="btn sm" onclick="kumpulPR('${p.id}','${m.id}')">Sudah dikerjakan</button>`:''}</td></tr>`}).join('')}</table>`):'<div class="empty">Tidak ada PR 🎉</div>'}</div>`}).join('')}`;
+}
+function kumpulPR(pid,mid){openM(`<h3>Kumpulkan PR</h3><p class="mut">${esc(S.pr.find(p=>p.id===pid).judul)} · ${esc(N(M(mid)))}</p><label>Keterangan / jawaban</label><textarea id="kp_j" placeholder="cth: Sudah dikerjakan semua, no 7 masih bingung."></textarea><div class="row" style="margin-top:16px"><button class="btn" onclick="simpanKumpul('${pid}','${mid}')">Kumpulkan</button><button class="btn gh" onclick="closeM()">Batal</button></div>`)}
+async function simpanKumpul(pid,mid){const p=S.pr.find(x=>x.id===pid);const j=$('kp_j').value;closeM();await put('kumpul',{id:pid+'_'+mid,prId:pid,muridId:mid,status:'Dikumpulkan',jawaban:j,nilai:null,catatan:'',tanggal:TODAY});await notify(K(p.kelasId)?.guruId,`${N(M(mid))} mengumpulkan PR "${p.judul}".`);toast('PR dikumpulkan');render()}
+function o_absensi(){
+ return`<h2>Absensi Les</h2><p class="sub">Rekap kehadiran anak di setiap pertemuan les.</p>${myKids().map(m=>{const rows=S.absensi.filter(a=>a.data&&a.data[m.id]).sort((a,b)=>b.tanggal.localeCompare(a.tanggal));const at=attendance(m.id);return`<div class="card"><div class="row between"><h3 style="margin:0">${esc(m.nama)}</h3><div><b>${at.p}%</b> <span class="mut">hadir (${at.h}/${at.t})</span></div></div>${tw(`<table style="margin-top:8px"><tr><th>Tanggal</th><th>Kelas</th><th>Status</th></tr>${rows.map(a=>`<tr><td>${HARI[new Date(a.tanggal+'T00:00').getDay()]}, ${fdate(a.tanggal)}</td><td>${esc(K(a.kelasId)?.nama||'')}</td><td>${stTag(a.data[m.id])}</td></tr>`).join('')||'<tr><td colspan=3 class="empty">Belum ada data</td></tr>'}</table>`)}</div>`}).join('')}`;
+}
+function o_spp(){
+ const kids=myKids().map(k=>k.id);const list=S.spp.filter(s=>kids.includes(s.muridId)).sort((a,b)=>b.bulan.localeCompare(a.bulan));
+ const belum=list.filter(s=>s.status==='Belum');
+ return`<h2>SPP Les</h2><p class="sub">Tagihan bulanan per kelas. Setelah membayar, guru akan mengonfirmasi dan kuitansi tersedia.</p>
+ <div class="grid g4" style="margin-bottom:14px"><div class="stat"><small>Belum dibayar</small><b style="color:var(--bad)">${rp(belum.reduce((a,b)=>a+b.nominal,0))}</b></div><div class="stat"><small>Menunggu konfirmasi</small><b>${list.filter(s=>s.status==='Menunggu Konfirmasi').length}</b></div><div class="stat"><small>Lunas</small><b style="color:var(--ok)">${list.filter(s=>s.status==='Lunas').length}</b></div></div>
+ <div class="card">${tw(`<table><tr><th>Bulan</th><th>Anak</th><th>Kelas</th><th>Nominal</th><th>Status</th><th></th></tr>${list.map(s=>`<tr><td>${fdate(s.bulan)}</td><td>${esc(N(M(s.muridId)))}</td><td>${esc(K(s.kelasId)?.nama||'')}</td><td><b>${rp(s.nominal)}</b></td><td>${stTag(s.status)}${s.bayar?`<div class="mut" style="font-size:12px">${esc(s.metode)} · ${fdate(s.bayar)}</div>`:''}</td><td>${s.status==='Belum'?`<button class="btn sm" onclick="bayar('${s.id}')">Bayar</button>`:s.status==='Lunas'?`<button class="btn sm gh" onclick="kuitansi('${s.id}')">🧾 Kuitansi</button>`:''}</td></tr>`).join('')||'<tr><td colspan=6 class="empty">Tidak ada tagihan</td></tr>'}</table>`)}</div>`;
+}
+function bayar(id){const s=S.spp.find(x=>x.id===id),g=G(K(s.kelasId)?.guruId);openM(`<h3>Bayar SPP ${fdate(s.bulan)}</h3><p>${esc(N(M(s.muridId)))} · ${esc(K(s.kelasId)?.nama||'')}</p><div class="score">${rp(s.nominal)}</div>
+ <div class="card" style="margin-top:10px;background:#f9fafb"><b>Info pembayaran</b><div style="white-space:pre-wrap">${esc(g?.rekening||CFG().infoBayar||'Hubungi guru untuk info rekening/QRIS.')}</div><div class="mut">Guru: ${esc(N(g))} · ${esc(g?.hp||'')}</div></div>
+ <label>Metode pembayaran</label><select id="by_m">${opt(['Transfer Bank','QRIS','E-Wallet','Tunai ke guru'])}</select><label>Catatan (cth: nama pengirim / no. referensi)</label><input id="by_c"><div class="row" style="margin-top:16px"><button class="btn or" onclick="konfirmBayar('${id}')">Saya sudah bayar</button><button class="btn gh" onclick="closeM()">Batal</button></div>`)}
+async function konfirmBayar(id){const s=S.spp.find(x=>x.id===id);const n={...s,status:'Menunggu Konfirmasi',bayar:TODAY,metode:$('by_m').value,ref:$('by_c').value};closeM();await put('spp',n);await notify(K(s.kelasId)?.guruId,`${N(O(myId()))} membayar SPP ${N(M(s.muridId))} (${fdate(s.bulan)}) ${rp(s.nominal)}. Mohon konfirmasi.`);toast('Pembayaran dikirim, menunggu konfirmasi guru');render()}
+function kuitansiText(s){const k=K(s.kelasId);return`KUITANSI PEMBAYARAN SPP\n${'LesGo!'+(CFG().nama?' — '+CFG().nama:'')}\nNo: ${s.id.toUpperCase()}\n\nTelah diterima dari: ${N(O(M(s.muridId)?.ortuId))}\nUntuk: SPP ${N(M(s.muridId))} — ${k?.nama||''}\nBulan: ${fdate(s.bulan)}\nJumlah: ${rp(s.nominal)}\nMetode: ${s.metode}\nTanggal bayar: ${fdate(s.bayar)}\nStatus: LUNAS ✔\n\nGuru: ${N(G(k?.guruId))}\n\nLesGo! — Belajar Seru, Prestasi Melaju!`}
+function kuitansi(id){const s=S.spp.find(x=>x.id===id),t=kuitansiText(s);openM(`<h3>🧾 Kuitansi</h3><div class="wabox" style="font-family:monospace">${esc(t)}</div><div class="row" style="margin-top:14px"><button class="btn sec" onclick='copyTxt(${JSON.stringify(t).replace(/'/g,"&#39;")})'>📋 Salin</button><button class="btn gh" onclick="closeM()">Tutup</button></div>`)}
+
+// ================== GURU ==================
+function g_beranda(){
+ const g=G(myId()),ks=myKelas(),mids=myMurid();
+ const reqs=S.req.filter(r=>r.guruId===myId()&&r.status==='Menunggu');
+ const cek=S.kumpul.filter(x=>x.status==='Dikumpulkan'&&ks.some(k=>k.id===S.pr.find(p=>p.id===x.prId)?.kelasId)).length;
+ const konf=S.spp.filter(s=>ks.some(k=>k.id===s.kelasId)&&s.status==='Menunggu Konfirmasi').length;
+ const masuk=S.spp.filter(s=>ks.some(k=>k.id===s.kelasId)&&s.status==='Lunas'&&s.bulan===BLN).reduce((a,b)=>a+b.nominal,0);
+ const today=todayList(ks);
+ const open=S.lowongan.filter(w=>w.status==='Buka').length;
+ return`${!g.verif?`<div class="card row between" style="background:${g.verifStatus==='Ditolak'?'var(--badb)':'var(--warnb)'}"><div><b>${g.verifStatus==='Ditolak'?'✖ Verifikasi perlu perbaikan':myDok(g.id)?.noIjazah?'⏳ Data ijazahmu sedang diverifikasi admin':'🎓 Lengkapi gelar & No. Ijazah untuk verifikasi'}</b><div class="mut">${g.verifStatus==='Ditolak'?esc(g.verifAlasan||''):'Guru terverifikasi lebih dipercaya orang tua dan tampil lebih atas.'}</div></div><button class="btn sm or" onclick="go('profil')">Buka profil</button></div>`:''}<div class="hero2"><div class="in"><div class="hi">${greet()}</div><h2>Halo, ${esc(namaG(g))} 👋</h2><p>${g.verif?'✔ Akun terverifikasi':'⏳ Menunggu verifikasi admin — profil tetap tampil di pencarian.'} · ${rStr(g.id)}${cabangOf(kotaOf(g))?' · 🏢 '+esc(cabangOf(kotaOf(g)).nama):''} · 📍 ${esc(lokStr(g))}</p></div>
+ <div class="hstats"><div onclick="go('kelas')"><small>Murid aktif</small><b>${mids.length}</b></div><div onclick="go('kelas')"><small>Private / Umum</small><b>${ks.filter(k=>k.tipe==='Private').length} / ${ks.filter(k=>k.tipe==='Umum').length}</b></div><div onclick="go('pr')"><small>PR perlu dinilai</small><b>${cek}</b></div><div onclick="go('spp')"><small>SPP masuk ${fdate(BLN)}</small><b>${rp(masuk)}</b></div></div></div>
+ ${menuGrid()}
+ ${banners([['b1',`${open} kebutuhan les terbuka`,'Orang tua sedang mencari guru. Lamar sekarang!','🎯',"go('carimurid')",'Cari murid'],['b3',`Penghasilanmu: ${rp(S.spp.filter(x=>ks.some(k=>k.id===x.kelasId)&&x.status==='Lunas').reduce((a,x)=>a+x.nominal,0)-S.potongan.filter(x=>x.guruId===myId()).reduce((a,x)=>a+x.nominal,0))}`,`Bersih setelah biaya platform (${feeLabel()}).`,'💰',"go('penghasilan')",'Lihat'],['b4','Laporan kilat pakai AI','Tulis catatan singkat, AI rapikan untuk orang tua.','✨',"go('laporan')",'Tulis laporan'],['b3','Atur jadwal kelas','Jadwal rapi = orang tua tenang.','🗓️',"go('kelas')",'Atur'],...(konf?[['b2',`${konf} pembayaran menunggu`,'Konfirmasi SPP yang sudah dibayar orang tua.','💳',"go('spp')",'Konfirmasi']]:[])])}
+ <div class="card"><h3>🗓️ Mengajar hari ini (${HARI[DOW]})</h3>${today.map(k=>{const ab=S.absensi.find(a=>a.id===k.id+'_'+TODAY);const lap=(k.murid||[]).filter(m=>S.laporan.find(l=>l.muridId===m&&l.kelasId===k.id&&l.tanggal===TODAY)).length;return`<div class="row" style="padding:8px 0;border-top:1px solid var(--line)"><b style="width:52px">${esc(k.jam)}</b><div style="flex:1">${esc(k.nama)} ${tipeTag(k.tipe)}<div class="mut">${(k.murid||[]).map(m=>esc(N(M(m)))).join(', ')} · 📍 ${esc(k.lokasi||'-')}</div></div><button class="btn sm ${ab?'gh':'sec'}" onclick="absK='${k.id}';absT=TODAY;go('absensi')">${ab?'✔ Sudah absen':'Absen'}</button><button class="btn sm ${lap>=(k.murid||[]).length&&lap?'gh':''}" onclick="lapK='${k.id}';go('laporan')">Laporan ${lap}/${(k.murid||[]).length}</button></div>`}).join('')||'<p class="mut">Tidak ada jadwal mengajar hari ini.</p>'}</div>
+ <div class="sech"><h3>📥 Pengajuan les masuk</h3><a onclick="go('carimurid')">Cari murid ›</a></div>${reqs.map(r=>`<div class="card"><div class="row between"><div><b>${esc(N(O(r.ortuId)))}</b> ingin les ${tipeTag(r.tipe)} ${r.mapel?`<b>${esc(r.mapel)}</b>`:''} untuk <b>${esc(N(M(r.muridId)))}</b> (${esc(M(r.muridId)?.kelas||'')})${r.tarif?` · <b style="color:var(--or)">${rp(r.tarif)}/sesi</b>`:''}${r.kelasId?` di <b>${esc(K(r.kelasId)?.nama||'')}</b>`:''}<div class="mut">"${esc(r.pesan||'-')}" · ${fdate(r.tanggal)}</div></div><div class="row">${O(r.ortuId)?.hp?`<a class="btn sm wa" target="_blank" rel="noopener" href="${waLink(O(r.ortuId).hp,'Halo '+O(r.ortuId).nama+', saya '+g.nama+' terkait pengajuan les '+N(M(r.muridId))+'.')}">WA</a>`:''}<button class="btn sm ok" onclick="terimaReq('${r.id}')">Terima</button><button class="btn sm bad" onclick="jawabReq('${r.id}',0)">Tolak</button></div></div></div>`).join('')||'<div class="card empty">Tidak ada pengajuan baru.</div>'}`;
+}
+function terimaReq(id){const r=S.req.find(x=>x.id===id);if(!FEE()||FEEMODE()!=='sekali'||S.potongan.find(x=>x.id===myId()+'_'+r.muridId))return jawabReq(id,1);
+ openM(`<h3>Terima murid baru 🎉</h3><p><b>${esc(N(M(r.muridId)))}</b> akan menjadi muridmu (${r.tipe}).</p><div class="card" style="background:var(--or2);box-shadow:none"><b>Biaya platform: ${rp(FEE())}</b> (sekali untuk murid ini)<div class="mut" style="font-size:13px">Setelah itu, 100% SPP bulanan murid ini menjadi milikmu. Biaya dibayar lewat menu 💰 Penghasilan.</div></div><div class="row" style="margin-top:14px"><button class="btn ok" onclick="closeM();jawabReq('${id}',1)">Terima murid</button><button class="btn gh" onclick="closeM()">Batal</button></div>`)}
+async function jawabReq(id,ok){const r=S.req.find(x=>x.id===id);const m=M(r.muridId);
+ if(!ok){await put('req',{...r,status:'Ditolak'});await notify(r.ortuId,`${N(G(myId()))} belum bisa menerima pengajuan les ${N(m)}.`);toast('Pengajuan ditolak');return render()}
+ if(r.tipe==='Umum'&&r.kelasId){const k=K(r.kelasId);if(!k)return toast('Kelas tidak ditemukan');if((k.murid||[]).length>=k.kapasitas)return toast('Kelas sudah penuh');if(!(k.murid||[]).includes(m.id))await put('kelas',{...k,murid:[...(k.murid||[]),m.id]});await catatPotongan(myId(),m.id,k.id,'Gabung '+k.nama)}
+ else{const g=G(myId()),nk=uid('k');await catatPotongan(myId(),m.id,nk,'Private class');const mp=r.mapel||g.mapel[0],tf=r.tarif||hargaUntuk(g,mp,m.kelas).tarif;await put('kelas',{id:nk,nama:`${mp} Private — ${m.nama}`,tipe:'Private',guruId:myId(),mapel:mp,hari:[],jam:'',lokasi:'',harga:tf*8,kapasitas:1,murid:[m.id]})}
+ await put('req',{...r,status:'Diterima'});await notify(r.ortuId,`${N(G(myId()))} menerima pengajuan les ${N(m)}. 🎉`);toast((r.tipe==='Private'?'Diterima — atur jadwal & SPP di menu Kelas':'Diterima, murid masuk kelas')+(FEE()&&FEEMODE()==='sekali'?` · biaya platform ${rp(FEE())}`:''));render()}
+
+let fM={kota:null,sort:'jarak'};
+function g_carimurid(){
+ const g=G(myId()),gl=locOf(g),gk=kotaOf(g);if(fM.kota===null)fM.kota=gk||'';const rad=g.radius||5,onl=/Online/.test(g.mode||''),off=/Offline/.test(g.mode||'');
+ const cocok=w=>(g.mapel||[]).some(x=>w.mapel.toLowerCase().includes(x.toLowerCase())||x.toLowerCase().includes(w.mapel.toLowerCase()));
+ let list=S.lowongan.filter(w=>w.status==='Buka'&&(!fM.kota||kotaOf(w)===fM.kota||(onl&&/Online/.test(w.mode||''))));
+ const D=w=>dist(gl,locOf(w));
+ list.sort((a,b)=>fM.sort==='baru'?b.tanggal.localeCompare(a.tanggal):(cocok(b)-cocok(a))||((D(a)??1e9)-(D(b)??1e9)));
+ return`<h2>Cari Murid</h2><p class="sub">Kebutuhan les dari orang tua & murid di sekitarmu — yang paling dekat dan cocok mapelnya tampil paling atas.</p>
+ <div class="card row between" style="background:linear-gradient(90deg,#fff,#eef4ff)"><div class="row"><div style="font-size:28px">📍</div><div><b>Lokasimu: ${esc(lokStr(g))}</b><div class="mut">${off?`Bersedia datang sampai ${rad} km`:'Mengajar online'}${cabangOf(gk)?` · ${esc(cabangOf(gk).nama)}`:''}</div></div></div><button class="btn sm gh" onclick="go('profil')">Ubah</button></div>
+ ${gl?`<div class="card"><h3>🗺️ Peta murid yang mencari guru</h3>${radar(gl,S.lowongan.filter(w=>w.status==='Buka').map(w=>({nama:w.mapel+' · '+N(M(w.muridId)),ini:ini(N(M(w.muridId))),loc:locOf(w),act:`document.getElementById('lw_${w.id}')?.scrollIntoView({behavior:'smooth'})`,color:cocok(w)?'#059669':'#94a3b8'})),'kebutuhan les')}<p class="mut" style="text-align:center;font-size:12px;margin:2px 0 0">🟢 cocok dengan mapelmu · ⚪ mapel lain</p></div>`:''}
+ <div class="card row"><div style="flex:1;min-width:160px"><select onchange="fM.kota=this.value;render()">${opt([['','🌏 Semua kota'],...KOTA_LIST.map(k=>[k,'📍 '+k])],fM.kota)}</select></div><div style="flex:1;min-width:160px"><select onchange="fM.sort=this.value;render()">${opt([['jarak','📍 Terdekat & cocok'],['baru','🕒 Terbaru']],fM.sort)}</select></div></div>
+ ${list.map(w=>{const m=M(w.muridId),pel=S.lamaran.filter(l=>l.lowonganId===w.id),applied=pel.some(l=>l.guruId===myId()),d=D(w),inR=/Online/.test(w.mode||'')&&onl||(d!=null&&d<=rad&&off);
+  return`<div class="card" id="lw_${w.id}"><div class="row between"><div><b style="font-size:16px">${esc(w.mapel)}</b> <span class="tag gr">${w.jenjang}</span><span class="tag warn">${esc(w.mode)}</span>${cocok(w)?'<span class="tag ok">Cocok dengan mapelmu</span>':''}${d!=null?(inR?'<span class="tag ok">✓ Dalam jangkauanmu</span>':'<span class="tag gr">Di luar jangkauan</span>'):''}
+  <div class="mut">👦 ${esc(N(m))} (${esc(m?.kelas||'')}) · dipasang ${fdate(w.tanggal)}</div><div class="mut">📍 ${d!=null?`<b style="color:var(--or)">${fmtKm(d)}</b> · `:''}${esc(lokStr(w))} ${locOf(w)?`· <a href="${gmaps(locOf(w))}" target="_blank" rel="noopener">Maps</a>`:''}</div></div><div style="text-align:right"><b class="price">${rp(w.budget)}</b><div class="mut">/bulan</div></div></div><p>${esc(w.catatan)}</p><div class="row between"><small class="mut">${pel.length} guru sudah melamar</small>${applied?'<span class="tag ok">✔ Sudah melamar</span>':`<button class="btn sm or" onclick="lamar('${w.id}')">Lamar</button>`}</div></div>`}).join('')||`<div class="card empty">Belum ada kebutuhan les ${fM.kota?'di '+esc(fM.kota):''}. ${fM.kota?`<button class="btn sm sec" onclick="fM.kota='';render()">Lihat semua kota</button>`:''}</div>`}`;
+}
+function lamar(id){openM(`<h3>Lamar kebutuhan les</h3><label>Pesan singkat untuk orang tua</label><textarea id="lm_p" placeholder="cth: Saya berpengalaman mengajar matematika SD 5 tahun, bisa Selasa & Kamis sore."></textarea><div class="row" style="margin-top:16px"><button class="btn" onclick="kirimLamar('${id}')">Kirim lamaran</button><button class="btn gh" onclick="closeM()">Batal</button></div>`)}
+async function kirimLamar(id){const w=S.lowongan.find(x=>x.id===id),p=$('lm_p').value;closeM();await put('lamaran',{id:id+'_'+myId(),lowonganId:id,guruId:myId(),pesan:p,tanggal:TODAY});await notify(w.ortuId,`${N(G(myId()))} melamar kebutuhan les ${w.mapel} untuk ${N(M(w.muridId))}.`);toast('Lamaran terkirim');render()}
+
+function g_jadwal(){return jadwalView(myKelas(),'Jadwal Mengajar','Jadwal mingguan semua kelasmu. Kuning = kelas umum, ungu = private.')}
+function g_kelas(){
+ const ks=myKelas();
+ return`<div class="row between"><div><h2>Kelas Saya</h2><p class="sub">Private Class (1:1) & Kelas Umum (berkelompok).</p></div><button class="btn" onclick="formKelas()">+ Buat Kelas</button></div>
+ ${['Private','Umum'].map(t=>`<h3>${t==='Private'?'👤 Private Class':'👥 Kelas Umum'}</h3><div class="grid g2">${ks.filter(k=>k.tipe===t).map(k=>`<div class="card"><div class="row between"><b>${esc(k.nama)}</b><div class="row"><button class="btn sm gh" onclick="formKelas('${k.id}')">Edit</button></div></div><div class="mut">📘 ${esc(k.mapel)} · 🗓️ ${esc(fmtJadwal(k))}</div><div class="mut">📍 ${esc(k.lokasi||'-')} · 💰 ${rp(k.harga)}/bln ${t==='Umum'?`· 👥 ${(k.murid||[]).length}/${k.kapasitas}`:''}</div>
+ ${tw(`<table style="margin-top:8px"><tr><th>Murid</th><th>Hadir</th><th>Rata nilai</th><th></th></tr>${(k.murid||[]).map(mid=>{const m=M(mid),a=attendance(mid,{kelasId:k.id});return`<tr><td>${esc(N(m))} <span class="mut">(${esc(m?.kelas||'')})</span></td><td>${a.p}%</td><td>${avgNilai(mid)||'-'}</td><td>${k.tipe==='Umum'?`<button class="btn sm gh" onclick="keluarkan('${k.id}','${mid}')">Keluarkan</button>`:''}</td></tr>`}).join('')||'<tr><td colspan=4 class="mut">Belum ada murid</td></tr>'}</table>`)}</div>`).join('')||'<div class="card empty">Belum ada.</div>'}</div>`).join('')}`;
+}
+async function keluarkan(kid,mid){const k=K(kid);if(!confirmTwice('kel'+kid+mid,'Klik sekali lagi untuk mengeluarkan '+N(M(mid))))return;await put('kelas',{...k,murid:k.murid.filter(x=>x!==mid)});toast('Murid dikeluarkan');render()}
+let _cf={};function confirmTwice(key,msg){if(_cf[key]&&Date.now()-_cf[key]<4000){delete _cf[key];return true}_cf[key]=Date.now();toast(msg);return false}
+function formKelas(id){const k=id?K(id):{nama:'',tipe:'Umum',mapel:(G(myId()).mapel||[''])[0],hari:[],jam:'16:00',lokasi:'',harga:'',kapasitas:8};
+ openM(`<h3>${id?'Edit':'Buat'} Kelas</h3><label>Nama kelas</label><input id="fk_n" value="${esc(k.nama)}" placeholder="cth: Kelas Umum Matematika SD"><div class="split"><div><label>Jenis</label><select id="fk_t" ${id?'disabled':''}>${opt([['Private','Private Class (1:1)'],['Umum','Kelas Umum (grup)']],k.tipe)}</select></div><div><label>Mapel</label><input id="fk_m" value="${esc(k.mapel)}"></div></div>
+ <label>Hari les</label><div class="att">${[1,2,3,4,5,6,0].map(d=>`<label><input type="checkbox" class="fk_h" value="${d}" ${(k.hari||[]).includes(d)?'checked':''}>${HARI[d].slice(0,3)}</label>`).join('')}</div>
+ <div class="split"><div><label>Jam mulai</label><input type="time" id="fk_j" value="${esc(k.jam||'16:00')}"></div><div><label>Lokasi</label><input id="fk_l" value="${esc(k.lokasi||'')}" placeholder="Rumah murid / Online / alamat"></div><div><label>SPP per bulan</label><input id="fk_h" type="number" value="${k.harga}"></div><div><label>Kapasitas murid (kelas umum)</label><input id="fk_c" type="number" value="${k.kapasitas}"></div></div>
+ <div class="row" style="margin-top:16px"><button class="btn" onclick="simpanKelas('${id||''}')">Simpan</button><button class="btn gh" onclick="closeM()">Batal</button>${id?`<div class="sp"></div><button class="btn bad sm" onclick="hapusKelas('${id}')">Hapus kelas</button>`:''}</div>`)}
+async function simpanKelas(id){const d={nama:$('fk_n').value.trim(),mapel:$('fk_m').value,hari:[...document.querySelectorAll('.fk_h:checked')].map(x=>+x.value),jam:$('fk_j').value,lokasi:$('fk_l').value,harga:+$('fk_h').value||0,kapasitas:Math.max(1,+$('fk_c').value||1)};if(!d.nama)return toast('Isi nama kelas');
+ let k;if(id){k={...K(id),...d};if(k.tipe==='Private')k.kapasitas=1}else{const t=$('fk_t').value;k={id:uid('k'),...d,tipe:t,kapasitas:t==='Private'?1:d.kapasitas,guruId:myId(),murid:[]}}
+ closeM();await put('kelas',k);toast('Kelas disimpan');render()}
+async function hapusKelas(id){if(!confirmTwice('hk'+id,'Klik "Hapus kelas" sekali lagi untuk menghapus'))return;closeM();await del('kelas',id);toast('Kelas dihapus');render()}
+
+let matK='';
+function g_materi(){
+ const ks=myKelas();if(!ks.find(k=>k.id===matK))matK=ks[0]?.id||'';
+ const list=S.materi.filter(m=>m.kelasId===matK).sort((a,b)=>b.tanggal.localeCompare(a.tanggal));
+ return`<h2>Materi Pelajaran</h2><p class="sub">Susun materi per kelas — orang tua bisa melihatnya di menu Kelas & Materi.</p>
+ ${ks.length?`<div class="card"><div class="row"><b>Kelas:</b><div style="width:300px"><select onchange="matK=this.value;render()">${opt(ks.map(k=>[k.id,k.nama]),matK)}</select></div></div>
+ <div class="split"><div><label>Judul materi</label><input id="mt_j"></div><div><label>Tanggal</label><input id="mt_t" type="date" value="${TODAY}"></div></div><label>Isi / ringkasan materi</label><textarea id="mt_i"></textarea><label>Link materi (opsional, cth: Google Drive/YouTube)</label><input id="mt_u" placeholder="https://"><button class="btn" style="margin-top:10px" onclick="tambahMateri()">+ Tambah materi</button></div>
+ ${list.map((m,i)=>`<div class="card"><div class="row between"><b>${list.length-i}. ${esc(m.judul)}</b><div class="row"><small class="mut">${fdate(m.tanggal)}</small><button class="btn sm gh" onclick="hapusMateri('${m.id}')">Hapus</button></div></div><p class="mut" style="margin:6px 0 0">${esc(m.isi)}</p>${m.url&&/^https?:\/\//.test(m.url)?`<a href="${esc(m.url)}" target="_blank" rel="noopener">🔗 Buka materi</a>`:''}</div>`).join('')||'<div class="card empty">Belum ada materi di kelas ini.</div>'}`:'<div class="card empty">Buat kelas dulu di menu Kelas Saya.</div>'}`;
+}
+async function tambahMateri(){const j=$('mt_j').value.trim();if(!j||!matK)return toast('Isi judul materi');await put('materi',{id:uid('mt'),kelasId:matK,judul:j,isi:$('mt_i').value,url:$('mt_u').value.trim(),tanggal:$('mt_t').value});toast('Materi ditambahkan');render()}
+async function hapusMateri(id){if(!confirmTwice('hm'+id,'Klik Hapus sekali lagi'))return;await del('materi',id);render()}
+
+function g_pr(){
+ const ks=myKelas();const list=S.pr.filter(p=>ks.some(k=>k.id===p.kelasId)).sort((a,b)=>b.deadline.localeCompare(a.deadline));
+ return`<div class="row between"><div><h2>PR (Pekerjaan Rumah)</h2><p class="sub">Beri PR untuk dikerjakan di rumah, lalu nilai yang sudah dikumpulkan.</p></div><button class="btn" onclick="formPR()">+ Buat PR</button></div>
+ ${list.map(p=>{const subs=(p.murid||[]).map(m=>[m,KP(p.id,m)]);return`<div class="card"><div class="row between"><div><b>${esc(p.judul)}</b><div class="mut">${esc(K(p.kelasId)?.nama||'')} · deadline ${fdate(p.deadline)}</div></div><div class="row"><span class="tag">${subs.filter(([,s])=>s.status!=='Belum').length}/${subs.length} mengumpulkan</span><button class="btn sm gh" onclick="hapusPR('${p.id}')">Hapus</button></div></div><p class="mut">${esc(p.desk)}</p>
+ ${tw(`<table><tr><th>Murid</th><th>Status</th><th>Jawaban</th><th>Nilai & catatan</th></tr>${subs.map(([mid,s])=>`<tr><td>${esc(N(M(mid)))}</td><td>${stTag(s.status)}</td><td class="mut">${esc(s.jawaban||'-')}</td><td>${s.status==='Belum'?'-':`<div class="row" style="flex-wrap:nowrap"><input type="number" min=0 max=100 style="width:70px" id="nv_${p.id}_${mid}" value="${s.nilai??''}"><input style="width:150px" placeholder="catatan" id="nc_${p.id}_${mid}" value="${esc(s.catatan)}"><button class="btn sm" onclick="nilaiPR('${p.id}','${mid}')">✔</button></div>`}</td></tr>`).join('')}</table>`)}</div>`}).join('')||'<div class="card empty">Belum ada PR.</div>'}`;
+}
+function formPR(){const ks=myKelas().filter(k=>(k.murid||[]).length);if(!ks.length)return toast('Belum ada kelas yang punya murid');const d=new Date();d.setDate(d.getDate()+3);
+ openM(`<h3>Buat PR</h3><label>Kelas</label><select id="pr_k">${opt(ks.map(k=>[k.id,k.nama]))}</select><label>Judul</label><input id="pr_j" placeholder="cth: Latihan Pecahan Hal. 24"><label>Instruksi</label><textarea id="pr_d"></textarea><label>Deadline</label><input type="date" id="pr_t" value="${ymd(d)}"><div class="row" style="margin-top:16px"><button class="btn" onclick="simpanPR()">Kirim PR</button><button class="btn gh" onclick="closeM()">Batal</button></div>`)}
+async function simpanPR(){const k=K($('pr_k').value),j=$('pr_j').value.trim(),dl=$('pr_t').value;if(!j)return toast('Isi judul PR');const desk=$('pr_d').value;closeM();
+ await put('pr',{id:uid('p'),kelasId:k.id,judul:j,desk,deadline:dl,murid:[...k.murid],dibuat:TODAY});
+ for(const o of [...new Set(k.murid.map(m=>M(m)?.ortuId))])await notify(o,`PR baru dari ${N(G(myId()))}: "${j}" — deadline ${fdate(dl)}.`);toast('PR dikirim ke orang tua');render()}
+async function nilaiPR(pid,mid){const p=S.pr.find(x=>x.id===pid),v=$(`nv_${pid}_${mid}`).value;if(v==='')return toast('Isi nilai');const s={...KP(pid,mid),nilai:+v,catatan:$(`nc_${pid}_${mid}`).value,status:'Dinilai'};await put('kumpul',s);await notify(M(mid)?.ortuId,`PR "${p.judul}" ${N(M(mid))} sudah dinilai: ${v}.`);toast('Nilai tersimpan');render()}
+async function hapusPR(id){if(!confirmTwice('hp'+id,'Klik Hapus sekali lagi untuk menghapus PR'))return;await del('pr',id);render()}
+
+let absK='',absT=TODAY;
+function g_absensi(){
+ const ks=myKelas();if(!ks.find(k=>k.id===absK))absK=(todayList(ks)[0]||ks[0])?.id||'';const k=K(absK);
+ const ex=S.absensi.find(a=>a.id===absK+'_'+absT);
+ const hist=S.absensi.filter(a=>a.kelasId===absK).sort((a,b)=>b.tanggal.localeCompare(a.tanggal));
+ const mur=k?.murid||[];
+ return`<h2>Absensi Murid</h2><p class="sub">Catat kehadiran setiap pertemuan — orang tua langsung mendapat notifikasi.</p>
+ <div class="card"><div class="split"><div><label>Kelas</label><select onchange="absK=this.value;render()">${opt(ks.map(k=>[k.id,k.nama]),absK)}</select></div><div><label>Tanggal pertemuan</label><input type="date" value="${absT}" onchange="absT=this.value;render()"></div></div>
+ ${k?(mur.length?`${tw(`<table style="margin-top:12px"><tr><th>Murid</th><th>Kehadiran</th></tr>${mur.map(mid=>`<tr><td><b>${esc(N(M(mid)))}</b></td><td><div class="att">${['Hadir','Izin','Sakit','Alfa'].map(s=>`<label><input type="radio" name="ab_${mid}" value="${s}" ${((ex&&ex.data[mid])||'Hadir')===s?'checked':''}>${s}</label>`).join('')}</div></td></tr>`).join('')}</table>`)}
+ <button class="btn" style="margin-top:12px" onclick="simpanAbsen()">${ex?'Perbarui':'Simpan'} Absensi</button>`:'<p class="mut">Kelas ini belum punya murid.</p>'):'<p class="empty">Belum ada kelas</p>'}</div>
+ <h3>Riwayat</h3><div class="card">${tw(`<table><tr><th>Tanggal</th>${mur.map(m=>`<th>${esc(N(M(m)))}</th>`).join('')}</tr>${hist.map(a=>`<tr><td>${fdate(a.tanggal)}</td>${mur.map(m=>`<td>${a.data[m]?stTag(a.data[m]):'-'}</td>`).join('')}</tr>`).join('')||'<tr><td class="empty">Belum ada</td></tr>'}</table>`)}</div>`;
+}
+async function simpanAbsen(){const k=K(absK),data={};k.murid.forEach(m=>{data[m]=document.querySelector(`input[name="ab_${m}"]:checked`)?.value||'Hadir'});
+ await put('absensi',{id:absK+'_'+absT,kelasId:absK,tanggal:absT,data});
+ for(const m of k.murid)await notify(M(m)?.ortuId,`Absensi ${N(M(m))} di ${k.nama} (${fdate(absT)}): ${data[m]}.`);toast('Absensi tersimpan & terkirim ke orang tua');render()}
+
+let lapK='',lapLast=null;
+function g_laporan(){
+ const ks=myKelas();if(!ks.find(k=>k.id===lapK))lapK=(todayList(ks)[0]||ks[0])?.id||'';const k=K(lapK);
+ const hist=S.laporan.filter(l=>l.kelasId===lapK).sort((a,b)=>b.tanggal.localeCompare(a.tanggal));
+ const belum=(k?.murid||[]).filter(m=>!S.laporan.find(l=>l.muridId===m&&l.kelasId===lapK&&l.tanggal===TODAY));
+ return`<h2>Laporan Harian</h2><p class="sub">Isi setelah les: apa yang dikerjakan, apa yang sudah bisa, nilai hari ini. Laporan langsung masuk ke orang tua.</p>
+ ${ks.length?`<div class="card"><div class="split"><div><label>Kelas</label><select onchange="lapK=this.value;lapLast=null;render()">${opt(ks.map(k=>[k.id,k.nama]),lapK)}</select></div><div><label>Murid</label><select id="lp_m">${opt((k?.murid||[]).map(m=>[m,N(M(m))+(belum.includes(m)?' — belum dilaporkan hari ini':' ✔')]),belum[0])}</select></div>
+ <div><label>Tanggal</label><input type="date" id="lp_t" value="${TODAY}"></div><div><label>Nilai hari ini (0-100)</label><input type="number" id="lp_n" min=0 max=100 placeholder="85"></div></div>
+ ${SAMPLE?`<div class="aibox" style="margin-top:12px;white-space:normal"><b>✨ Tulis cepat dengan AI</b><div class="mut" style="font-size:12px">Ketik catatan singkat seperti biasa, AI akan merapikannya ke kolom di bawah.</div><textarea id="lp_raw" placeholder="cth: hari ini latihan pecahan campuran 10 soal, benar 8. udah bisa ubah pecahan campuran ke biasa, masih salah pas pengurangan. anaknya semangat. tolong ingetin PR hal 30"></textarea><button class="btn sm ai" style="margin-top:6px" id="aiLapBtn" onclick="aiLaporan()">✨ Rapikan otomatis</button></div>`:''}
+ <label>📖 Hari ini mengerjakan apa?</label><textarea id="lp_d" placeholder="cth: Latihan perkalian pecahan 15 soal, membahas PR hal. 24"></textarea>
+ <label>✅ Sudah bisa apa?</label><textarea id="lp_b" placeholder="cth: Sudah lancar mengalikan pecahan biasa"></textarea>
+ <label>🎯 Masih perlu latihan</label><input id="lp_p" placeholder="cth: Pecahan campuran">
+ <div class="split"><div><label>😊 Sikap belajar</label><select id="lp_s">${opt(['Semangat 😄','Fokus 🙂','Kurang fokus 😐','Lelah 😴','Butuh motivasi 🙁'])}</select></div><div><label>💬 Catatan untuk orang tua</label><input id="lp_c"></div></div>
+ <button class="btn or" style="margin-top:14px" onclick="kirimLaporan()">📤 Simpan & Kirim ke Orang Tua</button>
+ ${lapLast?`<div style="margin-top:14px"><b>✔ Terkirim ke aplikasi orang tua. Kirim juga lewat WhatsApp ke ${esc(lapLast.ortu)}:</b><div class="wabox">${esc(lapLast.text)}</div><div class="row" style="margin-top:8px">${lapLast.wa?`<a class="btn sm wa" href="${lapLast.wa}" target="_blank" rel="noopener">Kirim via WhatsApp</a>`:''}<button class="btn sm sec" onclick="copyTxt(lapLast.text)">📋 Salin pesan</button></div></div>`:''}</div>
+ <h3>Riwayat laporan kelas ini</h3>${hist.map(l=>laporanCard(l)).join('')||'<div class="card empty">Belum ada laporan.</div>'}`:'<div class="card empty">Buat kelas dulu di menu Kelas Saya.</div>'}`;
+}
+async function aiLaporan(){const raw=$('lp_raw').value.trim();if(!raw)return toast('Tulis catatan singkat dulu');const b=$('aiLapBtn');b.disabled=true;b.textContent='Merapikan…';
+ try{const r=await SAMPLE.json(`Ubah catatan guru les berikut menjadi laporan harian untuk orang tua dalam Bahasa Indonesia yang sopan dan jelas. Jangan menambah fakta yang tidak ada.
+Balas HANYA JSON: {"dikerjakan":"...","bisa":"...","perlu":"...","catatan":"...","nilai":angka 0-100 atau null jika tidak bisa disimpulkan,"sikap":salah satu dari ["Semangat 😄","Fokus 🙂","Kurang fokus 😐","Lelah 😴","Butuh motivasi 🙁"]}
+Catatan guru: ${raw}`);
+  const v=typeof r==='string'?JSON.parse(r):r;if(v.dikerjakan)$('lp_d').value=v.dikerjakan;if(v.bisa)$('lp_b').value=v.bisa;if(v.perlu)$('lp_p').value=v.perlu;if(v.catatan)$('lp_c').value=v.catatan;if(v.nilai!=null&&$('lp_n').value==='')$('lp_n').value=v.nilai;if(v.sikap)$('lp_s').value=v.sikap;toast('Sudah dirapikan — cek lagi sebelum kirim')}
+ catch(e){toast(e&&e.code==='rate_limited'?'Terlalu banyak permintaan, coba sebentar lagi':'AI belum bisa dipakai, isi manual ya')}
+ b.disabled=false;b.textContent='✨ Rapikan otomatis'}
+async function kirimLaporan(){const mid=$('lp_m').value,n=$('lp_n').value,d=$('lp_d').value.trim();if(!mid)return toast('Pilih murid');if(n===''||!d)return toast('Isi nilai & apa yang dikerjakan');
+ const l={id:uid('l'),muridId:mid,kelasId:lapK,tanggal:$('lp_t').value,dikerjakan:d,bisa:$('lp_b').value,perlu:$('lp_p').value,nilai:Math.min(100,Math.max(0,+n)),sikap:$('lp_s').value,catatan:$('lp_c').value,dibaca:false};
+ const m=M(mid),o=O(m.ortuId),g=G(myId());
+ const text=`Assalamualaikum/Halo ${N(o)} 🙏\nLaporan les ${m.nama} — ${fdate(l.tanggal)}\n${K(lapK).nama}\n\n📖 Dikerjakan: ${l.dikerjakan}\n✅ Sudah bisa: ${l.bisa||'-'}\n🎯 Perlu latihan: ${l.perlu||'-'}\n⭐ Nilai hari ini: ${l.nilai}\n😊 Sikap: ${l.sikap}${l.catatan?`\n💬 ${l.catatan}`:''}\n\nTerima kasih,\n${g.nama}\n— LesGo! Belajar Seru, Prestasi Melaju! 🚀`;
+ lapLast={ortu:N(o),text,wa:waLink(o?.hp,text)};
+ await put('laporan',l);await notify(o?.id,`Laporan harian ${m.nama} (${fdate(l.tanggal)}) dari ${g.nama}: nilai ${l.nilai}.`);toast('Laporan terkirim ke orang tua');render()}
+function g_rapor(){return raporView(myMurid(),'Rapor Murid')}
+
+function g_spp(){
+ const ks=myKelas();const list=S.spp.filter(s=>ks.some(k=>k.id===s.kelasId)).sort((a,b)=>b.bulan.localeCompare(a.bulan)||a.status.localeCompare(b.status));
+ const sum=st=>list.filter(s=>s.status===st&&s.bulan===BLN).reduce((a,b)=>a+b.nominal,0);
+ return`<div class="row between"><div><h2>SPP Murid</h2><p class="sub">Buat tagihan bulanan & konfirmasi pembayaran dari orang tua.</p></div><button class="btn" onclick="buatTagihan()">+ Tagihan ${fdate(BLN)}</button></div>
+ <div class="grid g4" style="margin-bottom:14px"><div class="stat"><small>Lunas (${fdate(BLN)})</small><b style="color:var(--ok)">${rp(sum('Lunas'))}</b></div><div class="stat"><small>Menunggu konfirmasi</small><b style="color:var(--warn)">${rp(sum('Menunggu Konfirmasi'))}</b></div><div class="stat"><small>Belum bayar</small><b style="color:var(--bad)">${rp(sum('Belum'))}</b></div></div>
+ <div class="card">${tw(`<table><tr><th>Bulan</th><th>Murid</th><th>Kelas</th><th>Nominal</th><th>Status</th><th></th></tr>${list.map(s=>{const o=O(M(s.muridId)?.ortuId);return`<tr><td>${fdate(s.bulan)}</td><td>${esc(N(M(s.muridId)))}</td><td>${esc(K(s.kelasId)?.nama||'')}</td><td>${rp(s.nominal)}</td><td>${stTag(s.status)}${s.bayar?`<div class="mut" style="font-size:12px">${esc(s.metode)} · ${fdate(s.bayar)}${s.ref?' · '+esc(s.ref):''}</div>`:''}</td><td><div class="row">${s.status==='Menunggu Konfirmasi'?`<button class="btn sm ok" onclick="lunas('${s.id}')">Konfirmasi lunas</button><button class="btn sm gh" onclick="tolakBayar('${s.id}')">Belum masuk</button>`:s.status==='Belum'?`<button class="btn sm gh" onclick="ingatkan('${s.id}')">Ingatkan</button>${o?.hp?`<a class="btn sm wa" target="_blank" rel="noopener" href="${waLink(o.hp,`Halo ${o.nama}, mengingatkan SPP les ${N(M(s.muridId))} bulan ${fdate(s.bulan)} sebesar ${rp(s.nominal)}. Terima kasih 🙏`)}">WA</a>`:''}`:''}</div></td></tr>`}).join('')||'<tr><td colspan=6 class="empty">Belum ada tagihan</td></tr>'}</table>`)}</div>`;
+}
+async function buatTagihan(){let n=0;for(const k of myKelas())for(const m of (k.murid||[])){const id=`${k.id}_${m}_${BLN}`;if(!S.spp.find(s=>s.id===id||(s.muridId===m&&s.kelasId===k.id&&s.bulan===BLN))){await put('spp',{id,muridId:m,kelasId:k.id,bulan:BLN,nominal:k.harga,status:'Belum',bayar:'',metode:''});if(FEE()&&FEEMODE()==='bulanan'&&!S.potongan.find(x=>x.id==='b_'+m+'_'+myId()+'_'+BLN))await put('potongan',{id:'b_'+m+'_'+myId()+'_'+BLN,guruId:myId(),muridId:m,kelasId:k.id,nominal:FEE(),jenis:'Bulanan '+fdate(BLN),ket:k.nama,tanggal:TODAY,status:'Belum'});await notify(M(m)?.ortuId,`Tagihan SPP ${k.nama} bulan ${fdate(BLN)}: ${rp(k.harga)}.`);n++}}
+ toast(n?`${n} tagihan dibuat & dikirim`:'Semua murid sudah punya tagihan bulan ini');render()}
+async function lunas(id){const s=S.spp.find(x=>x.id===id);await put('spp',{...s,status:'Lunas'});await notify(M(s.muridId)?.ortuId,`Pembayaran SPP ${N(M(s.muridId))} (${fdate(s.bulan)}) dikonfirmasi lunas. Kuitansi tersedia di menu SPP. Terima kasih!`);toast('Dikonfirmasi lunas');render()}
+async function tolakBayar(id){const s=S.spp.find(x=>x.id===id);await put('spp',{...s,status:'Belum',bayar:'',metode:''});await notify(M(s.muridId)?.ortuId,`Pembayaran SPP ${N(M(s.muridId))} (${fdate(s.bulan)}) belum diterima guru. Mohon dicek kembali.`);toast('Status dikembalikan ke Belum');render()}
+async function ingatkan(id){const s=S.spp.find(x=>x.id===id);await notify(M(s.muridId)?.ortuId,`Pengingat: SPP ${N(M(s.muridId))} ${fdate(s.bulan)} sebesar ${rp(s.nominal)} belum dibayar.`);toast('Pengingat dikirim')}
+
+function g_profil(){const g=G(myId()),dk=myDok(g.id),vs=vStat(g);return`<h2>Profil Guru</h2><p class="sub">Profil ini yang dilihat orang tua saat mencari guru.</p><div class="grid g2"><div><div class="card" style="border-left:5px solid var(--${vs[0]==='ok'?'ok':vs[0]==='bad'?'bad':'or'})"><div class="row between"><h3 style="margin:0">🎓 Status verifikasi</h3><span class="tag ${vs[0]}">${vs[1]}</span></div><p class="mut" style="margin:8px 0 0">${g.verif?'Akunmu sudah diverifikasi admin. Badge ✔ tampil di profilmu.':g.verifStatus==='Ditolak'?`Admin meminta perbaikan: <b>${esc(g.verifAlasan||'-')}</b>. Perbaiki data di form lalu simpan.`:dk?.noIjazah?'Data ijazah sudah dikirim, admin sedang memeriksa.':'Lengkapi gelar, No. Ijazah, dan foto ijazah di form sebelah.'}</p><div style="margin-top:8px;font-size:13px">Gelar: <b>${esc(g.gelar||'-')}</b> · No. Ijazah: <b>${dk?.noIjazah?'✔ terisi':'✖ belum'}</b> · Foto: <b>${dk?.foto?'✔ terunggah':'✖ belum'}</b></div></div>${guruCard(g,'')}<div class="card"><h3>💰 Tabel tarifmu</h3>${tarifTable(g)}</div><div class="card"><h3>Ulasan untukmu</h3>${S.ulasan.filter(u=>u.guruId===g.id).map(u=>`<div style="padding:6px 0;border-top:1px solid var(--line)"><b>${'★'.repeat(u.bintang)}</b> <small class="mut">${esc(N(O(u.ortuId)))}</small><div>${esc(u.teks)}</div></div>`).join('')||'<p class="mut">Belum ada ulasan.</p>'}</div></div><div class="card">${guruFields(g)}<button class="btn" style="margin-top:14px" onclick="simpanGuru('${g.id}')">Simpan Profil</button></div></div>`}
+function guruFields(g){const dk=g.id?myDok(g.id):null;_ijz=null;const rows=g.id?tarifRows(g):[];
+ return`<label>Nama lengkap (tanpa gelar)</label><input id="gf_n" value="${esc(g.nama)}" placeholder="cth: Sari Wulandari">
+ <div class="vbox"><b>🎓 Data pendidikan & verifikasi</b><div class="mut" style="font-size:12px">Wajib diisi agar akunmu bisa diverifikasi sebagai guru sungguhan. No. & foto ijazah <b>hanya bisa dilihat admin LesGo!</b>.</div>
+ <div class="split"><div><label>Gelar</label><input id="gf_g" list="gelarList" value="${esc(g.gelar||'')}" placeholder="cth: S.Pd"><datalist id="gelarList">${GELAR.map(x=>`<option value="${x}">`).join('')}</datalist></div><div><label>Tahun lulus</label><input id="gf_y" type="number" value="${esc(g.tahunLulus||'')}" placeholder="cth: 2019"></div></div>
+ <label>Kampus & jurusan / pendidikan terakhir</label><input id="gf_e" value="${esc(g.pendidikan||'')}" placeholder="cth: S1 Pendidikan Matematika, Universitas Negeri Jakarta">
+ <label>No. Ijazah</label><input id="gf_i" value="${esc(dk?.noIjazah||'')}" placeholder="cth: 0012345678901234 / nomor seri di ijazah">
+ <label>Foto ijazah <span style="font-weight:500">(disarankan, mempercepat verifikasi)</span></label><input type="file" accept="image/*" onchange="pickIjazah(this)"><div id="ijz_prev">${dk?.foto?`<img src="${dk.foto}" style="max-width:100%;max-height:150px;border-radius:10px;margin-top:6px"><div class="mut" style="font-size:11px">Foto tersimpan — pilih file baru untuk mengganti.</div>`:''}</div></div>
+ <label>Mata pelajaran yang diajar (pisahkan koma)</label><input id="gf_m" value="${esc((g.mapel||[]).join(', '))}" placeholder="Matematika, IPA, Bahasa Inggris" onchange="tfSyncMapel()">
+ <div class="vbox" style="background:#fff7ed;border-color:#fed7aa"><b>💰 Tarif mengajar per mata pelajaran & kelas</b><div class="mut" style="font-size:12px">Atur harga per sesi untuk tiap mapel dan kelas. Orang tua akan melihat tarif yang sesuai kelas anaknya.</div>
+ <div class="row" style="margin:8px 0;gap:6px"><span style="font-size:12px;font-weight:700">⚡ Isi cepat:</span><input id="tf_base" type="number" placeholder="Tarif dasar SD 4–6" style="width:150px" value="${g.tarif||''}">${['TK/PAUD','SD Kelas 1–3','SD Kelas 4–6','SMP (semua kelas)','SMA (semua kelas)','Persiapan UTBK/SNBT'].map(k=>`<label class="att" style="margin:0"><label><input type="checkbox" class="tf_q" value="${k}" ${['SD Kelas 1–3','SD Kelas 4–6'].includes(k)?'checked':''}>${k.replace(' (semua kelas)','')}</label></label>`).join('')}<button type="button" class="btn sm sec" onclick="tfQuick()">Buat tabel</button></div>
+ <div class="tfh"><span>Mapel</span><span>Kelas</span><span>Tarif / sesi</span><span></span></div><div id="tf_rows">${rows.map(tfRow).join('')}</div><button type="button" class="btn sm gh" style="margin-top:6px" onclick="tfAdd()">+ Tambah baris</button></div>
+ ${lokFields('gf',g)}<div class="split"><div><label>Bersedia datang ke rumah murid sampai</label><select id="gf_rad">${opt([[2,'2 km'],[3,'3 km'],[5,'5 km'],[7,'7 km'],[10,'10 km'],[15,'15 km'],[25,'25 km']],g.radius||5)}</select></div><div><label>Mode</label><select id="gf_mo">${opt(['Offline','Online','Offline & Online'],g.mode)}</select></div><div><label>Pengalaman mengajar (tahun)</label><input type="number" id="gf_p" value="${g.pengalaman??''}"></div></div>
+ <label>No. HP / WhatsApp (untuk masuk)</label><input id="gf_h" type="tel" value="${esc(g.hp)}" placeholder="08xx"><label>Info rekening / QRIS untuk SPP</label><textarea id="gf_r" placeholder="cth: BCA 1234567890 a.n. Sari Wulandari">${esc(g.rekening||'')}</textarea><label>Tentang saya</label><textarea id="gf_b">${esc(g.bio)}</textarea>`}
+function readGuru(){const tl=readTarif();return{nama:$('gf_n').value.trim().replace(/,\s*(S\.|M\.|Dr).*$/,''),gelar:$('gf_g').value.trim(),tahunLulus:$('gf_y').value.trim(),pendidikan:$('gf_e').value.trim(),mapel:$('gf_m').value.split(',').map(s=>s.trim()).filter(Boolean),tarifList:tl,tarif:tl.length?Math.min(...tl.map(r=>r.tarif)):0,jenjang:[...new Set(tl.flatMap(r=>jenjangOfKls(r.kelas)))],...(readLok('gf')||{}),radius:+$('gf_rad').value,mode:$('gf_mo').value,pengalaman:+$('gf_p').value||0,hp:$('gf_h').value,rekening:$('gf_r').value,bio:$('gf_b').value}}
+async function simpanGuru(id){let d;try{d=readGuru()}catch(e){return}const noI=$('gf_i').value.trim();
+ if(!d.nama)return toast('Isi nama lengkap');if(!d.gelar)return toast('Isi gelar (atau pilih "Belum bergelar")');if(!d.pendidikan)return toast('Isi kampus & jurusan / pendidikan terakhir');if(noI.length<5)return toast('Isi No. Ijazah dengan benar');
+ if(!d.mapel.length)return toast('Isi mata pelajaran');if(!d.tarifList.length)return toast('Isi minimal 1 baris tarif (mapel, kelas, tarif)');if(!d.kota)return toast('Pilih kota & kecamatan');if(!id){const e=cekDaftar(d.hp,S.guru);if(e)return toast(e)}
+ const gid=id||uid('g'),old=myDok(gid),foto=_ijz||old?.foto||'';
+ const changed=!old||old.noIjazah!==noI||!!_ijz||G(gid)?.gelar!==d.gelar;
+ if(id){const g=G(id);const reset=g.verif&&changed;await put('guru',{...g,...d,...(reset?{verif:false,verifStatus:'Menunggu'}:{}),...(g.verifStatus==='Ditolak'&&changed?{verifStatus:'Menunggu',verifAlasan:''}:{})});if(changed)await put('dokumen',{id:old?.id||dokId(gid),guruId:gid,noIjazah:noI,foto,tahunLulus:d.tahunLulus,updated:TODAY});toast(reset?'Tersimpan — data ijazah berubah, menunggu verifikasi ulang admin':'Profil tersimpan')}
+ else{const g={id:gid,...d,rating:null,verif:false,verifStatus:'Menunggu',uid:MODE==='shared'?myUid:null,daftar:TODAY,pinHash:await hashPin(gid,$('rg_p').value)};closeM();await put('guru',g);await put('dokumen',{id:dokId(gid),guruId:gid,noIjazah:noI,foto,tahunLulus:d.tahunLulus,updated:TODAY});_ijz=null;me='g:'+g.id;setSess(me);landView='home';view='beranda';try{localStorage.setItem('lp_me',me)}catch(e){}toast('Selamat bergabung! Data ijazahmu sedang diverifikasi admin.')}render()}
+function formGuru(){openM(`<h3>Daftar sebagai Guru</h3><p class="mut">Daftar <b>gratis</b>. Profil langsung tampil di pencarian orang tua dan kamu bisa melamar kebutuhan les.</p><div class="card" style="background:#f0fdf4;box-shadow:none;padding:12px">🤝 <b>LesGo! untuk kesejahteraan guru:</b> hanya biaya platform <b>${feeLabel()}</b>. Tidak ada potongan persentase — SPP bulanan sepenuhnya milikmu.</div>${guruFields({nama:'',mapel:[],jenjang:['SD'],lokasi:'',mode:'Offline',tarif:'',pengalaman:'',hp:'',bio:''})}${pinFields()}<div class="row" style="margin-top:16px"><button class="btn or" onclick="simpanGuru('')">Daftar</button><button class="btn gh" onclick="closeM()">Batal</button></div>`)}
+function daftarPilih(){openM(`<h3 style="text-align:center">Daftar LesGo! — kamu mau jadi apa?</h3><div class="rp" style="margin-top:12px"><button onclick="closeM();formOrtu()"><span>🎒</span><b>Saya Mau Les</b><small>Cari guru & ikut les (murid / orang tua)</small></button><button onclick="closeM();formGuru()"><span>🧑‍🏫</span><b>Saya Guru Les</b><small>Mengajar, buka kelas, cari murid</small></button></div><p style="text-align:center;margin-top:14px">Sudah punya akun? <a style="color:var(--pri);font-weight:700;cursor:pointer" onclick="closeM();showLogin()">Masuk</a></p>`)}
+let regTipe='murid';
+function formOrtu(t){if(t)regTipe=t;const m=regTipe==='murid';
+ openM(`<h3>Daftar untuk Les 🎒</h3><label>Siapa yang mendaftar?</label><div class="rp sm"><button class="${m?'on':''}" onclick="regSwap('murid')"><span>🧒</span><b>Saya murid</b><small>Daftar untuk diri sendiri</small></button><button class="${m?'':'on'}" onclick="regSwap('ortu')"><span>👪</span><b>Saya orang tua</b><small>Daftarkan anak saya</small></button></div>
+ <label>${m?'Nama lengkap kamu':'Nama orang tua'}</label><input id="of_n" placeholder="${m?'cth: Dinda Ayu':'cth: Bu Rina'}"><label>No. HP / WhatsApp (untuk masuk)</label><input id="of_h" type="tel" placeholder="08xx">${lokFields('of',{})}
+ ${m?`<div class="split"><div><label>Kelas kamu</label><input id="of_k" placeholder="cth: 11 SMA"></div><div><label>Sekolah (opsional)</label><input id="of_s"></div></div>`:`<div class="split"><div><label>Nama anak</label><input id="of_a"></div><div><label>Kelas anak</label><input id="of_k" placeholder="cth: 3 SD"></div></div><p class="mut" style="font-size:12px">Anak lain bisa ditambahkan nanti di Beranda.</p>`}
+ ${pinFields()}<div class="row" style="margin-top:16px"><button class="btn or" onclick="simpanOrtu()">Daftar</button><button class="btn gh" onclick="closeM()">Batal</button></div>`)}
+function regSwap(t){const ids=['of_n','of_h','of_kota','of_ko','rg_p','rg_p2'],keep=ids.map(id=>$(id)?.value||''),kec=$('of_kec')?.value;formOrtu(t);ids.forEach((id,i)=>{if($(id))$(id).value=keep[i]});if(keep[2]){$('of_kec').innerHTML=kecOpts(keep[2],kec)}}
+async function simpanOrtu(){const n=$('of_n').value.trim();if(!n)return toast('Isi nama');const er=cekDaftar($('of_h').value,S.ortu);if(er)return toast(er);const m=regTipe==='murid';
+ let L;try{L=readLok('of')}catch(e){return}if(!L)return toast('Pilih kota & kecamatan supaya bisa direkomendasikan guru terdekat');const oid=uid('o');const o={id:oid,nama:n,tipe:m?'murid':'ortu',hp:$('of_h').value,...L,uid:MODE==='shared'?myUid:null,daftar:TODAY,pinHash:await hashPin(oid,$('rg_p').value)};
+ const an=m?n:($('of_a')?.value||'').trim(),ak=$('of_k')?.value||'',sk=$('of_s')?.value||'';closeM();
+ await put('ortu',o);if(an)await put('murid',{id:uid('m'),nama:an,kelas:ak,sekolah:sk,ortuId:o.id,diriSendiri:m});me='o:'+o.id;setSess(me);landView='home';view='beranda';try{localStorage.setItem('lp_me',me)}catch(e){}toast(m?'Selamat datang, siap belajar! 🎒':'Selamat datang!');render()}
+
+// ================== ADMIN ==================
+
+
+// ---------- Tarif per mapel & kelas ----------
+const KLS=['TK/PAUD','SD (semua kelas)','SD Kelas 1–3','SD Kelas 4–6','SD Kelas 1','SD Kelas 2','SD Kelas 3','SD Kelas 4','SD Kelas 5','SD Kelas 6','SMP (semua kelas)','SMP Kelas 7','SMP Kelas 8','SMP Kelas 9','SMA (semua kelas)','SMA Kelas 10','SMA Kelas 11','SMA Kelas 12','Persiapan UTBK/SNBT','Umum/Dewasa'];
+function klsRange(k){if(/TK|PAUD/.test(k))return[0,0];if(/UTBK|SNBT/.test(k))return[12,13];if(/Umum|Dewasa/.test(k))return[14,14];const m=k.match(/(\d+)\s*[–-]\s*(\d+)/);if(m)return[+m[1],+m[2]];const n=k.match(/Kelas (\d+)/);if(n)return[+n[1],+n[1]];if(/^SD/.test(k))return[1,6];if(/^SMP/.test(k))return[7,9];if(/^SMA/.test(k))return[10,12];return[0,14]}
+const jenjangOfKls=k=>{const[a,b]=klsRange(k),J=[];if(a<=0&&b>=0)J.push('TK');if(a<=6&&b>=1)J.push('SD');if(a<=9&&b>=7)J.push('SMP');if(a<=13&&b>=10)J.push('SMA');return J};
+function gradeOf(str){str=String(str||'');if(/TK|PAUD/i.test(str))return 0;const n=+(str.match(/\d+/)||[])[0];if(!n)return null;if(/SMP|MTs/i.test(str)&&n<=3)return n+6;if(/SMA|SMK|\bMA\b/i.test(str)&&n<=3)return n+9;return n}
+function tarifRows(g){if(g.tarifList&&g.tarifList.length)return g.tarifList;const J={TK:'TK/PAUD',SD:'SD (semua kelas)',SMP:'SMP (semua kelas)',SMA:'SMA (semua kelas)'};return(g.mapel||[]).flatMap(m=>(g.jenjang||['SD']).map(j=>({mapel:m,kelas:J[j]||j,tarif:g.tarif||0})))}
+const tarifMin=g=>{const r=tarifRows(g).map(x=>+x.tarif).filter(x=>x>0);return r.length?Math.min(...r):(g.tarif||0)};
+const tarifMax=g=>{const r=tarifRows(g).map(x=>+x.tarif).filter(x=>x>0);return r.length?Math.max(...r):(g.tarif||0)};
+function hargaUntuk(g,mapel,kelasStr){const rows=tarifRows(g),ml=String(mapel||'').toLowerCase(),gr=gradeOf(kelasStr);
+ let c=rows.filter(r=>!ml||r.mapel.toLowerCase()===ml||r.mapel.toLowerCase().includes(ml)||ml.includes(r.mapel.toLowerCase()));if(!c.length)c=rows;
+ if(gr!=null){const fit=c.filter(r=>{const[a,b]=klsRange(r.kelas);return gr>=a&&gr<=b}).sort((x,y)=>{const[a1,b1]=klsRange(x.kelas),[a2,b2]=klsRange(y.kelas);return(b1-a1)-(b2-a2)});if(fit.length)return{tarif:+fit[0].tarif,row:fit[0]}}
+ const mn=c.reduce((a,r)=>!a||+r.tarif<+a.tarif?r:a,null);return{tarif:mn?+mn.tarif:(g.tarif||0),row:mn,kira:true}}
+const priceStr=g=>{const a=tarifMin(g),b=tarifMax(g);return a===b?rp(a):`${rp(a)} – ${rp(b)}`};
+function tarifTable(g){const rows=tarifRows(g),by={};rows.forEach(r=>(by[r.mapel]=by[r.mapel]||[]).push(r));
+ return Object.entries(by).map(([m,rs])=>`<div class="ttab"><b>📘 ${esc(m)}</b><div>${rs.sort((a,b)=>klsRange(a.kelas)[0]-klsRange(b.kelas)[0]).map(r=>`<span class="tchip">${esc(r.kelas)} <b>${rp(r.tarif)}</b></span>`).join('')}</div></div>`).join('')||'<p class="mut">Belum ada tarif.</p>'}
+function tfRow(r={}){const ml=($('gf_m')?.value||'').split(',').map(x=>x.trim()).filter(Boolean);const ms=[...new Set([...ml,r.mapel].filter(Boolean))];
+ return`<div class="tf_row"><select class="tf_m">${ms.length?opt(ms,r.mapel):'<option value="">Isi mapel dulu</option>'}</select><select class="tf_k">${opt(KLS,r.kelas||'SD Kelas 1–3')}</select><input class="tf_t" type="number" placeholder="Tarif/sesi" value="${r.tarif||''}"><button type="button" class="btn sm gh" onclick="this.parentNode.remove()">✕</button></div>`}
+function tfAdd(){$('tf_rows').insertAdjacentHTML('beforeend',tfRow())}
+function tfSyncMapel(){const ml=$('gf_m').value.split(',').map(x=>x.trim()).filter(Boolean);document.querySelectorAll('.tf_m').forEach(sel=>{const v=sel.value;sel.innerHTML=opt([...new Set([...ml,v].filter(Boolean))],v)})}
+function tfQuick(){const ml=$('gf_m').value.split(',').map(x=>x.trim()).filter(Boolean),base=+$('tf_base').value||0,J=[...document.querySelectorAll('.tf_q:checked')].map(x=>x.value);
+ if(!ml.length)return toast('Isi mata pelajaran dulu');if(!base)return toast('Isi tarif dasar');if(!J.length)return toast('Centang jenjang yang diajar');
+ const mult={'TK/PAUD':.8,'SD Kelas 1–3':.9,'SD Kelas 4–6':1,'SMP (semua kelas)':1.2,'SMA (semua kelas)':1.4,'Persiapan UTBK/SNBT':1.7};
+ $('tf_rows').innerHTML=ml.flatMap(m=>J.map(k=>tfRow({mapel:m,kelas:k,tarif:Math.round(base*(mult[k]||1)/5000)*5000}))).join('');toast('Tarif dibuat — silakan sesuaikan per baris')}
+function readTarif(){return[...document.querySelectorAll('.tf_row')].map(r=>({mapel:r.querySelector('.tf_m').value,kelas:r.querySelector('.tf_k').value,tarif:+r.querySelector('.tf_t').value||0})).filter(r=>r.mapel&&r.tarif>0)}
+// ---------- Verifikasi guru ----------
+const GELAR=['S.Pd','S.Pd.I','S.Si','S.Mat','S.S','S.Hum','S.Kom','S.T','S.E','S.Psi','S.Ag','M.Pd','M.Si','M.Sc','Dr.','A.Md','Lc.','Belum bergelar (mahasiswa)'];
+const namaG=g=>g?g.nama+(g.gelar&&!/Belum/.test(g.gelar)?', '+g.gelar:''):'';
+const myDok=gid=>S.dokumen.find(d=>d.guruId===gid);
+const dokId=gid=>MODE==='shared'&&myUid?myUid:'d_'+gid;
+const vStat=g=>g.nonaktif?['bad','⛔ Nonaktif']:g.verif?['ok','✔ Terverifikasi']:g.verifStatus==='Ditolak'?['bad','✖ Perlu perbaikan']:['warn','⏳ Menunggu verifikasi'];
+let _ijz=null;
+function pickIjazah(inp){const f=inp.files[0];if(!f)return;if(!/^image\//.test(f.type)){toast('Pilih file foto (JPG/PNG). Untuk PDF, foto/screenshot dulu ya');inp.value='';return}
+ const rd=new FileReader();rd.onload=()=>{const im=new Image();im.onload=()=>{let w=im.width,h=im.height,M=1100;if(w>M||h>M){const r=Math.min(M/w,M/h);w=Math.round(w*r);h=Math.round(h*r)}
+  const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(im,0,0,w,h);let q=.72,u=c.toDataURL('image/jpeg',q);while(u.length>220000&&q>.3){q-=.1;u=c.toDataURL('image/jpeg',q)}
+  _ijz=u;$('ijz_prev').innerHTML=`<img src="${u}" style="max-width:100%;max-height:180px;border-radius:10px;margin-top:6px">`;toast('Foto ijazah siap diunggah')};im.src=rd.result};rd.readAsDataURL(f)}
+
+// ---------- Penghasilan guru & pendapatan platform ----------
+function g_penghasilan(){const ks=myKelas(),kid=ks.map(k=>k.id),pot=S.potongan.filter(x=>x.guruId===myId()).sort((a,b)=>b.tanggal.localeCompare(a.tanggal));
+ const sppL=S.spp.filter(x=>kid.includes(x.kelasId)&&x.status==='Lunas');
+ const months=[...new Set([BLN,...sppL.map(x=>x.bulan),...pot.map(x=>x.tanggal.slice(0,7))])].sort().reverse().slice(0,6);
+ const rows=months.map(b=>{const kotor=sppL.filter(x=>x.bulan===b).reduce((a,x)=>a+x.nominal,0),pt=pot.filter(x=>x.tanggal.startsWith(b)).reduce((a,x)=>a+x.nominal,0);return{b,kotor,pt,bersih:kotor-pt}});
+ const belum=pot.filter(x=>x.status==='Belum'),tung=belum.reduce((a,x)=>a+x.nominal,0),tot=sppL.reduce((a,x)=>a+x.nominal,0),totP=pot.reduce((a,x)=>a+x.nominal,0);
+ const pctG=tot?Math.round((tot-totP)/tot*100):100;
+ return`<h2>💰 Penghasilan</h2><p class="sub">LesGo! hadir untuk mensejahterakan guru: daftar gratis, dan kamu hanya dikenakan biaya platform <b>${feeLabel()}</b>. Selebihnya 100% SPP milikmu.</p>
+ <div class="hero2" style="background:linear-gradient(135deg,#065f46,#059669 60%,#34d399)"><div class="in"><div class="hi">Total penghasilan bersih</div><h2>${rp(tot-totP)}</h2><p>Dari ${rp(tot)} SPP lunas · biaya platform ${rp(totP)} · <b>${pctG}%</b> pendapatan untukmu</p></div>
+ <div class="hstats"><div><small>SPP masuk ${fdate(BLN)}</small><b>${rp(rows[0]?.kotor||0)}</b></div><div><small>Bersih ${fdate(BLN)}</small><b>${rp(rows[0]?.bersih||0)}</b></div><div><small>Murid aktif</small><b>${myMurid().length}</b></div><div onclick="${belum.length?`bayarPotongan()`:''}"><small>Biaya platform belum dibayar</small><b>${rp(tung)}</b></div></div></div>
+ ${belum.length?`<div class="card row between" style="background:var(--or2)"><div><b>💳 ${belum.length} biaya platform belum dibayar — ${rp(tung)}</b><div class="mut">Bayar sekaligus ke rekening LesGo!, lalu admin akan mengonfirmasi.</div></div><button class="btn or" onclick="bayarPotongan()">Bayar sekarang</button></div>`:''}
+ <div class="grid g2"><div class="card"><h3>📅 Rincian per bulan</h3>${tw(`<table><tr><th>Bulan</th><th>SPP lunas</th><th>Biaya platform</th><th>Bersih</th></tr>${rows.map(r=>`<tr><td>${fdate(r.b)}</td><td>${rp(r.kotor)}</td><td style="color:var(--bad)">${r.pt?'−'+rp(r.pt):'-'}</td><td><b style="color:var(--ok)">${rp(r.bersih)}</b></td></tr>`).join('')}</table>`)}
+ <p class="mut" style="font-size:12px;margin:8px 0 0">SPP dihitung dari tagihan yang sudah kamu konfirmasi lunas.</p></div>
+ <div class="card"><h3>🧾 Riwayat biaya platform</h3>${pot.map(x=>`<div class="row between" style="padding:8px 0;border-top:1px solid var(--line)"><div><b>${esc(N(M(x.muridId)))}</b> <span class="mut">· ${esc(x.jenis)}</span><div class="mut" style="font-size:12px">${esc(x.ket||'')} · ${fdate(x.tanggal)}</div></div><div style="text-align:right"><b>${rp(x.nominal)}</b><div>${stTag(x.status)}</div></div></div>`).join('')||'<p class="mut">Belum ada. Biaya baru tercatat saat kamu mendapat murid baru.</p>'}</div></div>
+ <div class="card"><h3>❓ Kenapa ada biaya platform?</h3><p class="mut" style="margin:0">Biaya kecil ini dipakai untuk menjalankan aplikasi, mempromosikan guru LesGo! ke orang tua di kotamu, dan mengembangkan fitur baru. Tidak ada potongan persentase dari SPP — semakin banyak muridmu, semakin besar penghasilanmu.</p></div>`}
+function bayarPotongan(){const b=S.potongan.filter(x=>x.guruId===myId()&&x.status==='Belum'),tot=b.reduce((a,x)=>a+x.nominal,0);if(!b.length)return toast('Tidak ada tagihan');
+ openM(`<h3>Bayar biaya platform</h3><div class="score">${rp(tot)}</div><p class="mut">${b.length} murid baru: ${b.map(x=>esc(N(M(x.muridId)))).join(', ')}</p><div class="card" style="background:#f9fafb;box-shadow:none"><b>Transfer ke LesGo!</b><div style="white-space:pre-wrap">${esc(CFG().rekPlatform||'Info rekening belum diatur admin. Hubungi admin LesGo!')}</div></div>
+ <label>Metode</label><select id="bp_m">${opt(['Transfer Bank','QRIS','E-Wallet','Tunai ke admin cabang'])}</select><label>Catatan (nama pengirim / no. referensi)</label><input id="bp_c"><div class="row" style="margin-top:14px"><button class="btn or" onclick="kirimBayarPot()">Saya sudah bayar</button><button class="btn gh" onclick="closeM()">Batal</button></div>`)}
+async function kirimBayarPot(){const m=$('bp_m').value,c=$('bp_c').value,b=S.potongan.filter(x=>x.guruId===myId()&&x.status==='Belum');closeM();for(const x of b)await put('potongan',{...x,status:'Menunggu Konfirmasi',bayar:TODAY,metode:m,ref:c});toast('Pembayaran dikirim, menunggu konfirmasi admin');render()}
+let fP='';
+function a_pendapatan(){const P=S.potongan,sum=f=>P.filter(f).reduce((a,x)=>a+x.nominal,0),c=CFG();
+ const byG=S.guru.map(g=>({g,all:P.filter(x=>x.guruId===g.id)})).filter(x=>x.all.length).sort((a,b)=>b.all.length-a.all.length);
+ const L=P.filter(x=>!fP||x.status===fP).sort((a,b)=>(a.status==='Menunggu Konfirmasi'?0:1)-(b.status==='Menunggu Konfirmasi'?0:1)||b.tanggal.localeCompare(a.tanggal));
+ const sppAll=S.spp.filter(x=>x.status==='Lunas').reduce((a,x)=>a+x.nominal,0);
+ return`<h2>💰 Pendapatan Platform</h2><p class="sub">Biaya platform dari guru: <b>${feeLabel()}</b>. Atur nominal & rekening di bawah.</p>
+ <div class="grid g4" style="margin-bottom:14px"><div class="stat"><small>Total tercatat</small><b>${rp(sum(()=>1))}</b><small>${P.length} murid baru</small></div><div class="stat"><small>Sudah diterima</small><b style="color:var(--ok)">${rp(sum(x=>x.status==='Lunas'))}</b></div><div class="stat"><small>Menunggu konfirmasi</small><b style="color:var(--warn)">${rp(sum(x=>x.status==='Menunggu Konfirmasi'))}</b></div><div class="stat"><small>Belum dibayar guru</small><b style="color:var(--bad)">${rp(sum(x=>x.status==='Belum'))}</b></div></div>
+ <div class="card" style="background:#f0fdf4;box-shadow:none"><b>🤝 Kesejahteraan guru:</b> dari total SPP lunas ${rp(sppAll)}, guru menerima <b>${rp(sppAll-sum(()=>1))}</b> (${sppAll?Math.round((sppAll-sum(()=>1))/sppAll*100):100}%). Biaya platform hanya ${rp(sum(()=>1))}.</div>
+ <div class="card"><div class="row between"><h3 style="margin:0">🧾 Transaksi biaya platform</h3><div style="width:200px"><select onchange="fP=this.value;render()">${opt([['','Semua status'],'Menunggu Konfirmasi','Belum','Lunas'],fP)}</select></div></div>
+ ${tw(`<table><tr><th>Tanggal</th><th>Guru</th><th>Murid baru</th><th>Keterangan</th><th>Nominal</th><th>Status</th><th></th></tr>${L.map(x=>`<tr><td>${fdate(x.tanggal)}</td><td><a style="color:var(--pri);cursor:pointer;font-weight:600" onclick="gDet('${x.guruId}')">${esc(N(G(x.guruId)))}</a></td><td>${esc(N(M(x.muridId)))}</td><td class="mut" style="font-size:12px">${esc(x.jenis)} · ${esc(x.ket||'')}</td><td><b>${rp(x.nominal)}</b></td><td>${stTag(x.status)}${x.bayar?`<div class="mut" style="font-size:11px">${esc(x.metode||'')} · ${fdate(x.bayar)}${x.ref?' · '+esc(x.ref):''}</div>`:''}</td>
+ <td><div class="row">${x.status==='Menunggu Konfirmasi'?`<button class="btn sm ok" onclick="potStatus('${x.id}','Lunas')">Konfirmasi</button><button class="btn sm gh" onclick="potStatus('${x.id}','Belum')">Belum masuk</button>`:x.status==='Belum'?`<button class="btn sm gh" onclick="potStatus('${x.id}','Lunas')">Tandai lunas</button><button class="btn sm gh" onclick="potHapus('${x.id}')">Bebaskan</button>`:''}</div></td></tr>`).join('')||'<tr><td colspan=7 class="empty">Belum ada transaksi.</td></tr>'}</table>`)}</div>
+ <div class="grid g2"><div class="card"><h3>👩‍🏫 Per guru</h3>${tw(`<table><tr><th>Guru</th><th>Murid baru</th><th>Lunas</th><th>Belum</th></tr>${byG.map(({g,all})=>`<tr><td>${esc(g.nama)}</td><td>${all.length}</td><td style="color:var(--ok)">${rp(all.filter(x=>x.status==='Lunas').reduce((a,x)=>a+x.nominal,0))}</td><td style="color:var(--bad)">${rp(all.filter(x=>x.status!=='Lunas').reduce((a,x)=>a+x.nominal,0))}</td></tr>`).join('')||'<tr><td colspan=4 class="mut">-</td></tr>'}</table>`)}</div>
+ <div class="card"><h3>⚙️ Pengaturan biaya platform</h3><div class="split"><div><label>Nominal</label><input id="fe_n" type="number" value="${FEE()}"></div><div><label>Dikenakan</label><select id="fe_m">${opt([['sekali','Sekali per murid baru'],['bulanan','Per murid per bulan']],FEEMODE())}</select></div></div>
+ <label>Rekening / QRIS LesGo! (ditampilkan ke guru saat membayar)</label><textarea id="fe_r" placeholder="cth: BCA 1234567890 a.n. LesGo Indonesia">${esc(c.rekPlatform||'')}</textarea>
+ <p class="mut" style="font-size:12px">Perubahan berlaku untuk murid baru berikutnya; transaksi lama tidak berubah. Isi 0 untuk menggratiskan.</p><button class="btn or" onclick="simpanFee()">Simpan</button></div></div>`}
+async function potStatus(id,st){const x=S.potongan.find(p=>p.id===id);await put('potongan',{...x,status:st,...(st==='Belum'?{bayar:'',metode:''}:{})});await notify(x.guruId,st==='Lunas'?`✅ Pembayaran biaya platform ${rp(x.nominal)} (murid ${N(M(x.muridId))}) sudah dikonfirmasi. Terima kasih!`:`Pembayaran biaya platform untuk murid ${N(M(x.muridId))} belum kami terima. Mohon dicek kembali.`);toast(st==='Lunas'?'Dikonfirmasi':'Dikembalikan ke Belum');render()}
+async function potHapus(id){if(!confirmTwice('ph'+id,'Klik sekali lagi untuk membebaskan biaya ini'))return;const x=S.potongan.find(p=>p.id===id);await del('potongan',id);await notify(x.guruId,`🎁 Biaya platform untuk murid ${N(M(x.muridId))} dibebaskan admin.`);render()}
+async function simpanFee(){await put('config',{...CFG(),id:'main',feeNominal:Math.max(0,+$('fe_n').value||0),feeMode:$('fe_m').value,rekPlatform:$('fe_r').value});toast('Pengaturan biaya disimpan');render()}
+
+// ---------- ADMIN: pusat kontrol ----------
+const daysAgo=d=>Math.round((new Date(TODAY)-new Date(d))/864e5);
+function gStats(g){const ks=S.kelas.filter(k=>k.guruId===g.id),kid=ks.map(k=>k.id),mids=[...new Set(ks.flatMap(k=>k.murid||[]))];
+ const lap=S.laporan.filter(l=>kid.includes(l.kelasId)),ab=S.absensi.filter(a=>kid.includes(a.kelasId));let h=0,t=0;ab.forEach(a=>Object.values(a.data||{}).forEach(v=>{t++;if(v==='Hadir')h++}));
+ const prs=S.pr.filter(p=>kid.includes(p.kelasId)),sub=prs.flatMap(p=>(p.murid||[]).map(m=>KP(p.id,m))),spp=S.spp.filter(x=>kid.includes(x.kelasId)&&x.bulan===BLN);
+ const acts=[...lap.map(l=>l.tanggal),...ab.map(a=>a.tanggal),...S.materi.filter(m=>kid.includes(m.kelasId)).map(m=>m.tanggal),...prs.map(p=>p.dibuat||'')].filter(Boolean).sort();
+ return{ks,mids,lap,lap30:lap.filter(l=>daysAgo(l.tanggal)<=30).length,sesi:ab.length,hadir:t?Math.round(h/t*100):null,avg:lap.length?Math.round(lap.reduce((a,b)=>a+ +b.nilai,0)/lap.length):null,pr:prs.length,dinilai:sub.filter(x=>x.status==='Dinilai').length,tunggu:sub.filter(x=>x.status==='Dikumpulkan').length,
+  sppL:spp.filter(x=>x.status==='Lunas').reduce((a,b)=>a+b.nominal,0),sppB:spp.filter(x=>x.status!=='Lunas').reduce((a,b)=>a+b.nominal,0),req:S.req.filter(r=>r.guruId===g.id&&r.status==='Menunggu').length,lamar:S.lamaran.filter(l=>l.guruId===g.id).length,last:acts[acts.length-1]||g.daftar||''}}
+function alerts(){const A=[],add=(lv,ic,t,d,act,btn)=>A.push({lv,ic,t,d,act,btn});
+ const nv=S.guru.filter(g=>!g.verif&&!g.nonaktif&&g.verifStatus!=='Ditolak');if(nv.length)add(2,'🎓',`${nv.length} guru menunggu verifikasi ijazah`,nv.map(g=>g.nama+(myDok(g.id)?.noIjazah?' (dokumen ✔)':' (dokumen belum)')).join(', '),"aG.st='belum';go('guru')",'Verifikasi');
+ const rq=S.req.filter(r=>r.status==='Menunggu'&&daysAgo(r.tanggal)>=2);if(rq.length)add(2,'📨',`${rq.length} pengajuan les belum dijawab guru ≥2 hari`,rq.map(r=>`${N(O(r.ortuId))} → ${N(G(r.guruId))}`).join(' · '),"go('aktivitas')",'Lihat');
+ const sk=S.spp.filter(x=>x.status==='Menunggu Konfirmasi');if(sk.length)add(2,'💳',`${sk.length} pembayaran SPP menunggu konfirmasi guru`,rp(sk.reduce((a,b)=>a+b.nominal,0))+' total',"go('spp')",'Cek SPP');
+ const sb=S.spp.filter(x=>x.status==='Belum'&&x.bulan<BLN);if(sb.length)add(3,'⏰',`${sb.length} SPP bulan lalu belum dibayar`,rp(sb.reduce((a,b)=>a+b.nominal,0))+' tertunggak',"go('spp')",'Lihat');
+ const lw=S.lowongan.filter(w=>w.status==='Buka'&&!S.lamaran.some(l=>l.lowonganId===w.id)&&daysAgo(w.tanggal)>=2);if(lw.length)add(2,'📢',`${lw.length} kebutuhan les belum ada guru yang melamar`,lw.map(w=>`${w.mapel} · ${lokStr(w)}`).join(' · '),"go('aktivitas')",'Lihat');
+ const sil=GA().filter(g=>{const st=gStats(g);return st.ks.some(k=>(k.murid||[]).length)&&(!st.last||daysAgo(st.last)>7)});if(sil.length)add(2,'😴',`${sil.length} guru punya murid tapi tidak ada aktivitas >7 hari`,sil.map(g=>g.nama).join(', '),"go('guru')",'Cek guru');
+ const lowA=S.murid.filter(m=>{const a=attendance(m.id);return a.t>=3&&a.p<70});if(lowA.length)add(2,'🚸',`${lowA.length} murid kehadirannya di bawah 70%`,lowA.map(m=>`${m.nama} (${attendance(m.id).p}%)`).join(', '),"go('ortu')",'Lihat');
+ const pk=S.potongan.filter(x=>x.status==='Menunggu Konfirmasi');if(pk.length)add(2,'💰',`${pk.length} pembayaran biaya platform menunggu konfirmasimu`,rp(pk.reduce((a,b)=>a+b.nominal,0))+' total',"go('pendapatan')",'Konfirmasi');
+ const nj=S.kelas.filter(k=>!(k.hari||[]).length);if(nj.length)add(1,'🗓️',`${nj.length} kelas belum punya jadwal`,nj.map(k=>k.nama).join(', '),"go('kelas')",'Lihat');
+ const nc=[...S.guru,...S.ortu].filter(x=>!cabangOf(kotaOf(x)));if(nc.length&&S.cabang.length)add(1,'🏢',`${nc.length} akun di luar wilayah cabang`,[...new Set(nc.map(x=>kotaOf(x)||'tanpa lokasi'))].join(', '),"go('cabang')",'Atur cabang');
+ const nl=[...S.guru,...S.ortu].filter(x=>!locOf(x));if(nl.length)add(1,'📍',`${nl.length} akun belum mengisi lokasi`,nl.map(x=>x.nama).join(', '),"go('guru')",'Lihat');
+ return A.sort((a,b)=>b.lv-a.lv)}
+function a_beranda(){
+ const nov=S.spp.filter(s=>s.bulan===BLN),lunas=nov.filter(s=>s.status==='Lunas').reduce((a,b)=>a+b.nominal,0),tot=nov.reduce((a,b)=>a+b.nominal,0);
+ const A=alerts(),req=S.req,lw=S.lowongan,sub=S.pr.flatMap(p=>(p.murid||[]).map(m=>KP(p.id,m)));
+ let h=0,t=0;S.absensi.forEach(a=>Object.values(a.data||{}).forEach(v=>{t++;if(v==='Hadir')h++}));
+ const top=GA().map(g=>({g,st:gStats(g)})).sort((a,b)=>b.st.mids.length-a.st.mids.length||b.st.lap30-a.st.lap30).slice(0,5);
+ const flow=(t_,ic,parts,go_)=>`<div class="card fl2" onclick="go('${go_}')"><div class="row between"><b>${ic} ${t_}</b><span class="mut" style="font-size:12px">${parts.reduce((a,p)=>a+p[1],0)} total</span></div><div class="fbar">${parts.map(p=>`<i style="flex:${p[1]||0.0001};background:${p[2]}" title="${p[0]}: ${p[1]}"></i>`).join('')}</div><div class="row" style="gap:12px;font-size:12px">${parts.map(p=>`<span><i class="dot" style="background:${p[2]}"></i>${p[0]} <b>${p[1]}</b></span>`).join('')}</div></div>`;
+ return`<div class="hero2"><div class="in"><div class="hi">${greet()} · ${isOwner?'Pemilik aplikasi':'Admin'}</div><h2>🛡️ Pusat Kontrol LesGo!</h2><p>Pantau semua proses: pendaftaran, les, laporan, PR, absensi, dan pembayaran — di semua cabang.</p></div>
+ <div class="hstats"><div onclick="go('guru')"><small>Guru aktif</small><b>${GA().length}</b></div><div onclick="go('ortu')"><small>Murid</small><b>${S.murid.length}</b></div><div onclick="go('kelas')"><small>Kelas berjalan</small><b>${S.kelas.length}</b></div><div onclick="go('cabang')"><small>Cabang</small><b>${S.cabang.length}</b></div><div onclick="go('spp')"><small>SPP ${fdate(BLN)}</small><b>${tot?Math.round(lunas/tot*100):0}% lunas</b></div><div onclick="go('pendapatan')"><small>Pendapatan platform</small><b>${rp(S.potongan.filter(x=>x.status==='Lunas').reduce((a,x)=>a+x.nominal,0))}</b></div></div></div>
+ <div class="sech"><h3>🚨 Perlu perhatian (${A.length})</h3></div>
+ <div class="card" style="padding:6px 16px">${A.map(a=>`<div class="alrt l${a.lv}"><div class="ai">${a.ic}</div><div style="flex:1;min-width:0"><b>${esc(a.t)}</b><div class="mut" style="font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(a.d)}</div></div><button class="btn sm ${a.lv>=3?'bad':a.lv>=2?'or':'gh'}" onclick="${a.act}">${a.btn}</button></div>`).join('')||'<div class="empty">✅ Semua lancar, tidak ada yang perlu ditindak.</div>'}</div>
+ <div class="sech"><h3>⚙️ Status proses</h3><a onclick="go('aktivitas')">Lihat semua aktivitas ›</a></div>
+ <div class="grid g3">${flow('Pengajuan les','📨',[['Menunggu',req.filter(r=>r.status==='Menunggu').length,'#f59e0b'],['Diterima',req.filter(r=>r.status==='Diterima').length,'#10b981'],['Ditolak',req.filter(r=>r.status==='Ditolak').length,'#ef4444']],'aktivitas')}
+ ${flow('Kebutuhan les','📢',[['Buka',lw.filter(w=>w.status==='Buka').length,'#3b82f6'],['Dapat guru/tutup',lw.filter(w=>w.status!=='Buka').length,'#10b981']],'aktivitas')}
+ ${flow('PR murid','📝',[['Belum',sub.filter(x=>x.status==='Belum').length,'#ef4444'],['Dikumpulkan',sub.filter(x=>x.status==='Dikumpulkan').length,'#f59e0b'],['Dinilai',sub.filter(x=>x.status==='Dinilai').length,'#10b981']],'kelas')}
+ ${flow(`SPP ${fdate(BLN)}`,'💳',[['Belum',nov.filter(x=>x.status==='Belum').length,'#ef4444'],['Menunggu',nov.filter(x=>x.status==='Menunggu Konfirmasi').length,'#f59e0b'],['Lunas',nov.filter(x=>x.status==='Lunas').length,'#10b981']],'spp')}
+ ${flow('Kehadiran murid','✅',[['Hadir',h,'#10b981'],['Izin/Sakit',S.absensi.reduce((a,x)=>a+Object.values(x.data||{}).filter(v=>v==='Izin'||v==='Sakit').length,0),'#f59e0b'],['Alfa',S.absensi.reduce((a,x)=>a+Object.values(x.data||{}).filter(v=>v==='Alfa').length,0),'#ef4444']],'ortu')}
+ ${flow('Laporan harian','📊',[['7 hari terakhir',S.laporan.filter(l=>daysAgo(l.tanggal)<=7).length,'#3b82f6'],['Sebelumnya',S.laporan.filter(l=>daysAgo(l.tanggal)>7).length,'#cbd5e1']],'aktivitas')}</div>
+ <div class="grid g2"><div class="card"><div class="sech"><h3>🏆 Guru paling aktif</h3><a onclick="go('guru')">Semua guru ›</a></div>${top.map(({g,st},i)=>`<div class="row" style="padding:8px 0;border-top:1px solid var(--line);cursor:pointer" onclick="gDet('${g.id}')"><div class="nn">${i+1}</div>${av(g.nama)}<div style="flex:1"><b>${esc(g.nama)}</b><div class="mut" style="font-size:12px">${st.mids.length} murid · ${st.lap30} laporan/30 hr · hadir ${st.hadir??'-'}%</div></div><span class="mut">${rStr(g.id)}</span></div>`).join('')||'<p class="mut">Belum ada guru.</p>'}</div>
+ <div class="card"><div class="sech"><h3>📡 Aktivitas terbaru</h3><a onclick="go('aktivitas')">Semua ›</a></div>${feed().slice(0,8).map(feedRow).join('')||'<p class="mut">Belum ada aktivitas.</p>'}</div></div>
+ ${menuGrid()}`;
+}
+// ---------- feed ----------
+const FT=[['daftar','🆕','Pendaftaran'],['ajuan','📨','Pengajuan & lamaran'],['laporan','📊','Laporan harian'],['absensi','✅','Absensi'],['pr','📝','PR'],['spp','💳','Pembayaran SPP'],['ulasan','⭐','Ulasan']];
+function ftype(t){t=t.toLowerCase();return/laporan harian/.test(t)?'laporan':/absensi/.test(t)?'absensi':/\bpr\b|pr baru|mengumpulkan pr/.test(t)?'pr':/spp|bayar|pembayaran|tagihan/.test(t)?'spp':/ulasan/.test(t)?'ulasan':/mengajukan|melamar|menerima pengajuan|memilih anda|belum bisa menerima/.test(t)?'ajuan':'lain'}
+function feed(){const F=[],P=(t,type,text)=>{if(t)F.push({t,ts:new Date(t).getTime(),type,text,to:''})};
+ S.guru.forEach(g=>P(g.daftar,'daftar',`🧑‍🏫 Guru baru mendaftar: ${g.nama} — ${(g.mapel||[]).join(', ')} (${lokStr(g)})`));
+ S.ortu.forEach(o=>P(o.daftar,'daftar',`${o.tipe==='murid'?'🎒 Murid':'👪 Orang tua'} baru mendaftar: ${o.nama} (${lokStr(o)})`));
+ S.req.forEach(r=>P(r.tanggal,'ajuan',`${N(O(r.ortuId))} mengajukan les ${r.tipe} untuk ${N(M(r.muridId))} ke ${N(G(r.guruId))} — ${r.status}`));
+ S.lowongan.forEach(w=>P(w.tanggal,'ajuan',`Kebutuhan les dipasang: ${w.mapel} ${w.jenjang} untuk ${N(M(w.muridId))} · ${lokStr(w)} — ${w.status}`));
+ S.lamaran.forEach(l=>{const w=S.lowongan.find(x=>x.id===l.lowonganId);P(l.tanggal,'ajuan',`${N(G(l.guruId))} melamar kebutuhan les ${w?.mapel||''} untuk ${N(M(w?.muridId))}`)});
+ S.laporan.forEach(l=>P(l.tanggal,'laporan',`${N(G(K(l.kelasId)?.guruId))} mengirim laporan ${N(M(l.muridId))} (${K(l.kelasId)?.mapel||''}) — nilai ${l.nilai}${l.dibaca?'':' · belum dibaca ortu'}`));
+ S.absensi.forEach(a=>{const v=Object.values(a.data||{});P(a.tanggal,'absensi',`Absensi ${K(a.kelasId)?.nama||''} oleh ${N(G(K(a.kelasId)?.guruId))}: ${v.filter(x=>x==='Hadir').length}/${v.length} hadir`)});
+ S.pr.forEach(p=>P(p.dibuat,'pr',`${N(G(K(p.kelasId)?.guruId))} memberi PR "${p.judul}" (${(p.murid||[]).length} murid)`));
+ S.kumpul.forEach(k=>{const p=S.pr.find(x=>x.id===k.prId);P(k.tanggal,'pr',`${N(M(k.muridId))} mengumpulkan PR "${p?.judul||''}"${k.status==='Dinilai'?' — dinilai '+k.nilai:''}`)});
+ S.spp.forEach(x=>{if(x.bayar)P(x.bayar,'spp',`${N(O(M(x.muridId)?.ortuId))} membayar SPP ${N(M(x.muridId))} ${fdate(x.bulan)} ${rp(x.nominal)} via ${x.metode} — ${x.status}`)});
+ S.ulasan.forEach(u=>P(u.tanggal,'ulasan',`${N(O(u.ortuId))} memberi ulasan ${u.bintang}★ untuk ${N(G(u.guruId))}`));
+ return F.sort((a,b)=>b.ts-a.ts)}
+const feedRow=f=>{const T=FT.find(x=>x[0]===f.type);return`<div class="row" style="padding:8px 0;border-top:1px solid var(--line);align-items:flex-start"><span class="fi">${T[1]}</span><div style="flex:1"><div>${esc(f.text)}</div><small class="mut">${fdate(f.t)}${f.to?' · ke '+esc(f.to):''}</small></div></div>`};
+let fA={type:'',q:''};
+function a_aktivitas(){const all=feed(),L=all.filter(f=>(!fA.type||f.type===fA.type)&&(!fA.q||f.text.toLowerCase().includes(fA.q.toLowerCase())));
+ const by={};L.slice(0,300).forEach(f=>(by[f.t]=by[f.t]||[]).push(f));
+ return`<h2>📡 Aktivitas</h2><p class="sub">Semua yang terjadi di aplikasi: pendaftaran, pengajuan les, laporan, absensi, PR, pembayaran, dan ulasan.</p>
+ <div class="card"><div class="row" style="gap:6px">${[['','📋','Semua'],...FT].map(([k,ic,t])=>`<button class="btn sm ${fA.type===k?'':'gh'}" onclick="fA.type='${k}';render()">${ic} ${t} <span style="opacity:.7">${k?all.filter(f=>f.type===k).length:all.length}</span></button>`).join('')}</div>
+ <input id="qA" style="margin-top:10px" placeholder="Cari nama guru, murid, mapel…" value="${esc(fA.q)}" oninput="fA.q=this.value;clearTimeout(window._qa);window._qa=setTimeout(()=>{render();const i=$('qA');i.focus();i.setSelectionRange(99,99)},300)"></div>
+ ${Object.entries(by).map(([d,fs])=>`<div class="sech"><h3 style="font-size:14px">${daysAgo(d)===0?'Hari ini':daysAgo(d)===1?'Kemarin':HARI[new Date(d+'T00:00').getDay()]+', '+fdate(d)}</h3><span class="mut" style="font-size:12px">${fs.length} aktivitas</span></div><div class="card" style="padding:4px 16px">${fs.map(feedRow).join('')}</div>`).join('')||'<div class="card empty">Tidak ada aktivitas.</div>'}`}
+// ---------- data guru ----------
+let aCab='',aG={q:'',st:'',sort:'nama'},gSel='';
+function a_guru(){
+ let gs=S.guru.filter(g=>(!aCab||(aCab==='-'?!cabangOf(kotaOf(g)):cabangOf(kotaOf(g))?.id===aCab))&&(!aG.q||(g.nama+' '+(g.mapel||[]).join(' ')+' '+g.hp+' '+lokStr(g)).toLowerCase().includes(aG.q.toLowerCase()))&&(!aG.st||(aG.st==='aktif'?g.verif&&!g.nonaktif:aG.st==='belum'?!g.verif&&!g.nonaktif:g.nonaktif)));
+ const R=gs.map(g=>({g,st:gStats(g)}));
+ R.sort((a,b)=>aG.sort==='murid'?b.st.mids.length-a.st.mids.length:aG.sort==='laporan'?b.st.lap30-a.st.lap30:aG.sort==='rating'?(+rating(b.g.id).v||0)-(+rating(a.g.id).v||0):aG.sort==='spp'?b.st.sppL-a.st.sppL:aG.sort==='baru'?(b.g.daftar||'').localeCompare(a.g.daftar||''):a.g.nama.localeCompare(b.g.nama));
+ return`<div class="row between"><div><h2>🧑‍🏫 Data Guru</h2><p class="sub">Semua guru beserta kinerjanya. Klik guru untuk melihat detail lengkap.</p></div><button class="btn sm sec" onclick="copyTxt(guruCSV())">📋 Salin data (CSV/Excel)</button></div>
+ <div class="grid g4" style="margin-bottom:14px"><div class="stat"><small>Total guru</small><b>${S.guru.length}</b></div><div class="stat"><small>Terverifikasi</small><b style="color:var(--ok)">${S.guru.filter(g=>g.verif&&!g.nonaktif).length}</b></div><div class="stat"><small>Menunggu verifikasi</small><b style="color:var(--warn)">${S.guru.filter(g=>!g.verif&&!g.nonaktif).length}</b></div><div class="stat"><small>Dinonaktifkan</small><b style="color:var(--bad)">${S.guru.filter(g=>g.nonaktif).length}</b></div></div>
+ <div class="card row"><div style="flex:2;min-width:180px"><input id="qAG" placeholder="Cari nama, mapel, No. HP, kecamatan…" value="${esc(aG.q)}" oninput="aG.q=this.value;clearTimeout(window._qg);window._qg=setTimeout(()=>{render();const i=$('qAG');i.focus();i.setSelectionRange(99,99)},300)"></div>
+ <div style="flex:1;min-width:150px"><select onchange="aCab=this.value;render()">${opt([['','🏢 Semua cabang'],...S.cabang.map(c=>[c.id,c.nama]),['-','Tanpa cabang']],aCab)}</select></div>
+ <div style="flex:1;min-width:140px"><select onchange="aG.st=this.value;render()">${opt([['','Semua status'],['aktif','✔ Terverifikasi'],['belum','⏳ Menunggu verifikasi'],['nonaktif','⛔ Nonaktif']],aG.st)}</select></div>
+ <div style="flex:1;min-width:140px"><select onchange="aG.sort=this.value;render()">${opt([['nama','Urut: Nama'],['murid','Murid terbanyak'],['laporan','Laporan terbanyak'],['rating','Rating tertinggi'],['spp','SPP terbanyak'],['baru','Terbaru daftar']],aG.sort)}</select></div></div>
+ <div class="card">${tw(`<table class="hov"><tr><th>Guru</th><th>Cabang & lokasi</th><th>Murid / Kelas</th><th>Laporan 30 hr</th><th>Kehadiran</th><th>Rata nilai</th><th>SPP ${fdate(BLN)}</th><th>Aktif terakhir</th><th>Status</th></tr>
+ ${R.map(({g,st})=>`<tr onclick="gDet('${g.id}')" style="cursor:pointer"><td><div class="row" style="flex-wrap:nowrap">${av(g.nama)}<div><b>${esc(namaG(g))}</b><div class="mut" style="font-size:12px">${esc((g.mapel||[]).join(', '))} · ${esc(g.hp||'')} · ${priceStr(g)}</div><div style="font-size:12px">${rStr(g.id)}</div></div></div></td>
+ <td>${cabTag(g)||'<span class="tag warn">Tanpa cabang</span>'}<div class="mut" style="font-size:12px">${esc(lokStr(g))}</div></td><td><b>${st.mids.length}</b> / ${st.ks.length}</td><td>${st.lap30}</td><td>${st.hadir==null?'-':`<span style="color:${st.hadir>=80?'var(--ok)':st.hadir>=60?'var(--warn)':'var(--bad)'};font-weight:700">${st.hadir}%</span>`}</td><td>${st.avg??'-'}</td>
+ <td><span style="color:var(--ok);font-weight:700">${rp(st.sppL)}</span>${st.sppB?`<div style="color:var(--bad);font-size:12px">${rp(st.sppB)} belum</div>`:''}</td><td class="mut" style="font-size:12px">${st.last?fdate(st.last)+`<br>(${daysAgo(st.last)} hr lalu)`:'-'}</td>
+ <td><span class="tag ${vStat(g)[0]}">${vStat(g)[1]}</span>${!g.verif?`<div style="font-size:11px" class="mut">${myDok(g.id)?.noIjazah?'📄 Ijazah'+(myDok(g.id)?.foto?' + foto':''):'📄 Belum ada ijazah'}</div>`:''}</td></tr>`).join('')||'<tr><td colspan=9 class="empty">Tidak ada guru</td></tr>'}</table>`)}</div>`}
+function gDet(id){gSel=id;view='gdetail';render();window.scrollTo&&window.scrollTo(0,0)}
+function a_gdetail(){const g=G(gSel);if(!g)return'<div class="card empty">Guru tidak ditemukan. <button class="btn sm" onclick="go(\'guru\')">Kembali</button></div>';const st=gStats(g),ul=S.ulasan.filter(u=>u.guruId===g.id);
+ const sppAll=S.spp.filter(x=>st.ks.some(k=>k.id===x.kelasId)).sort((a,b)=>b.bulan.localeCompare(a.bulan));const reqs=S.req.filter(r=>r.guruId===g.id).sort((a,b)=>b.tanggal.localeCompare(a.tanggal));
+ return`<p><a style="color:var(--pri);font-weight:700;cursor:pointer" onclick="go('guru')">‹ Kembali ke Data Guru</a></p>
+ <div class="hero2"><div class="in row" style="align-items:center"><div class="av" style="width:72px;height:72px;border-radius:22px;font-size:24px;background:#ffffff33">${esc(ini(g.nama))}</div><div style="flex:1"><h2>${esc(g.nama)}</h2><p style="margin:0">${esc((g.mapel||[]).join(', '))} · ${esc((g.jenjang||[]).join(', '))} · ${esc(g.mode)}<br>📍 ${esc(lokStr(g))}${cabangOf(kotaOf(g))?' · 🏢 '+esc(cabangOf(kotaOf(g)).nama):''} · ${rStr(g.id)}</p></div>
+ <div>${g.nonaktif?'<span class="tag bad">⛔ Nonaktif</span>':g.verif?'<span class="tag ok">✔ Terverifikasi</span>':'<span class="tag warn">⏳ Menunggu verifikasi</span>'}</div></div>
+ <div class="hstats" style="margin-top:14px"><div><small>Murid</small><b>${st.mids.length}</b></div><div><small>Kelas</small><b>${st.ks.length}</b></div><div><small>Laporan (30 hr)</small><b>${st.lap30}</b></div><div><small>Kehadiran murid</small><b>${st.hadir??'-'}%</b></div><div><small>Rata nilai murid</small><b>${st.avg??'-'}</b></div><div><small>SPP ${fdate(BLN)} masuk</small><b>${rp(st.sppL)}</b></div><div><small>Biaya platform (lunas/total)</small><b>${rp(S.potongan.filter(x=>x.guruId===g.id&&x.status==='Lunas').reduce((a,x)=>a+x.nominal,0))} / ${rp(S.potongan.filter(x=>x.guruId===g.id).reduce((a,x)=>a+x.nominal,0))}</b></div></div></div>
+ <div class="card row"><b>Tindakan admin:</b><button class="btn sm ${g.verif?'gh':'ok'}" onclick="verif('${g.id}')">${g.verif?'Cabut verifikasi':'✔ Verifikasi'}</button><button class="btn sm ${g.nonaktif?'ok':'bad'}" onclick="toggleAktif('guru','${g.id}')">${g.nonaktif?'Aktifkan kembali':'⛔ Nonaktifkan'}</button><button class="btn sm gh" onclick="resetPin('guru','${g.id}')">🔑 Reset PIN</button>${g.hp?`<a class="btn sm wa" target="_blank" rel="noopener" href="${waLink(g.hp,'Halo '+g.nama+', ini admin LesGo!')}">WhatsApp</a>`:''}<button class="btn sm gh" onclick="me='g:${g.id}';view='beranda';render()">👁️ Lihat sebagai guru ini</button><div class="sp"></div><button class="btn sm gh" onclick="hapusAkun('guru','${g.id}');setTimeout(()=>{if(!G('${g.id}'))go('guru')},50)">Hapus akun</button></div>
+ ${verifCard(g)}<div class="grid g2"><div class="card"><h3>👤 Profil & kontak</h3><table class="kv"><tr><td>No. HP</td><td>${esc(g.hp||'-')}</td></tr><tr><td>Gelar</td><td>${esc(g.gelar||'-')}</td></tr><tr><td>Pendidikan</td><td>${esc(g.pendidikan||'-')}${g.tahunLulus?' · lulus '+esc(g.tahunLulus):''}</td></tr><tr><td>Pengalaman</td><td>${g.pengalaman||0} tahun</td></tr><tr><td>Tarif</td><td>${priceStr(g)}/sesi</td></tr><tr><td>Jangkauan</td><td>${/Offline/.test(g.mode||'')?'Datang s/d '+(g.radius||5)+' km':'Online'}</td></tr><tr><td>Lokasi</td><td>${esc(lokStr(g))} ${locOf(g)?`· <a href="${gmaps(locOf(g))}" target="_blank" rel="noopener">Google Maps</a>`:''}</td></tr><tr><td>Rekening</td><td>${esc(g.rekening||'-')}</td></tr><tr><td>Terdaftar</td><td>${fdate(g.daftar)||'-'}</td></tr><tr><td>Aktif terakhir</td><td>${st.last?fdate(st.last):'-'}</td></tr><tr><td>Bio</td><td>${esc(g.bio||'-')}</td></tr></table></div>
+ <div class="card"><h3>🏫 Kelas & murid</h3>${st.ks.map(k=>`<div style="padding:8px 0;border-top:1px solid var(--line)"><div class="row between"><b>${esc(k.nama)}</b>${tipeTag(k.tipe)}</div><div class="mut" style="font-size:12px">🗓️ ${esc(fmtJadwal(k))} · ${rp(k.harga)}/bln</div><div style="font-size:13px">${(k.murid||[]).map(m=>{const a=attendance(m,{kelasId:k.id});return`${esc(N(M(m)))} <span class="mut">(hadir ${a.p}%, nilai ${avgNilai(m)||'-'})</span>`}).join(' · ')||'<span class="mut">Belum ada murid</span>'}</div></div>`).join('')||'<p class="mut">Belum punya kelas.</p>'}
+ <h3 style="margin-top:14px">💰 Tabel tarif</h3>${tarifTable(g)}<h3 style="margin-top:14px">📝 PR</h3><p class="mut" style="margin:0">${st.pr} PR diberikan · ${st.dinilai} jawaban dinilai · <b style="color:${st.tunggu?'var(--warn)':'inherit'}">${st.tunggu} menunggu dinilai</b></p></div></div>
+ <div class="grid g2"><div class="card"><h3>📊 Laporan harian terbaru</h3>${st.lap.sort((a,b)=>b.tanggal.localeCompare(a.tanggal)).slice(0,6).map(l=>`<div style="padding:8px 0;border-top:1px solid var(--line)"><div class="row between"><b>${esc(N(M(l.muridId)))} · ${fdate(l.tanggal)}</b><b style="color:${l.nilai>=80?'var(--ok)':l.nilai>=65?'var(--warn)':'var(--bad)'}">${l.nilai}</b></div><div class="mut" style="font-size:12px">${esc(l.dikerjakan)}</div></div>`).join('')||'<p class="mut">Belum ada laporan.</p>'}</div>
+ <div class="card"><h3>💳 SPP</h3>${tw(`<table><tr><th>Bulan</th><th>Murid</th><th>Nominal</th><th>Status</th></tr>${sppAll.slice(0,8).map(x=>`<tr><td>${fdate(x.bulan)}</td><td>${esc(N(M(x.muridId)))}</td><td>${rp(x.nominal)}</td><td>${stTag(x.status)}</td></tr>`).join('')||'<tr><td colspan=4 class="mut">Belum ada</td></tr>'}</table>`)}</div></div>
+ <div class="grid g2"><div class="card"><h3>📨 Pengajuan les ke guru ini</h3>${reqs.map(r=>`<div class="row between" style="padding:6px 0;border-top:1px solid var(--line)"><span>${esc(N(O(r.ortuId)))} · ${esc(N(M(r.muridId)))} · ${r.tipe}<br><small class="mut">${fdate(r.tanggal)}</small></span>${stTag(r.status)}</div>`).join('')||'<p class="mut">Belum ada.</p>'}<p class="mut" style="margin:8px 0 0">${st.lamar} lamaran dikirim ke kebutuhan les.</p></div>
+ <div class="card"><h3>⭐ Ulasan (${ul.length})</h3>${ul.map(u=>`<div style="padding:6px 0;border-top:1px solid var(--line)"><b style="color:#f59e0b">${'★'.repeat(u.bintang)}</b> <small class="mut">${esc(N(O(u.ortuId)))} · ${fdate(u.tanggal)}</small><div>${esc(u.teks)}</div></div>`).join('')||'<p class="mut">Belum ada ulasan.</p>'}</div></div>`}
+async function toggleAktif(c,id){const a=c==='guru'?G(id):O(id);if(!a.nonaktif&&!confirmTwice('na'+id,'Klik sekali lagi untuk menonaktifkan — akun tidak bisa masuk & tidak tampil di pencarian'))return;await put(c,{...a,nonaktif:!a.nonaktif});if(c==='guru'&&a.nonaktif)await notify(id,'Akun Anda sudah diaktifkan kembali oleh admin.');toast(a.nonaktif?'Akun diaktifkan':'Akun dinonaktifkan');render()}
+function guruCSV(){const q=v=>'"'+String(v??'').replace(/"/g,'""')+'"';return[['Nama','Gelar','Pendidikan','No HP','Mapel','Jenjang','Mode','Kota','Kecamatan','Cabang','Tarif','Rating','Murid','Kelas','Laporan 30hr','Kehadiran %','Rata nilai','SPP lunas bulan ini','Status','Terdaftar'].map(q).join(','),...S.guru.map(g=>{const st=gStats(g);return[g.nama,g.gelar||'',g.pendidikan||'',g.hp,(g.mapel||[]).join('/'),(g.jenjang||[]).join('/'),g.mode,kotaOf(g),g.kec,cabangOf(kotaOf(g))?.nama||'',priceStr(g),rating(g.id).v||'',st.mids.length,st.ks.length,st.lap30,st.hadir??'',st.avg??'',st.sppL,g.nonaktif?'Nonaktif':g.verif?'Terverifikasi':'Menunggu',g.daftar||''].map(q).join(',')})].join('\n')}
+function verifCard(g){const dk=myDok(g.id),vs=vStat(g);
+ return`<div class="card" style="border-left:5px solid var(--${vs[0]==='ok'?'ok':vs[0]==='bad'?'bad':'or'})"><div class="row between"><h3 style="margin:0">🎓 Dokumen verifikasi</h3><span class="tag ${vs[0]}">${vs[1]}</span></div>
+ <div class="grid g2" style="margin-top:10px"><table class="kv"><tr><td>Nama</td><td><b>${esc(namaG(g))}</b></td></tr><tr><td>Gelar</td><td>${esc(g.gelar||'—')}</td></tr><tr><td>Pendidikan</td><td>${esc(g.pendidikan||'—')}</td></tr><tr><td>Tahun lulus</td><td>${esc(g.tahunLulus||dk?.tahunLulus||'—')}</td></tr><tr><td>No. Ijazah</td><td>${dk?.noIjazah?`<b style="font-family:monospace">${esc(dk.noIjazah)}</b> <button class="btn sm gh" onclick='copyTxt(${JSON.stringify(dk.noIjazah)})'>Salin</button>`:'<span style="color:var(--bad)">belum diisi</span>'}</td></tr>${g.verifStatus==='Ditolak'?`<tr><td>Alasan ditolak</td><td>${esc(g.verifAlasan||'')}</td></tr>`:''}</table>
+ <div>${dk?.foto?`<a onclick="openM('<img src=&quot;${dk.foto}&quot; style=&quot;width:100%;border-radius:12px&quot;><div class=&quot;row&quot; style=&quot;margin-top:10px&quot;><button class=&quot;btn gh&quot; onclick=&quot;closeM()&quot;>Tutup</button></div>')" style="cursor:zoom-in"><img src="${dk.foto}" style="width:100%;max-height:220px;object-fit:contain;border-radius:12px;background:#f1f5f9"></a><div class="mut" style="font-size:11px">Klik untuk memperbesar</div>`:'<div class="empty" style="background:#f8fafc;border-radius:12px">Belum ada foto ijazah</div>'}</div></div>
+ <div class="row" style="margin-top:10px"><span class="mut" style="font-size:12px">Cek keaslian:</span><a class="btn sm gh" href="https://pddikti.kemdiktisaintek.go.id" target="_blank" rel="noopener">🔎 PDDikti (cari nama)</a><a class="btn sm gh" href="https://pisn.kemdiktisaintek.go.id/" target="_blank" rel="noopener">🔎 PISN (cek No. Ijazah)</a><button class="btn sm gh" onclick='copyTxt(${JSON.stringify(g.nama)})'>Salin nama</button><div class="sp"></div>${g.verif?'':`<button class="btn sm bad" onclick="tolakVerif('${g.id}')">✖ Minta perbaikan</button>`}<button class="btn sm ${g.verif?'gh':'ok'}" onclick="verif('${g.id}')">${g.verif?'Cabut verifikasi':'✔ Verifikasi guru ini'}</button></div>
+ <p class="mut" style="font-size:11px;margin:8px 0 0">PDDikti untuk lulusan perguruan tinggi. Untuk ijazah SMA/sederajat, cocokkan foto ijazah dengan nama & No. ijazah.</p></div>`}
+function tolakVerif(id){openM(`<h3>Minta perbaikan data</h3><p class="mut">${esc(namaG(G(id)))}</p><label>Alasan (akan dikirim ke guru)</label><textarea id="tv_a" placeholder="cth: Foto ijazah buram / No. ijazah tidak sesuai dengan foto"></textarea><div class="row" style="margin-top:14px"><button class="btn bad" onclick="kirimTolak('${id}')">Kirim</button><button class="btn gh" onclick="closeM()">Batal</button></div>`)}
+async function kirimTolak(id){const a=$('tv_a').value.trim();if(!a)return toast('Isi alasan');const g=G(id);closeM();await put('guru',{...g,verif:false,verifStatus:'Ditolak',verifAlasan:a});await notify(id,`✖ Verifikasi akun perlu perbaikan: ${a}. Perbaiki di menu Profil.`);toast('Permintaan perbaikan dikirim');render()}
+async function verif(id){const g=G(id);await put('guru',{...g,verif:!g.verif,verifStatus:g.verif?'Menunggu':'Terverifikasi',verifAlasan:''});if(!g.verif)await notify(id,'Selamat! Akun guru Anda sudah terverifikasi ✔');render()}
+async function hapusAkun(c,id){if(!confirmTwice('ha'+id,'Klik Hapus sekali lagi untuk menghapus akun ini'))return;await del(c,id);toast('Dihapus');render()}
+function a_cabang(){const k=c=>c.wilayah||[];const noCab=S.guru.filter(g=>!cabangOf(kotaOf(g))).length+S.ortu.filter(o=>!cabangOf(kotaOf(o))).length;
+ return`<div class="row between"><div><h2>Cabang per Kota</h2><p class="sub">Guru & murid otomatis masuk cabang sesuai kota lokasinya.</p></div><button class="btn or" onclick="formCabang()">+ Tambah Cabang</button></div>
+ ${noCab?`<div class="card" style="background:var(--warnb)"><b>⚠️ ${noCab} akun belum masuk cabang mana pun</b> — kotanya belum dicakup cabang. Tambahkan kota tersebut ke wilayah cabang, atau buat cabang baru.<div class="mut">${[...new Set([...S.guru,...S.ortu].filter(x=>!cabangOf(kotaOf(x))).map(x=>kotaOf(x)||'(belum isi lokasi)'))].map(esc).join(', ')}</div></div>`:''}
+ <div class="grid g2">${S.cabang.map(c=>{const gs=S.guru.filter(g=>k(c).includes(kotaOf(g))),os=S.ortu.filter(o=>k(c).includes(kotaOf(o))),ms=S.murid.filter(m=>os.some(o=>o.id===m.ortuId)),ks=S.kelas.filter(kl=>gs.some(g=>g.id===kl.guruId)),spp=S.spp.filter(x=>x.bulan===BLN&&ks.some(kl=>kl.id===x.kelasId)),lw=S.lowongan.filter(w=>w.status==='Buka'&&k(c).includes(kotaOf(w)));
+  return`<div class="card gcard"><div class="row between"><div><h3 style="margin:0">🏢 ${esc(c.nama)}</h3><div class="mut">${esc(c.alamat||'')}${c.hp?' · '+esc(c.hp):''}${c.kepala?' · Kepala: '+esc(c.kepala):''}</div></div><div class="row"><button class="btn sm gh" onclick="formCabang('${c.id}')">Edit</button></div></div>
+  <div style="margin:8px 0">${k(c).map(x=>`<span class="tag gr">📍 ${esc(x)}</span>`).join('')}</div>
+  <div class="grid" style="gap:8px;grid-template-columns:repeat(4,1fr)"><div class="stat" style="box-shadow:none;background:#f6f8fc;padding:10px"><small>Guru</small><b>${gs.length}</b></div><div class="stat" style="box-shadow:none;background:#f6f8fc;padding:10px"><small>Murid</small><b>${ms.length}</b></div><div class="stat" style="box-shadow:none;background:#f6f8fc;padding:10px"><small>Kelas</small><b>${ks.length}</b></div><div class="stat" style="box-shadow:none;background:#f6f8fc;padding:10px"><small>Cari guru</small><b>${lw.length}</b></div></div>
+  <div class="row between" style="margin-top:10px"><span class="mut">SPP ${fdate(BLN)}: <b style="color:var(--ok)">${rp(spp.filter(x=>x.status==='Lunas').reduce((a,b)=>a+b.nominal,0))}</b> lunas · <b style="color:var(--bad)">${rp(spp.filter(x=>x.status!=='Lunas').reduce((a,b)=>a+b.nominal,0))}</b> belum</span><a style="color:var(--pri);font-weight:700;cursor:pointer" onclick="aCab='${c.id}';go('guru')">Lihat guru ›</a></div></div>`}).join('')||'<div class="card empty">Belum ada cabang. Tambahkan cabang pertamamu.</div>'}</div>`}
+function formCabang(id){const c=id?S.cabang.find(x=>x.id===id):{nama:'LesGo! ',wilayah:[],alamat:'',hp:'',kepala:''};
+ openM(`<h3>${id?'Edit':'Tambah'} Cabang</h3><label>Nama cabang</label><input id="cb_n" value="${esc(c.nama)}" placeholder="cth: LesGo! Tangerang"><label>Wilayah (kota yang dilayani)</label><div class="att" style="max-height:200px;overflow:auto">${KOTA_LIST.map(k=>{const other=S.cabang.find(x=>x.id!==id&&(x.wilayah||[]).includes(k));return`<label style="${other?'opacity:.5':''}" title="${other?'Sudah di '+esc(other.nama):''}"><input type="checkbox" class="cb_w" value="${esc(k)}" ${(c.wilayah||[]).includes(k)?'checked':''} ${other?'disabled':''}>${esc(k)}</label>`}).join('')}</div>
+ <label>Alamat kantor / tempat belajar</label><input id="cb_a" value="${esc(c.alamat)}"><div class="split"><div><label>No. HP cabang</label><input id="cb_h" value="${esc(c.hp)}"></div><div><label>Kepala cabang</label><input id="cb_k" value="${esc(c.kepala)}"></div></div>
+ <div class="row" style="margin-top:16px"><button class="btn or" onclick="simpanCabang('${id||''}')">Simpan</button><button class="btn gh" onclick="closeM()">Batal</button>${id?`<div class="sp"></div><button class="btn sm bad" onclick="hapusCabang('${id}')">Hapus</button>`:''}</div>`)}
+async function simpanCabang(id){const d={nama:$('cb_n').value.trim(),wilayah:[...document.querySelectorAll('.cb_w:checked')].map(x=>x.value),alamat:$('cb_a').value,hp:$('cb_h').value,kepala:$('cb_k').value};if(!d.nama)return toast('Isi nama cabang');if(!d.wilayah.length)return toast('Pilih minimal 1 kota');
+ closeM();await put('cabang',id?{...S.cabang.find(x=>x.id===id),...d}:{id:uid('c'),...d});toast('Cabang disimpan');render()}
+async function hapusCabang(id){if(!confirmTwice('hc'+id,'Klik Hapus sekali lagi untuk menghapus cabang'))return;closeM();await del('cabang',id);render()}
+function a_ortu(){return`<h2>Orang Tua & Murid</h2><p class="sub">Semua keluarga yang terdaftar.</p><div class="card">${tw(`<table><tr><th>Akun</th><th>Kontak</th><th>Murid</th><th></th></tr>${S.ortu.map(o=>`<tr><td><b>${esc(o.nama)}</b> <span class="tag ${o.tipe==='murid'?'warn':'gr'}">${o.tipe==='murid'?'Murid (daftar sendiri)':'Orang tua'}</span><div class="mut">📍 ${esc(lokStr(o))}</div>${cabTag(o)}</td><td>${esc(o.hp)}</td><td>${S.murid.filter(m=>m.ortuId===o.id).map(m=>`${esc(m.nama)} <span class="mut">(${esc(m.kelas)})</span>`).join('<br>')||'-'}</td><td><div class="row">${o.nonaktif?'<span class="tag bad">Nonaktif</span>':''}<button class="btn sm ${o.nonaktif?'ok':'gh'}" onclick="toggleAktif('ortu','${o.id}')">${o.nonaktif?'Aktifkan':'Nonaktifkan'}</button><button class="btn sm gh" onclick="resetPin('ortu','${o.id}')">Reset PIN</button><button class="btn sm gh" onclick="hapusAkun('ortu','${o.id}')">Hapus</button></div></td></tr>`).join('')||'<tr><td colspan=4 class="empty">Belum ada</td></tr>'}</table>`)}</div>`}
+function a_spp(){const l=[...S.spp].sort((a,b)=>b.bulan.localeCompare(a.bulan));return`<h2>Semua SPP</h2><p class="sub">Rekap pembayaran seluruh kelas.</p><div class="card">${tw(`<table><tr><th>Bulan</th><th>Murid</th><th>Kelas</th><th>Guru</th><th>Nominal</th><th>Status</th></tr>${l.map(s=>`<tr><td>${fdate(s.bulan)}</td><td>${esc(N(M(s.muridId)))}</td><td>${esc(K(s.kelasId)?.nama||'')}</td><td>${esc(N(G(K(s.kelasId)?.guruId)))}</td><td>${rp(s.nominal)}</td><td>${stTag(s.status)}</td></tr>`).join('')||'<tr><td colspan=6 class="empty">Belum ada</td></tr>'}</table>`)}</div>`}
+function a_kelas(){return`<h2>Semua Kelas</h2><p class="sub">Private & Umum dari semua guru.</p><div class="card">${tw(`<table><tr><th>Kelas</th><th>Jenis</th><th>Guru</th><th>Jadwal</th><th>Murid</th><th>SPP</th></tr>${S.kelas.map(k=>`<tr><td><b>${esc(k.nama)}</b></td><td>${tipeTag(k.tipe)}</td><td>${esc(N(G(k.guruId)))}</td><td>${esc(fmtJadwal(k))}</td><td>${(k.murid||[]).map(m=>esc(N(M(m)))).join(', ')} <span class="mut">(${(k.murid||[]).length}/${k.kapasitas})</span></td><td>${rp(k.harga)}</td></tr>`).join('')||'<tr><td colspan=6 class="empty">Belum ada</td></tr>'}</table>`)}</div>`}
+function a_pengaturan(){const c=CFG();const demo=COLS.reduce((a,col)=>a+S[col].filter(x=>x.demo).length,0);
+ return`<h2>Pengaturan</h2><p class="sub">Identitas lembaga dan pengelolaan data.</p><div class="grid g2"><div class="card"><h3>Identitas lembaga</h3><p class="mut" style="font-size:12px">Nama ini tampil di samping logo LesGo! (misalnya nama cabang).</p><label>Nama cabang / lembaga</label><input id="cf_n" value="${esc(c.nama||'')}" placeholder="opsional — cth: LesGo! Cabang Tebet"><label>Info pembayaran default (jika guru belum mengisi rekening)</label><textarea id="cf_b">${esc(c.infoBayar||'')}</textarea><button class="btn" style="margin-top:12px" onclick="simpanCfg()">Simpan</button></div>
+ <div class="card"><h3>Data contoh</h3><p class="mut">Ada <b>${demo}</b> data contoh (guru, orang tua, kelas, dll.) untuk mencoba sistem. Hapus sebelum mulai dipakai sungguhan.</p><button class="btn bad" ${demo?'':'disabled'} onclick="hapusDemo()">Hapus semua data contoh</button>
+ <h3 style="margin-top:18px">Cara mengajak guru & orang tua</h3><p class="mut">Bagikan halaman ini dari tombol Share di claude.ai dengan akses <b>Contributor</b> agar mereka bisa mendaftar dan mengisi data. Setiap orang otomatis terhubung ke akunnya sendiri.</p></div></div>`}
+async function simpanCfg(){await put('config',{...CFG(),id:'main',nama:$('cf_n').value.trim(),infoBayar:$('cf_b').value});toast('Pengaturan disimpan');render()}
+async function hapusDemo(){if(!confirmTwice('demo','Klik sekali lagi untuk menghapus SEMUA data contoh'))return;toast('Menghapus data contoh…');for(const c of COLS)for(const x of S[c].filter(x=>x.demo))await del(c,x.id);toast('Data contoh dihapus');render()}
+init();
+</script>
+</body>
+</html>

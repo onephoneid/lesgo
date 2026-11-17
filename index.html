@@ -214,6 +214,46 @@ table.kv td:first-child{color:var(--mut);font-weight:600;width:130px;font-size:1
  .menuGrid{grid-template-columns:repeat(4,1fr);gap:8px}.mtile{padding:10px 2px;font-size:11px;border-radius:16px}.mtile i{width:42px;height:42px;font-size:20px}
 }
 
+/* ===== Game Belajar ===== */
+.ghero{background:linear-gradient(135deg,#6d28d9,#4f46e5 55%,#0ea5e9);color:#fff;border-radius:26px;padding:22px;margin-bottom:16px;position:relative;overflow:hidden}
+.ghero:before{content:'🎮';position:absolute;right:-10px;bottom:-26px;font-size:130px;opacity:.13;transform:rotate(-12deg)}
+.ghero .in{position:relative}.ghero h2{color:#fff;font-size:25px;margin:2px 0}.ghero p{opacity:.88;margin:0 0 12px}.ghero .hi{font-size:13px;font-weight:700;opacity:.85}
+.gmute{border:0;background:rgba(255,255,255,.18);color:#fff;width:40px;height:40px;border-radius:12px;font-size:18px;cursor:pointer;flex:none}
+.gkids{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}.gkids button{font:inherit;font-weight:700;border:0;border-radius:99px;padding:7px 14px;background:rgba(255,255,255,.18);color:#fff;cursor:pointer}.gkids button.on{background:#fff;color:#4f46e5}
+.glv{display:grid;grid-template-columns:1fr 150px;gap:14px;align-items:end;background:rgba(255,255,255,.14);border-radius:18px;padding:12px 14px}.glv small{font-weight:700;opacity:.92}.glv select{border:0;border-radius:12px;font-weight:700;color:var(--navy)}
+.gxp{height:10px;background:rgba(255,255,255,.25);border-radius:99px;overflow:hidden;margin:6px 0}.gxp i{display:block;height:100%;background:linear-gradient(90deg,#fde047,#fb923c);border-radius:99px}
+.gmapel{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:18px}
+.gmapel button{background:#fff;border:2px solid transparent;border-radius:18px;padding:12px 4px;box-shadow:var(--sh);font:inherit;font-size:12px;font-weight:700;color:var(--ink);cursor:pointer;transition:.15s}
+.gmapel button i{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;margin:0 auto 6px;font-size:22px;font-style:normal}
+.gmapel button.on{border-color:var(--or);background:var(--or2)}.gmapel button:hover{transform:translateY(-2px)}
+.gmodes{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin-bottom:20px}.gmode{min-height:150px}.gmode:hover{transform:translateY(-3px)}.gmode{transition:.15s}
+.gbest{font-size:13px;margin:-4px 0 10px;background:rgba(255,255,255,.2);display:inline-block;padding:2px 8px;border-radius:99px}.gbest .mut{color:#fff;opacity:.85}
+.gbox{background:#fff;border-radius:26px;box-shadow:var(--sh);padding:18px;max-width:720px;margin:0 auto;position:relative;overflow:hidden}
+.ghead{display:flex;align-items:center;gap:10px}.ghtitle{flex:1;font-family:Fredoka;font-weight:700;font-size:17px;color:var(--navy);text-align:center}.ghtitle small{display:block;font-family:'Plus Jakarta Sans';font-size:11px;color:var(--mut);font-weight:600}
+.ghx{min-width:84px;text-align:right}.ghp{font-size:18px;letter-spacing:1px}.gsec{font-family:Fredoka;font-size:18px;color:var(--navy)}
+.gtime{height:10px;background:#eef0f4;border-radius:99px;overflow:hidden;margin-top:6px}.gtime i{display:block;height:100%;background:linear-gradient(90deg,#22c55e,#facc15);border-radius:99px;transition:width .2s linear}
+.gq{font-family:Fredoka;font-weight:700;font-size:clamp(21px,4.6vw,32px);text-align:center;margin:22px 4px;color:var(--navy);line-height:1.25;min-height:80px;display:grid;place-items:center}
+.gq.flok{animation:flok .35s}.gq.flno{animation:flno .35s}@keyframes flok{0%{color:#16a34a;transform:scale(1.08)}}@keyframes flno{0%{color:#dc2626;transform:translateX(-6px)}}
+.gopts{display:grid;grid-template-columns:1fr 1fr;gap:10px}.gopts.one{grid-template-columns:1fr}
+.gopts button{font:inherit;font-weight:700;font-size:17px;padding:14px 12px;border-radius:16px;border:2px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;min-height:62px;transition:.12s;box-shadow:0 3px 0 #e2e8f0}
+.gopts button:hover:not(:disabled){border-color:#a5b4fc;background:#f5f7ff;transform:translateY(-1px)}.gopts button:active{transform:translateY(2px);box-shadow:none}
+.gopts button.ok{background:#dcfce7;border-color:#22c55e;color:#166534}.gopts button.no{background:#fee2e2;border-color:#ef4444;color:#991b1b}.gopts button:disabled{cursor:default}
+.gfb{margin-top:14px;padding:12px 14px;border-radius:14px;font-weight:600;text-align:center}.gfb.ok{background:#dcfce7;color:#166534}.gfb.no{background:#fff7ed;color:#9a3412}
+.gcards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:560px;margin:0 auto}
+.gc{aspect-ratio:4/5;border:0;border-radius:16px;font:inherit;font-weight:700;cursor:pointer;background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;font-size:28px;display:grid;place-items:center;padding:6px;box-shadow:0 4px 0 #3730a3;transition:transform .25s}
+.gc.up{background:#fff;color:var(--navy);border:2px solid #c7d2fe;box-shadow:0 4px 0 #e0e7ff;font-size:clamp(13px,2.6vw,17px);transform:rotateY(180deg)}.gc.up span{transform:rotateY(180deg);word-break:break-word}
+.gc.done{background:#dcfce7;border-color:#86efac;color:#166534;box-shadow:none;opacity:.8}
+.ghint{text-align:center;margin:18px 0 12px;font-weight:700;font-size:17px;color:var(--navy);min-height:70px;display:grid;place-items:center}
+.gslots,.gtiles{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}.gslots{margin-bottom:16px}
+.gslots button{width:42px;height:50px;border-radius:12px;border:2px dashed #c7d2fe;background:#f8faff;font-family:Fredoka;font-size:24px;font-weight:700;color:var(--navy);cursor:pointer}
+.gslots.got button{border:2px solid #22c55e;background:#dcfce7;color:#166534}.shake{animation:shake .4s}@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.gtiles button{width:46px;height:52px;border-radius:12px;border:0;background:linear-gradient(#fdba74,#f97316);color:#fff;font-family:Fredoka;font-size:24px;font-weight:700;cursor:pointer;box-shadow:0 4px 0 #c2410c}
+.gtiles button:disabled{opacity:.2;cursor:default}
+.gdone{text-align:center;padding:30px 18px}.gstars{font-size:46px;margin:6px 0}.gstars span{display:inline-block;filter:grayscale(1);opacity:.25}.gstars span.on{filter:none;opacity:1;animation:pop .5s backwards}
+@keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.3)}}
+.gxpwin{display:inline-block;background:linear-gradient(90deg,#fde047,#fb923c);color:#7c2d12;font-family:Fredoka;font-size:22px;font-weight:700;padding:6px 18px;border-radius:99px}
+.gconf{position:absolute;inset:0;pointer-events:none;overflow:hidden}.gconf i{position:absolute;top:-30px;font-style:normal;font-size:22px;animation:fall 2.4s ease-in forwards}@keyframes fall{to{transform:translateY(520px) rotate(300deg);opacity:0}}
+@media(max-width:600px){.gmapel{grid-template-columns:repeat(3,1fr)}.gcards{grid-template-columns:repeat(3,1fr)}.glv{grid-template-columns:1fr}.gopts button{font-size:16px}.gslots button{width:36px;height:44px;font-size:20px}.gtiles button{width:40px;height:46px;font-size:21px}.ghx{min-width:64px}}
 /* ===== Taman Belajar 3D ===== */
 .t3wrap{position:relative;height:min(68vh,620px);min-height:380px;border-radius:24px;overflow:hidden;background:linear-gradient(#a9dcff,#e6f6ff 70%,#9fd68a);box-shadow:var(--sh)}
 .t3wrap:fullscreen{height:100vh;border-radius:0}
@@ -246,7 +286,7 @@ table.kv td:first-child{color:var(--mut);font-weight:600;width:130px;font-size:1
 
 <script>
 // ================== STATE & DATA LAYER ==================
-const COLS=['dokumen','potongan','cabang','guru','ortu','murid','kelas','materi','pr','kumpul','absensi','laporan','spp','lowongan','lamaran','req','notif','ulasan','config'];
+const COLS=['dokumen','potongan','cabang','guru','ortu','murid','kelas','materi','pr','kumpul','absensi','laporan','spp','lowongan','lamaran','req','notif','ulasan','config','game'];
 const HARI=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
 const BULAN=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
 const COLORS=['#4f46e5','#059669','#d97706','#db2777','#0891b2','#7c3aed','#ea580c'];
@@ -392,13 +432,13 @@ const ini=n=>(n||'?').replace(/^(Pak|Bu|Kak|Ibu|Bapak)\s/,'').split(' ').map(w=>
 
 // ================== SHELL ==================
 const NAVS={
- o:[['beranda','🏠','Beranda'],['cariguru','🔍','Cari Guru'],['lowongan','📢','Kebutuhan Les'],['jadwal','🗓️','Jadwal'],['kelas','🏫','Kelas & Materi'],['laporan','📊','Laporan Harian'],['rapor','📈','Rapor Bulanan'],['taman','🌳','Taman Belajar'],['pr','📝','PR'],['absensi','✅','Absensi'],['spp','💳','SPP'],['notif','🔔','Notifikasi']],
+ o:[['beranda','🏠','Beranda'],['cariguru','🔍','Cari Guru'],['lowongan','📢','Kebutuhan Les'],['jadwal','🗓️','Jadwal'],['kelas','🏫','Kelas & Materi'],['laporan','📊','Laporan Harian'],['rapor','📈','Rapor Bulanan'],['taman','🌳','Taman Belajar'],['game','🎮','Game Belajar'],['pr','📝','PR'],['absensi','✅','Absensi'],['spp','💳','SPP'],['notif','🔔','Notifikasi']],
  g:[['beranda','🏠','Beranda'],['carimurid','🔍','Cari Murid'],['jadwal','🗓️','Jadwal'],['kelas','🏫','Kelas Saya'],['materi','📚','Materi'],['pr','📝','PR'],['absensi','✅','Absensi'],['laporan','📊','Laporan Harian'],['rapor','📈','Rapor Murid'],['taman','🌳','Taman Belajar'],['spp','💳','SPP'],['penghasilan','💰','Penghasilan'],['profil','👤','Profil'],['notif','🔔','Notifikasi']],
  a:[['beranda','🛡️','Pusat Kontrol'],['aktivitas','📡','Aktivitas'],['pendapatan','💰','Pendapatan Platform'],['cabang','🏢','Cabang'],['guru','🧑‍🏫','Data Guru'],['ortu','🎒','Murid & Orang Tua'],['kelas','🏫','Kelas'],['spp','💳','SPP'],['pengaturan','⚙️','Pengaturan']],
  new:[]
 };
 const BOTTOM={o:['beranda','cariguru','laporan','spp'],g:['beranda','carimurid','jadwal','laporan'],a:['beranda','aktivitas','guru','cabang']};
-const TILE={taman:'#dcfce7',penghasilan:'#dcfce7',pendapatan:'#dcfce7',aktivitas:'#fce7f3',cabang:'#e0f2fe',cariguru:'#e0ebff',carimurid:'#e0ebff',lowongan:'#ffedd5',jadwal:'#dcfce7',kelas:'#ede9fe',materi:'#ede9fe',laporan:'#cffafe',rapor:'#fef3c7',pr:'#ffe4e6',absensi:'#d1fae5',spp:'#ffedd5',notif:'#e0e7ff',profil:'#f1f5f9',guru:'#e0ebff',ortu:'#fce7f3',pengaturan:'#f1f5f9',beranda:'#e0ebff'};
+const TILE={taman:'#dcfce7',game:'#ede9fe',penghasilan:'#dcfce7',pendapatan:'#dcfce7',aktivitas:'#fce7f3',cabang:'#e0f2fe',cariguru:'#e0ebff',carimurid:'#e0ebff',lowongan:'#ffedd5',jadwal:'#dcfce7',kelas:'#ede9fe',materi:'#ede9fe',laporan:'#cffafe',rapor:'#fef3c7',pr:'#ffe4e6',absensi:'#d1fae5',spp:'#ffedd5',notif:'#e0e7ff',profil:'#f1f5f9',guru:'#e0ebff',ortu:'#fce7f3',pengaturan:'#f1f5f9',beranda:'#e0ebff'};
 function badge(k){const r=role(),id=myId();let n=0;
  if(k==='notif')n=S.notif.filter(x=>x.to===id&&!x.read).length;
  if(r==='o'){const ids=myKids().map(m=>m.id);if(k==='laporan')n=S.laporan.filter(l=>ids.includes(l.muridId)&&!l.dibaca).length;if(k==='pr')n=S.pr.reduce((a,p)=>a+(p.murid||[]).filter(m=>ids.includes(m)&&KP(p.id,m).status==='Belum').length,0);if(k==='spp')n=S.spp.filter(s=>ids.includes(s.muridId)&&s.status==='Belum').length}
@@ -423,7 +463,7 @@ function resolveMe(){
  const r=role();if((r==='g'&&!G(myId()))||(r==='o'&&!O(myId()))||(!canSwitch()&&((r==='g'&&G(myId())?.nonaktif)||(r==='o'&&O(myId())?.nonaktif)))){if(SESS===me)setSess(null);me=canSwitch()?'a:admin':'new:'}
 }
 function switchPersona(v){if(v==='login:'){me='new:';landView='login';view='beranda';return render()}if(v==='new:guru'){render();return formGuru()}if(v==='new:ortu'){render();return formOrtu()}me=v;view='beranda';try{localStorage.setItem('lp_me',me)}catch(e){}render()}
-function go(v){if(v!==view)t3Cam=null;view=v;render();window.scrollTo&&window.scrollTo(0,0)}
+function go(v){if(v!==view)t3Cam=null;if(view==='game'&&v!=='game')gStop();view=v;render();window.scrollTo&&window.scrollTo(0,0)}
 function render(){
  if(MODE==='loading')return;
  resolveMe();const r=role();
@@ -585,7 +625,7 @@ function o_beranda(){
  return`<div class="hero2"><div class="in"><div class="hi">${greet()}</div><h2>Halo, ${esc(o.nama)} 👋</h2><p>${sis?'Yuk lanjut belajar! Cek jadwal, PR, dan nilaimu di sini.':'Pantau perkembangan belajar anak setiap hari.'}</p></div>
  <div class="hstats"><div onclick="go('kelas')"><small>${sis?'Kelas les':'Anak terdaftar'}</small><b>${sis?S.kelas.filter(k=>(k.murid||[]).some(m=>kidIds.includes(m))).length:kids.length}</b></div><div onclick="go('laporan')"><small>Laporan baru</small><b>${unread}</b></div><div onclick="go('pr')"><small>PR belum dikerjakan</small><b>${prSoon.length}</b></div><div onclick="go('spp')"><small>SPP belum dibayar</small><b>${rp(tunggak.reduce((a,b)=>a+b.nominal,0))}</b></div></div></div>
  ${menuGrid()}
- ${banners([['b1','Cari guru terbaik','Bandingkan rating, tarif & ulasan orang tua lain.','🧑‍🏫',"go('cariguru')",'Cari guru'],['b2','Kelas Umum lebih hemat','Belajar bareng teman seumuran, biaya lebih ringan.','👥',"go('cariguru')",'Lihat kelas'],['b3','Taman Belajar 3D',sis?'Lihat pohon belajarmu tumbuh dari kehadiran, nilai & PR.':'Lihat pohon belajar anak tumbuh dari kehadiran, nilai & PR.','🌳',"go('taman')",'Buka taman'],['b2','Rapor bulanan + AI','Grafik nilai & saran belajar di rumah untuk anak.','📈',"go('rapor')",'Buka rapor'],['b4','Belum ketemu guru?','Pasang kebutuhan les, biar guru yang melamar.','📢',"go('lowongan')",'Pasang']])}
+ ${banners([['b1','Cari guru terbaik','Bandingkan rating, tarif & ulasan orang tua lain.','🧑‍🏫',"go('cariguru')",'Cari guru'],['b2','Kelas Umum lebih hemat','Belajar bareng teman seumuran, biaya lebih ringan.','👥',"go('cariguru')",'Lihat kelas'],['b4','Game Belajar',sis?'Kuis, balap hitung, kartu pasangan & susun kata sesuai kelasmu.':'Kuis & permainan seru sesuai kelas anak, 1 SD – 3 SMP.','🎮',"go('game')",'Main sekarang'],['b3','Taman Belajar 3D',sis?'Lihat pohon belajarmu tumbuh dari kehadiran, nilai & PR.':'Lihat pohon belajar anak tumbuh dari kehadiran, nilai & PR.','🌳',"go('taman')",'Buka taman'],['b2','Rapor bulanan + AI','Grafik nilai & saran belajar di rumah untuk anak.','📈',"go('rapor')",'Buka rapor'],['b4','Belum ketemu guru?','Pasang kebutuhan les, biar guru yang melamar.','📢',"go('lowongan')",'Pasang']])}
  ${(()=>{const L=locOf(o);if(!L)return`<div class="card row between" style="margin-bottom:18px"><div><b>📍 Atur lokasi rumahmu</b><div class="mut">Supaya kami bisa merekomendasikan guru les terdekat.</div></div><button class="btn sm or" onclick="akunMenu('lokasi')">Atur lokasi</button></div>`;const nr=GA().map(g=>({g,d:dist(L,locOf(g))})).filter(x=>x.d!=null).sort((a,b)=>a.d-b.d).slice(0,6);return`<div class="sech"><h3>📍 Guru terdekat dari ${sis?'lokasimu':'rumahmu'}</h3><a onclick="fG.sort='jarak';go('cariguru')">Lihat peta ›</a></div><div class="banners">${nr.map(({g,d})=>`<div class="card ncard" onclick="lihatGuru('${g.id}')">${av(g.nama)}<b>${esc(g.nama)}</b><div class="mut">${esc((g.mapel||[]).slice(0,2).join(', '))}</div><div><b style="color:var(--or)">📍 ${fmtKm(d)}</b> · ${esc(g.kec||kotaOf(g))}</div><div class="mut">${rStr(g.id)}</div></div>`).join('')}</div>`})()}
  <div class="grid g2"><div class="card"><h3>🗓️ Les hari ini (${HARI[DOW]})</h3>${today.map(k=>`<div class="row" style="padding:6px 0;border-top:1px solid var(--line)"><b style="width:52px">${esc(k.jam)}</b><div style="flex:1">${esc(k.mapel)} · ${esc(N(G(k.guruId)))}<div class="mut">${(k.murid||[]).filter(m=>kidIds.includes(m)).map(m=>esc(N(M(m)))).join(', ')}</div></div>${tipeTag(k.tipe)}</div>`).join('')||'<p class="mut">Tidak ada jadwal les hari ini.</p>'}</div>
  <div class="card"><h3>📝 PR yang harus dikerjakan</h3>${prSoon.slice(0,5).map(({p,m})=>`<div class="row" style="padding:6px 0;border-top:1px solid var(--line)"><div style="flex:1"><b>${esc(p.judul)}</b><div class="mut">${esc(N(M(m)))} · ${esc(K(p.kelasId)?.mapel)}</div></div><span class="tag ${p.deadline<TODAY?'bad':p.deadline<=TODAY.slice(0,8)+String(+TODAY.slice(8)+2).padStart(2,'0')?'warn':'gr'}">${p.deadline<TODAY?'Terlambat':'s/d '+fdate(p.deadline)}</span></div>`).join('')||'<p class="mut">Semua PR sudah dikerjakan 🎉</p>'}${prSoon.length?`<button class="btn sm sec" style="margin-top:8px" onclick="go('pr')">Lihat semua PR</button>`:''}</div></div>
@@ -1112,17 +1152,17 @@ const t3Stage=h=>h>=15?3:h>=5?2:h>=1?1:0;
 function tamanPlots(){const r=role();let ms=[];
  if(r==='o')ms=myKids();else if(r==='g')ms=[...new Set(myKelas().flatMap(k=>k.murid||[]))].map(M).filter(Boolean);
  return ms.map(m=>{const at=attendance(m.id),L=S.laporan.filter(l=>l.muridId===m.id).sort((a,b)=>a.tanggal.localeCompare(b.tanggal)),prs=S.pr.filter(p=>(p.murid||[]).includes(m.id)),done=prs.filter(p=>KP(p.id,m.id).status!=='Belum').length;
-  return{id:m.id,nama:m.nama,kelas:m.kelas,h:at.h,t:at.t,p:at.p,avg:avgNilai(m.id),L:L.map(l=>+l.nilai||0),pr:done,prT:prs.length}})}
+  return{id:m.id,nama:m.nama,kelas:m.kelas,xp:(S.game.find(x=>x.id==='gm_'+m.id)||{}).xp||0,h:at.h,t:at.t,p:at.p,avg:avgNilai(m.id),L:L.map(l=>+l.nilai||0),pr:done,prT:prs.length}})}
 function t3Next(p){const s=t3Stage(p.h);return s<3?`${T3NEXT[s]-p.h} kehadiran lagi menuju ${T3STG[s+1][0]} ${T3STG[s+1][1]}`:'Sudah jadi pohon paling rindang! 🎉'}
 function tamanPage(){const P=tamanPlots(),g=role()==='g';setTimeout(mountTaman,0);
- const LG=[['🌳','#dcfce7','Tinggi pohon','Tumbuh dari jumlah kehadiran les'],['🌸','#ffe4e6','Bunga','Satu bunga per laporan les: oranye ≥85, kuning ≥70, merah muda di bawahnya'],['🦋','#e0ebff','Kupu-kupu','Datang untuk setiap PR yang dikerjakan'],['🍊','#ffedd5','Buah','Muncul dari nilai ≥85, mulai di tahap pohon muda']];
+ const LG=[['🌳','#dcfce7','Tinggi pohon','Tumbuh dari jumlah kehadiran les'],['🌸','#ffe4e6','Bunga','Satu bunga per laporan les: oranye ≥85, kuning ≥70, merah muda di bawahnya'],['🦋','#e0ebff','Kupu-kupu','Datang untuk setiap PR yang dikerjakan'],['🍊','#ffedd5','Buah','Muncul dari nilai ≥85, mulai di tahap pohon muda'],['⭐','#fef9c3','Bintang emas','Setiap 100 XP dari 🎮 Game Belajar']];
  return`<h2>🌳 Taman Belajar 3D</h2><p class="sub">${g?'Setiap murid':'Setiap anak'} punya pohon sendiri yang tumbuh dari kehadiran, laporan, dan PR.</p>
  <div class="t3wrap" id="t3wrap"><div class="t3" id="t3"></div><div class="t3load" id="t3load">🌱 Menyiapkan taman…</div>
  <div class="t3hint" id="t3hint">👆 Geser untuk memutar · cubit/scroll untuk zoom · ketuk pohon</div>
  <div class="t3tools"><button onclick="t3Toggle()" title="Siang / malam">${t3Night()?'☀️':'🌙'}</button><button onclick="t3Reset()" title="Lihat seluruh taman">🎯</button><button onclick="t3Full()" title="Layar penuh">⛶</button></div><div class="t3info" id="t3info"></div></div>
  <div class="grid g4" style="margin:14px 0">${LG.map(([e,c,t,d])=>`<div class="stat row" style="align-items:flex-start;flex-wrap:nowrap"><span class="fi" style="background:${c};width:40px;height:40px;font-size:20px">${e}</span><div><b style="font-size:15px;margin:0">${t}</b><small>${d}</small></div></div>`).join('')}</div>
  ${P.length?`<div class="sech"><h3>Pohon di taman</h3></div><div class="grid g3">${P.map((p,i)=>{const s=t3Stage(p.h),nx=s<3?T3NEXT[s]:1,pv=s?T3NEXT[s-1]:0,pc=s<3?Math.round((p.h-pv)/(nx-pv)*100):100;
-  return`<div class="card fl2" style="cursor:pointer" onclick="t3Focus('${p.id}')"><div class="row">${av(p.nama,i)}<div style="flex:1"><b>${esc(p.nama)}</b><div class="mut">${T3STG[s][0]} ${T3STG[s][1]} · Kelas ${esc(p.kelas||'-')}</div></div></div><div class="bar" style="margin-top:10px"><i style="width:${pc}%"></i></div><small class="mut">${t3Next(p)}</small><div class="row" style="margin-top:8px;gap:4px"><span class="tag ok">✅ ${p.h} hadir</span><span class="tag">🌸 ${p.L.length} laporan</span><span class="tag warn">🦋 ${p.pr} PR</span></div></div>`}).join('')}</div>`
+  return`<div class="card fl2" style="cursor:pointer" onclick="t3Focus('${p.id}')"><div class="row">${av(p.nama,i)}<div style="flex:1"><b>${esc(p.nama)}</b><div class="mut">${T3STG[s][0]} ${T3STG[s][1]} · Kelas ${esc(p.kelas||'-')}</div></div></div><div class="bar" style="margin-top:10px"><i style="width:${pc}%"></i></div><small class="mut">${t3Next(p)}</small><div class="row" style="margin-top:8px;gap:4px"><span class="tag ok">✅ ${p.h} hadir</span><span class="tag">🌸 ${p.L.length} laporan</span><span class="tag warn">🦋 ${p.pr} PR</span>${p.xp>=100?`<span class="tag" style="background:#fef9c3;color:#a16207">⭐ ${Math.floor(p.xp/100)}</span>`:''}</div></div>`}).join('')}</div>`
  :`<div class="card empty">${g?'Belum ada murid di kelasmu. Pohon murid akan muncul di taman setelah mereka bergabung.':'Belum ada anak terdaftar. <button class="btn sm" onclick="formAnak()">Tambah anak</button> untuk menanam pohon pertama.'}</div>`}`}
 function o_taman(){return tamanPage()}function g_taman(){return tamanPage()}
 function t3Focus(id){if(T3)T3.focus(id);const w=$('t3wrap');if(w&&w.scrollIntoView)w.scrollIntoView({behavior:'smooth',block:'center'})}
@@ -1193,7 +1233,7 @@ async function mountTaman(){
  const pr2=rng('pond');for(let k=0;k<5;k++){const a=pr2()*Math.PI*2,r=1.8+pr2()*(pr-2.3);const lp=add(W,new THREE.CylinderGeometry(.38+pr2()*.2,.38,.05,9),mat(0x3f9b4a),Math.cos(a)*r,.19,Math.sin(a)*r,false);if(k%2)add(W,GEO.petal,mat(0xffb3d1),lp.position.x,.3,lp.position.z).scale.set(1,.5,1)}
 
  // --- petak pohon untuk tiap anak / murid ---
- const PL=[],HB=[],GROW=[],BFS=[],sway=[];
+ const PL=[],HB=[],GROW=[],BFS=[],sway=[],STARS=[];
  P.forEach((p,i)=>{const a=n===1?Math.PI*.82:(i+.5)/n*Math.PI*2,x=Math.sin(a)*R0,z=Math.cos(a)*R0,r=rng(p.id),G=new THREE.Group();G.position.set(x,0,z);W.add(G);
   add(G,new THREE.CylinderGeometry(3.2,3.45,.45,12),mat(0xc0814f),0,.22,0);add(G,new THREE.CylinderGeometry(2.95,2.95,.5,12),mat(0x6b4429),0,.24,0,false);
   const s=t3Stage(p.h),hh=Math.min(p.h,40),T=new THREE.Group();T.position.y=.49;G.add(T);
@@ -1212,6 +1252,7 @@ async function mountTaman(){
   const BC=[0x60a5fa,0xf472b6,0xfbbf24,0xa78bfa,0x34d399,0xfb923c];for(let k=0;k<Math.min(6,p.pr);k++){const b=new THREE.Group(),wm=mat(BC[k%6],{side:THREE.DoubleSide});
    const w1=new THREE.Mesh(GEO.wing,wm),w2=new THREE.Mesh(GEO.wing,wm);w2.scale.x=-1;b.add(w1,w2);const bd=new THREE.Mesh(new THREE.CylinderGeometry(.04,.04,.36,4).rotateX(Math.PI/2),mat(0x333333));b.add(bd);
    b.userData={w1,w2,rad:1.5+k*.28+r()*.3,sp:(.5+r()*.5)*(k%2?1:-1),ph:r()*6.3,y:.9+Math.min(top,4)*.55+r()*.6};G.add(b);BFS.push(b)}
+  const sgeo=new THREE.OctahedronGeometry(.24,0),smat=new THREE.MeshStandardMaterial({color:0xffd23f,emissive:0xffb000,emissiveIntensity:.6,flatShading:true,metalness:.3,roughness:.4});for(let k=0,ns=Math.min(8,Math.floor(p.xp/100));k<ns;k++){const st=new THREE.Mesh(sgeo,smat);st.userData={a:k/ns*Math.PI*2,y:.49+top+.15,rad:Math.min(2.4,1+top*.25)};G.add(st);STARS.push(st)}
   const lb=label(`${T3STG[s][0]} ${p.nama}`);lb.position.set(0,.49+top+1,0);G.add(lb);
   const hb=new THREE.Mesh(new THREE.CylinderGeometry(3.4,3.4,top+2.4,8),new THREE.MeshBasicMaterial({visible:false}));hb.position.y=(top+2.4)/2;hb.userData.pid=p.id;G.add(hb);HB.push(hb);
   PL.push({p,G,top})});
@@ -1275,6 +1316,7 @@ async function mountTaman(){
   sway.forEach((o,i)=>{o.rotation.z=Math.sin(t*1.1+i*1.7)*.018;o.rotation.x=Math.cos(t*.9+i)*.012});
   for(const d of DROPS){const u=(t*.55+d.userData.ph)%1;d.position.set(Math.cos(d.userData.a)*u*1.5,2.7+u*2.6-u*u*3.3,Math.sin(d.userData.a)*u*1.5)}
   for(const b of BFS){const U=b.userData,an=t*U.sp+U.ph,f=Math.sin(t*16+U.ph)*.9;b.position.set(Math.cos(an)*U.rad,U.y+Math.sin(t*2.3+U.ph)*.35,Math.sin(an)*U.rad);b.rotation.y=-an+(U.sp>0?0:Math.PI);U.w1.rotation.z=f;U.w2.rotation.z=-f}
+  for(const st of STARS){const U=st.userData,an=U.a+t*.5;st.position.set(Math.cos(an)*U.rad,U.y+Math.sin(t*2+U.a)*.15,Math.sin(an)*U.rad);st.rotation.y=t*2}
   for(const c of CL){c.position.x+=c.userData.sp*dt;if(c.position.x>70)c.position.x=-70}
   if(ffGeo){const a=ffGeo.attributes.position;FF.forEach((f,k)=>a.setXYZ(k,f.x+Math.sin(t*.7+f.ph)*.8,f.y+Math.sin(t*1.3+f.ph)*.4,f.z+Math.cos(t*.6+f.ph)*.8));a.needsUpdate=true}
   if(fly){fly.k=Math.min(1,fly.k+dt/1.3);const e=1-Math.pow(1-fly.k,3);cam.position.lerpVectors(fly.p0,fly.p1,e);ctl.target.lerpVectors(fly.t0,fly.t1,e);if(fly.k>=1){if(fly.auto)ctl.autoRotate=true;fly=null}}
@@ -1284,6 +1326,375 @@ async function mountTaman(){
   ren.dispose();if(ren.forceContextLoss)ren.forceContextLoss();if(T3&&T3.stop===stop)T3=null}
  T3={stop,focus,reset};frame();
 }
+
+// ================== GAME BELAJAR (wali murid) ==================
+// Kelas 1 SD – 3 SMP. 4 game: Kuis Petualangan, Balap Hitung, Kartu Pasangan, Susun Kata.
+// Matematika dibuat otomatis per kelas (soal tak terbatas); mapel lain dari bank soal per jenjang.
+const GL=['1 SD','2 SD','3 SD','4 SD','5 SD','6 SD','1 SMP','2 SMP','3 SMP'];
+const gBand=g=>g<=2?0:g<=4?1:g<=6?2:3,GBAND=['Kelas 1–2 SD','Kelas 3–4 SD','Kelas 5–6 SD','SMP'];
+const GMAPEL=[['mtk','🔢','Matematika','#e0ebff'],['ind','📖','B. Indonesia','#ffe4e6'],['ing','🇬🇧','B. Inggris','#dcfce7'],['ipa','🔬','IPA','#cffafe'],['ips','🌏','IPS & PPKn','#ffedd5']];
+const GMODE={kuis:['🧠','Kuis Petualangan','10 soal, 3 nyawa ❤️ — jawab sebelum waktu habis!','b4'],balap:['⚡','Balap Hitung','60 detik, jawab soal hitung sebanyak-banyaknya.','b1'],pasang:['🃏','Kartu Pasangan','Buka kartu dan temukan pasangannya. Latih ingatan!','b2'],susun:['🔤','Susun Kata','Susun huruf acak jadi kata yang benar.','b3']};
+const GMODES={mtk:['kuis','balap','pasang'],ind:['kuis','pasang','susun'],ing:['kuis','pasang','susun'],ipa:['kuis'],ips:['kuis']};
+// Bank soal: [pertanyaan, jawaban benar, pengecoh, pengecoh, pengecoh]
+const GQ={
+ind:[[
+['Huruf vokal adalah…','a, i, u, e, o','b, c, d, f, g','k, l, m, n, p','r, s, t, w, y'],
+['Lawan kata "besar" adalah…','kecil','tinggi','luas','berat'],
+['Lawan kata "panas" adalah…','dingin','hangat','terang','basah'],
+['Huruf b-u-k-u dibaca…','buku','baku','biku','beku'],
+['Kalimat yang benar adalah…','Adik minum susu.','Susu minum adik.','Adik susu minum.','Minum adik susu.'],
+['Jumlah huruf pada kata "sekolah" adalah…','7','6','8','5'],
+['Sapaan untuk guru laki-laki adalah…','Bapak','Kakak','Adik','Nenek'],
+['Persamaan kata "pandai" adalah…','pintar','malas','lambat','lupa'],
+['Tanda baca di akhir kalimat tanya adalah…','tanda tanya (?)','titik (.)','koma (,)','tanda seru (!)'],
+['Kata "mata" terdiri dari … suku kata.','2','1','3','4'],
+['Ucapan saat menerima hadiah adalah…','Terima kasih','Selamat tidur','Permisi','Sampai jumpa'],
+['Lawan kata "siang" adalah…','malam','pagi','sore','terang']],[
+['Kalimat yang berisi ide pokok paragraf disebut…','kalimat utama','kalimat penjelas','kalimat tanya','kalimat seru'],
+['Lawan kata "rajin" adalah…','malas','tekun','giat','pintar'],
+['Penulisan nama kota yang benar adalah…','Surabaya','surabaya','SUrabaya','surabayA'],
+['Kata dasar "tulis" diberi awalan me- menjadi…','menulis','metulis','mentulis','menyulis'],
+['Puisi tersusun atas…','bait dan larik','bab dan subbab','soal dan jawaban','tabel dan kolom'],
+['Cerita yang tokohnya hewan berperilaku seperti manusia disebut…','fabel','legenda','mite','biografi'],
+['Persamaan kata "gembira" adalah…','senang','sedih','marah','takut'],
+['Kata dasar "sapu" diberi awalan me- menjadi…','menyapu','mesapu','mensapu','mengsapu'],
+['Legenda "Malin Kundang" berasal dari…','Sumatera Barat','Jawa Timur','Bali','Papua'],
+['Huruf kapital dipakai pada…','awal kalimat','tengah kata','akhir kata','setelah koma'],
+['Kata baku dari "aktifitas" adalah…','aktivitas','aktifitas','aktipitas','aktiviti'],
+['Tokoh utama dalam cerita disebut juga…','protagonis','antagonis','figuran','narator']],[
+['Kalimat yang berisi pendapat pribadi disebut…','opini','fakta','perintah','sapaan'],
+['"Menurut data BPS, jumlah penduduk naik." Kalimat ini merupakan…','fakta','opini','ajakan','perintah'],
+['Unsur cerita berupa tempat, waktu, dan suasana disebut…','latar','alur','tokoh','amanat'],
+['Pesan moral dalam cerita disebut…','amanat','tema','alur','sudut pandang'],
+['Kata baku yang benar adalah…','kualitas','kwalitas','kualitet','kwalitet'],
+['Pantun terdiri atas sampiran dan…','isi','judul','penutup','pembuka'],
+['Pola rima pantun adalah…','a-b-a-b','a-a-b-b','a-b-b-a','a-a-a-b'],
+['Teks yang berisi langkah-langkah membuat sesuatu disebut teks…','prosedur','narasi','deskripsi','eksplanasi'],
+['Kata dasar dari "memperbaiki" adalah…','baik','perbaiki','baiki','memper'],
+['Penulisan kata depan yang benar adalah…','di rumah','dirumah','di-rumah','Di Rumah'],
+['Lawan kata "optimis" adalah…','pesimis','yakin','percaya','semangat'],
+['Surat dari sekolah kepada orang tua termasuk surat…','resmi','pribadi','pembaca','cinta']],[
+['Teks yang berisi penilaian terhadap sebuah karya disebut teks…','ulasan','prosedur','narasi','berita'],
+['Struktur teks eksposisi adalah…','tesis, argumentasi, penegasan ulang','orientasi, komplikasi, resolusi','tujuan, bahan, langkah','pernyataan umum, deskripsi, penutup'],
+['Unsur berita "when" menjelaskan…','waktu kejadian','tempat kejadian','pelaku','penyebab'],
+['Majas perbandingan yang memakai kata "seperti" disebut…','simile','personifikasi','hiperbola','litotes'],
+['"Angin berbisik di telingaku" mengandung majas…','personifikasi','hiperbola','simile','litotes'],
+['Kata serapan yang baku adalah…','sistem','sistim','sistym','sestem'],
+['Kisah hidup seseorang yang ditulis orang lain disebut…','biografi','autobiografi','fabel','anekdot'],
+['Cerita lucu yang berisi sindiran disebut…','anekdot','fabel','legenda','hikayat'],
+['Kalimat efektif adalah kalimat yang…','singkat, jelas, sesuai kaidah','panjang dan berbelit','penuh majas','tidak punya predikat'],
+['Penulisan yang benar adalah…','pertanggungjawaban','pertanggung jawaban','per tanggung jawaban','pertanggung-jawaban'],
+['Hikayat termasuk karya sastra…','prosa lama','puisi baru','prosa baru','drama modern'],
+['Kata hubung yang menyatakan sebab adalah…','karena','tetapi','lalu','atau']]],
+ing:[[
+['Bahasa Inggris "kucing" adalah…','cat','dog','bird','fish'],
+['"Red" artinya…','merah','biru','hijau','kuning'],
+['"Five" adalah angka…','5','4','6','9'],
+['Bahasa Inggris "apel" adalah…','apple','orange','banana','grape'],
+['"Good morning" diucapkan pada…','pagi hari','malam hari','siang hari','sore hari'],
+['Bahasa Inggris "ibu" adalah…','mother','father','sister','brother'],
+['"Book" artinya…','buku','pensil','tas','meja'],
+['Bahasa Inggris "satu" adalah…','one','two','three','ten'],
+['"Big" artinya…','besar','kecil','panjang','pendek'],
+['Bahasa Inggris "mata" adalah…','eye','ear','nose','hand'],
+['"Thank you" artinya…','terima kasih','maaf','permisi','selamat datang'],
+['Warna langit cerah dalam bahasa Inggris adalah…','blue','red','black','brown']],[
+['I ___ a student.','am','is','are','be'],
+['Bahasa Inggris "dapur" adalah…','kitchen','bedroom','bathroom','garden'],
+['Jam 07.00 dalam bahasa Inggris…',"It's seven o'clock","It's six o'clock","It's eight o'clock",'It\'s seven thirty'],
+['"Monday" artinya…','Senin','Selasa','Minggu','Jumat'],
+['Bahasa Inggris "dua puluh" adalah…','twenty','twelve','two','twenty-two'],
+['She ___ my sister.','is','am','are','be'],
+['Lawan kata "happy" adalah…','sad','glad','big','fast'],
+['"Teacher" artinya…','guru','murid','dokter','polisi'],
+['"Hand" artinya…','tangan','kaki','kepala','bahu'],
+['How many legs does a chicken have?','two','four','six','eight'],
+['Bahasa Inggris "Rabu" adalah…','Wednesday','Tuesday','Thursday','Friday'],
+['They ___ playing football.','are','is','am','be']],[
+['Yesterday I ___ to the market.','went','go','goes','going'],
+['Bentuk jamak dari "child" adalah…','children','childs','childes','childrens'],
+['Comparative dari "tall" adalah…','taller','tallest','more tall','tall'],
+['Where do you buy medicine?','at the pharmacy','at the bakery','at the library','at the zoo'],
+['"How much is this book?" menanyakan…','harga','jumlah halaman','waktu','tempat'],
+['She ___ English every day.','studies','study','studying','studied'],
+['Bahasa Inggris "kantor pos" adalah…','post office','police station','hospital','bank'],
+['Lawan kata "expensive" adalah…','cheap','rich','big','heavy'],
+['"Turn left" artinya…','belok kiri','belok kanan','jalan lurus','putar balik'],
+['My father ___ a doctor.','is','are','am','were'],
+['Which one is a fruit?','mango','carrot','spinach','cabbage'],
+['"I\'m sorry" digunakan untuk…','meminta maaf','berterima kasih','menyapa','berpamitan']],[
+['She has ___ her homework.','finished','finish','finishing','finishes'],
+['If it rains, I ___ stay at home.','will','did','was','am'],
+['"Laskar Pelangi" ___ written by Andrea Hirata.','was','were','are','been'],
+['Choose the correct sentence.',"He doesn't like coffee.","He don't like coffee.",'He not like coffee.',"He doesn't likes coffee."],
+['Synonym of "begin" is…','start','finish','stop','end'],
+['Text that retells past experiences is…','recount text','procedure text','descriptive text','report text'],
+['"Could you help me, please?" is used for…','asking for help','giving an opinion','apologizing','congratulating'],
+['The superlative of "good" is…','the best','the goodest','better','the most good'],
+['I have lived here ___ 2020.','since','for','at','on'],
+['Text that describes a particular person or place is…','descriptive text','narrative text','recount text','procedure text'],
+['Mount Bromo is ___ beautiful mountain.','a','an','some','many'],
+['While I was cooking, my phone ___.','rang','rings','ringing','ring']]],
+ipa:[[
+['Kita melihat menggunakan…','mata','telinga','hidung','lidah'],
+['Hewan yang hidup di air adalah…','ikan','kucing','ayam','kambing'],
+['Tumbuhan butuh … untuk tumbuh.','air dan cahaya matahari','permen','plastik','batu'],
+['Matahari terbit di sebelah…','timur','barat','utara','selatan'],
+['Sapi memakan…','rumput','daging','ikan','serangga'],
+['Indra pengecap adalah…','lidah','kulit','mata','hidung'],
+['Hewan berkaki dua adalah…','ayam','kucing','sapi','anjing'],
+['Air yang dimasukkan ke freezer akan menjadi…','es','uap','pasir','minyak'],
+['Bagian tumbuhan yang menyerap air dari tanah adalah…','akar','daun','bunga','buah'],
+['Gigi sebaiknya disikat…','2 kali sehari','1 kali seminggu','1 kali sebulan','tidak perlu'],
+['Kupu-kupu berasal dari…','ulat','ikan','burung','cacing'],
+['Benda yang bisa ditarik magnet adalah…','paku besi','kertas','kayu','plastik']],[
+['Tumbuhan membuat makanan sendiri melalui…','fotosintesis','respirasi','penguapan','pencernaan'],
+['Hewan pemakan tumbuhan disebut…','herbivora','karnivora','omnivora','insektivora'],
+['Tiga wujud benda adalah…','padat, cair, gas','keras, lunak, cair','besar, kecil, sedang','panas, dingin, hangat'],
+['Perubahan air menjadi uap disebut…','menguap','membeku','mencair','mengembun'],
+['Sumber energi panas terbesar bagi bumi adalah…','matahari','bulan','api unggun','listrik'],
+['Planet tempat kita tinggal adalah…','Bumi','Mars','Venus','Jupiter'],
+['Organ pernapasan manusia adalah…','paru-paru','jantung','lambung','ginjal'],
+['Bunyi dapat merambat melalui…','zat padat, cair, dan gas','hanya udara','hanya air','ruang hampa'],
+['Gaya yang membuat benda jatuh ke bawah adalah…','gaya gravitasi','gaya magnet','gaya pegas','gaya gesek'],
+['Hewan yang berkembang biak dengan bertelur disebut…','ovipar','vivipar','ovovivipar','vegetatif'],
+['Contoh sumber energi terbarukan adalah…','sinar matahari','minyak bumi','batu bara','gas alam'],
+['Bagian tumbuhan tempat fotosintesis adalah…','daun','akar','batang','bunga']],[
+['Organ yang memompa darah ke seluruh tubuh adalah…','jantung','paru-paru','hati','ginjal'],
+['Pembuluh darah yang membawa darah keluar dari jantung adalah…','arteri','vena','kapiler','trakea'],
+['Zat hijau daun disebut…','klorofil','stomata','xilem','floem'],
+['Bulan berada di antara bumi dan matahari menyebabkan…','gerhana matahari','gerhana bulan','pasang surut','musim kemarau'],
+['Planet terbesar di tata surya adalah…','Jupiter','Saturnus','Bumi','Neptunus'],
+['Lampu lain tetap menyala walau satu lampu putus pada rangkaian…','paralel','seri','terbuka','tunggal'],
+['Penyesuaian diri makhluk hidup dengan lingkungannya disebut…','adaptasi','metamorfosis','fotosintesis','respirasi'],
+['Cahaya yang mengenai cermin datar akan…','dipantulkan','dibiaskan','diuraikan','menghilang'],
+['Pencernaan kimiawi pertama kali terjadi di…','mulut','lambung','usus besar','kerongkongan'],
+['Contoh perubahan kimia adalah…','kertas dibakar','es mencair','air menguap','lilin meleleh'],
+['Lapisan bumi paling luar disebut…','kerak bumi','mantel','inti luar','inti dalam'],
+['Kelelawar mencari makan di malam hari dengan…','ekolokasi (pantulan bunyi)','fotosintesis','mimikri','autotomi']],[
+['Satuan SI untuk massa adalah…','kilogram','gram','newton','liter'],
+['Rumus kecepatan adalah…','jarak ÷ waktu','waktu ÷ jarak','jarak × waktu','massa × percepatan'],
+['Bagian sel yang mengendalikan seluruh kegiatan sel adalah…','inti sel','mitokondria','ribosom','dinding sel'],
+['Organel tempat respirasi sel adalah…','mitokondria','kloroplas','vakuola','lisosom'],
+['Zat dengan pH kurang dari 7 bersifat…','asam','basa','netral','logam'],
+['Hukum I Newton disebut juga hukum…','kelembaman','aksi-reaksi','percepatan','gravitasi'],
+['Alat untuk mengukur suhu adalah…','termometer','barometer','higrometer','amperemeter'],
+['Rumus hukum Ohm adalah…','V = I × R','F = m × a','E = m × c²','W = F × s'],
+['Pewarisan sifat dari induk kepada keturunannya disebut…','hereditas','adaptasi','evolusi','homeostasis'],
+['Jumlah kromosom tubuh manusia normal adalah…','46','23','44','48'],
+['Lapisan atmosfer tempat terjadinya cuaca adalah…','troposfer','stratosfer','mesosfer','termosfer'],
+['Energi yang dimiliki benda karena geraknya disebut energi…','kinetik','potensial','kimia','listrik']]],
+ips:[[
+['Lambang negara Indonesia adalah…','Garuda Pancasila','Harimau','Elang Jawa','Komodo'],
+['Bendera Indonesia berwarna…','merah putih','merah biru','putih hijau','kuning merah'],
+['Orang yang mengobati orang sakit adalah…','dokter','petani','pilot','nelayan'],
+['Hari Kemerdekaan Indonesia setiap tanggal…','17 Agustus','1 Juni','21 April','2 Mei'],
+['Ayah dari ayah kita disebut…','kakek','paman','sepupu','adik'],
+['Sampah harus dibuang ke…','tempat sampah','sungai','jalan','selokan'],
+['Pekerjaan nelayan adalah…','menangkap ikan','menanam padi','mengajar','menjahit'],
+['Lagu kebangsaan Indonesia adalah…','Indonesia Raya','Garuda Pancasila','Halo-Halo Bandung','Bagimu Negeri'],
+['Sila pertama Pancasila adalah…','Ketuhanan Yang Maha Esa','Persatuan Indonesia','Kerakyatan','Keadilan sosial'],
+['Jika berbeda pendapat dengan teman, kita harus…','saling menghargai','marah','mengejek','memukul'],
+['Lampu lalu lintas merah artinya…','berhenti','jalan','hati-hati','belok'],
+['Mata uang Indonesia adalah…','Rupiah','Ringgit','Dolar','Peso']],[
+['Gambar permukaan bumi pada bidang datar disebut…','peta','globe','kompas','foto'],
+['Arah yang berlawanan dengan utara adalah…','selatan','timur','barat','tenggara'],
+['Kegiatan menghasilkan barang atau jasa disebut…','produksi','konsumsi','distribusi','promosi'],
+['Orang yang menyalurkan barang dari produsen ke konsumen disebut…','distributor','konsumen','produsen','investor'],
+['Candi Borobudur terletak di provinsi…','Jawa Tengah','Jawa Barat','Bali','Banten'],
+['Rumah Gadang adalah rumah adat dari…','Sumatera Barat','Papua','Jawa Barat','Kalimantan Timur'],
+['Alat musik angklung berasal dari…','Jawa Barat','Sumatera Utara','Bali','Maluku'],
+['Semboyan bangsa Indonesia adalah…','Bhinneka Tunggal Ika','Tut Wuri Handayani','Gotong Royong','Merdeka atau Mati'],
+['Proklamator kemerdekaan Indonesia adalah…','Soekarno dan Mohammad Hatta','Soekarno dan Soeharto','Hatta dan Sjahrir','Ki Hajar Dewantara dan Kartini'],
+['Pahlawan emansipasi wanita dari Jepara adalah…','R.A. Kartini','Cut Nyak Dien','Dewi Sartika','Martha Christina Tiahahu'],
+['Bekerja sama menyelesaikan pekerjaan bersama disebut…','gotong royong','egois','individualis','persaingan'],
+['Danau Toba terletak di provinsi…','Sumatera Utara','Sumatera Barat','Aceh','Riau']],[
+['Sumpah Pemuda diikrarkan pada tanggal…','28 Oktober 1928','17 Agustus 1945','20 Mei 1908','10 November 1945'],
+['Budi Utomo berdiri pada tahun…','1908','1928','1945','1912'],
+['ASEAN didirikan di kota…','Bangkok','Jakarta','Kuala Lumpur','Manila'],
+['Negara ASEAN yang tidak pernah dijajah adalah…','Thailand','Indonesia','Filipina','Malaysia'],
+['Naskah proklamasi diketik oleh…','Sayuti Melik','Soekarno','Mohammad Hatta','Ahmad Soebardjo'],
+['Hari Pahlawan diperingati setiap tanggal…','10 November','28 Oktober','1 Oktober','20 Mei'],
+['Menyisihkan uang untuk kebutuhan masa depan disebut…','menabung','konsumsi','berutang','boros'],
+['Lembaga yang membentuk undang-undang bersama presiden adalah…','DPR','MA','BPK','KPU'],
+['Garis khayal yang membagi bumi menjadi belahan utara dan selatan adalah…','khatulistiwa','garis bujur 0°','garis balik utara','garis tanggal internasional'],
+['Pemilu di Indonesia diselenggarakan oleh…','KPU','DPR','MPR','BPK'],
+['Mata uang negara Jepang adalah…','Yen','Won','Yuan','Baht'],
+['Peristiwa Rengasdengklok terjadi menjelang…','Proklamasi Kemerdekaan','Sumpah Pemuda','Kebangkitan Nasional','Konferensi Asia Afrika']],[
+['Kerajaan Hindu tertua di Indonesia adalah…','Kutai','Majapahit','Sriwijaya','Mataram Kuno'],
+['Kerajaan maritim bercorak Buddha di Sumatera adalah…','Sriwijaya','Majapahit','Singasari','Demak'],
+['Sumpah Palapa diucapkan oleh…','Gajah Mada','Hayam Wuruk','Ken Arok','Raden Wijaya'],
+['Kerajaan Islam pertama di Pulau Jawa adalah…','Demak','Mataram Islam','Banten','Pajang'],
+['Konferensi Asia Afrika 1955 diadakan di kota…','Bandung','Jakarta','Bogor','Yogyakarta'],
+['Kelangkaan terjadi karena…','kebutuhan tak terbatas, sumber daya terbatas','barang terlalu banyak','harga selalu turun','semua orang kaya'],
+['Pasar yang hanya memiliki satu penjual disebut pasar…','monopoli','oligopoli','persaingan sempurna','monopsoni'],
+['Interaksi sosial yang mengarah pada persatuan disebut…','asosiatif','disosiatif','konflik','kontravensi'],
+['VOC dibubarkan pada tahun…','1799','1602','1811','1945'],
+['Sistem tanam paksa diterapkan oleh…','Van den Bosch','Daendels','Raffles','Cornelis de Houtman'],
+['Bapak Pendidikan Nasional adalah…','Ki Hajar Dewantara','R.A. Kartini','Dewi Sartika','Mohammad Hatta'],
+['Lembaga yang berwenang mengubah UUD 1945 adalah…','MPR','DPR','Presiden','MK']]]};
+// Pasangan untuk Kartu Pasangan
+const GPAIR={
+ing:[[['cat','kucing'],['dog','anjing'],['red','merah'],['book','buku'],['eye','mata'],['apple','apel'],['one','satu'],['sun','matahari'],['house','rumah'],['fish','ikan'],['ball','bola'],['milk','susu']],
+ [['kitchen','dapur'],['teacher','guru'],['Monday','Senin'],['river','sungai'],['chair','kursi'],['window','jendela'],['friend','teman'],['school','sekolah'],['flower','bunga'],['rain','hujan'],['hungry','lapar'],['morning','pagi']],
+ [['market','pasar'],['office','kantor'],['medicine','obat'],['cheap','murah'],['village','desa'],['ocean','samudra'],['weather','cuaca'],['journey','perjalanan'],['healthy','sehat'],['library','perpustakaan'],['farmer','petani'],['bridge','jembatan']],
+ [['environment','lingkungan'],['government','pemerintah'],['knowledge','pengetahuan'],['experience','pengalaman'],['achievement','prestasi'],['neighbor','tetangga'],['believe','percaya'],['improve','meningkatkan'],['island','pulau'],['honest','jujur'],['brave','berani'],['discuss','berdiskusi']]],
+ind:[[['besar','kecil'],['panas','dingin'],['tinggi','rendah'],['siang','malam'],['atas','bawah'],['buka','tutup'],['maju','mundur'],['baru','lama'],['gemuk','kurus'],['naik','turun']],
+ [['gembira','senang'],['pandai','pintar'],['sulit','sukar'],['indah','elok'],['cepat','lekas'],['hadiah','kado'],['bohong','dusta'],['sedih','duka']],
+ [['optimis','pesimis'],['mayoritas','minoritas'],['ekspor','impor'],['maksimal','minimal'],['positif','negatif'],['hemat','boros'],['produsen','konsumen'],['rajin','malas']],
+ [['kendala','hambatan'],['akurat','tepat'],['kolaborasi','kerja sama'],['inovasi','pembaruan'],['signifikan','berarti'],['kompeten','cakap'],['relevan','berkaitan'],['evaluasi','penilaian']]]};
+const GPAIRT={ing:'Pasangkan kata bahasa Inggris dengan artinya',ind:['Pasangkan kata dengan lawan katanya','Pasangkan kata dengan persamaan katanya','Pasangkan kata dengan lawan katanya','Pasangkan kata dengan persamaan katanya'],mtk:'Pasangkan soal dengan hasilnya'};
+// Kata untuk Susun Kata: [kata, petunjuk]
+const GWORD={
+ind:[[['KUCING','🐱'],['IKAN','🐟'],['BUKU','📖'],['BOLA','⚽'],['RUMAH','🏠'],['APEL','🍎'],['BULAN','🌙'],['MOBIL','🚗'],['PISANG','🍌'],['BUNGA','🌸'],['SUSU','🥛'],['KUDA','🐴']],
+ [['SEKOLAH','Tempat belajar bersama guru'],['PETANI','Orang yang bekerja di sawah'],['PELANGI','Lengkungan warna-warni setelah hujan'],['JENDELA','Lubang di dinding tempat cahaya masuk'],['KELINCI','Hewan bertelinga panjang, suka wortel'],['SEPATU','Dipakai di kaki saat berjalan'],['MATAHARI','Bersinar terang di siang hari'],['PANTAI','Tempat bertemunya laut dan daratan'],['GURU','Orang yang mengajar di kelas'],['GAJAH','Hewan besar berbelalai']],
+ [['PANTUN','Puisi lama bersampiran dan berisi'],['DONGENG','Cerita rakyat yang dikisahkan turun-temurun'],['AMANAT','Pesan moral dalam cerita'],['PUISI','Karya sastra berbait dan berlarik'],['SINONIM','Kata yang maknanya sama'],['ANTONIM','Kata yang maknanya berlawanan'],['PARAGRAF','Kumpulan kalimat dengan satu ide pokok'],['LATAR','Tempat, waktu, dan suasana cerita'],['TOKOH','Pelaku dalam cerita'],['JUDUL','Kepala sebuah karangan']],
+ [['MAJAS','Gaya bahasa untuk efek tertentu'],['ANEKDOT','Cerita lucu berisi sindiran'],['BIOGRAFI','Kisah hidup tokoh yang ditulis orang lain'],['EKSPOSISI','Teks berisi gagasan dan argumen'],['HIKAYAT','Prosa lama tentang kehebatan tokoh'],['OPINI','Pendapat pribadi'],['FAKTA','Hal yang benar-benar terjadi'],['ARGUMEN','Alasan untuk mendukung pendapat'],['KONJUNGSI','Kata hubung'],['RESENSI','Ulasan tentang sebuah buku']]]};
+GWORD.ing=GPAIR.ing.map(b=>b.filter(([w])=>/^[A-Za-z]+$/.test(w)).map(([w,a])=>[w.toUpperCase(),'Artinya: '+a]));
+
+// --- Matematika otomatis per kelas ---
+const gR=(a,b)=>a+Math.floor(Math.random()*(b-a+1)),gPk=a=>a[gR(0,a.length-1)];
+const gShuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const gNum=n=>String(n).replace('.',',').replace(/^-/,'−');
+const gFpb=(a,b)=>b?gFpb(b,a%b):a;
+function gNear(a,neg){const s=new Set([a]),c=[a+1,a-1,a+2,a-2,a+10,a-10,a*2,a+5,a-5,a+gR(3,9),a-gR(3,9)];for(const x of gShuf(c)){if(s.size>=4)break;if(!neg&&x<0)continue;if(x!==a)s.add(x)}let k=11;while(s.size<4)s.add(a+k++);return[...s].slice(1)}
+function mtkQ(g){let q,a,w=null,neg=false,u='';
+ switch(g){
+ case 1:{const t=gPk(['+','+','−']);let x=gR(1,10),y=gR(1,10);if(t==='−'&&y>x)[x,y]=[y,x];q=`${x} ${t} ${y}`;a=t==='+'?x+y:x-y;break}
+ case 2:{const t=gPk(['+','−','×']);if(t==='×'){const x=gR(2,5),y=gR(1,10);q=`${x} × ${y}`;a=x*y}else{let x=gR(10,90),y=gR(2,40);if(t==='−'&&y>x)[x,y]=[y,x];if(t==='+'&&x+y>100)y=100-x;q=`${x} ${t} ${y}`;a=t==='+'?x+y:x-y}break}
+ case 3:{const t=gPk(['×','÷','+','−']);if(t==='×'){const x=gR(2,10),y=gR(2,10);q=`${x} × ${y}`;a=x*y}else if(t==='÷'){const y=gR(2,10),a0=gR(2,10);q=`${y*a0} ÷ ${y}`;a=a0}else{let x=gR(100,700),y=gR(20,299);if(t==='−'&&y>x)[x,y]=[y,x];q=`${x} ${t} ${y}`;a=t==='+'?x+y:x-y}break}
+ case 4:{const t=gPk(['×','÷','kpk','pec']);if(t==='×'){const x=gR(12,49),y=gR(2,9);q=`${x} × ${y}`;a=x*y}else if(t==='÷'){const y=gR(3,9),a0=gR(11,30);q=`${y*a0} ÷ ${y}`;a=a0}
+  else if(t==='kpk'){const x=gR(2,9),y=gR(2,12);if(x===y)return mtkQ(g);q=`KPK dari ${x} dan ${y}`;a=x*y/gFpb(x,y)}
+  else{const d=gR(5,12),x=gR(1,d-3),y=gR(1,d-1-x);q=`${x}/${d} + ${y}/${d}`;a=`${x+y}/${d}`;w=[`${x+y}/${d*2}`,`${x+y+1}/${d}`,`${x+y-1}/${d}`,`${x*y}/${d}`].filter((v,i,A)=>v!==`${x+y}/${d}`&&A.indexOf(v)===i).slice(0,3)}break}
+ case 5:{const t=gPk(['persen','desimal','luas','fpb']);if(t==='persen'){const p=gPk([10,20,25,50,75]),n=gR(2,10)*20;q=`${p}% dari ${n}`;a=p*n/100}
+  else if(t==='desimal'){const x=gR(11,89)/10,y=gR(11,89)/10,s=Math.round((x+y)*10)/10;q=`${gNum(x)} + ${gNum(y)}`;a=gNum(s);w=[gNum(Math.round((s+1)*10)/10),gNum(Math.round((s-.1)*10)/10),gNum(Math.round((s+.2)*10)/10)]}
+  else if(t==='luas'){const p=gR(4,15),l=gR(2,p-1);if(Math.random()<.5){q=`Luas persegi panjang ${p} cm × ${l} cm`;a=p*l}else{const al=gR(2,10)*2,ti=gR(3,12);q=`Luas segitiga alas ${al} cm, tinggi ${ti} cm`;a=al*ti/2}u=' cm²'}
+  else{const f=gPk([2,3,4,5,6]),x=f*gR(2,9),y=f*gR(2,9);if(x===y)return mtkQ(g);q=`FPB dari ${x} dan ${y}`;a=gFpb(x,y)}break}
+ case 6:{const t=gPk(['neg','vol','rata','neg']);neg=true;if(t==='neg'){const x=-gR(2,20),y=gR(2,25),o=gPk(['+','−']);q=`${gNum(x)} ${o} ${y}`;a=o==='+'?x+y:x-y}
+  else if(t==='vol'){const s=gR(2,10);q=`Volume kubus sisi ${s} cm`;a=s*s*s;u=' cm³';neg=false}
+  else{const n=4,m=gR(5,9)*10,arr=[m-gR(1,9),m+gR(1,9)];arr.push(m-gR(1,5)),arr.push(4*m-arr.reduce((p,c)=>p+c,0));q=`Rata-rata ${arr.join(', ')}`;a=m;neg=false}break}
+ case 7:{const t=gPk(['pers','neg','rasio','diskon']);if(t==='pers'){const x=gR(1,12),k=gR(2,9),b=gR(1,20);q=`${k}x + ${b} = ${k*x+b}, x =`;a=x}
+  else if(t==='neg'){neg=true;const x=-gR(2,12),y=gPk([-1,1])*gR(2,9);q=`${gNum(x)} × ${y<0?'('+gNum(y)+')':y}`;a=x*y}
+  else if(t==='rasio'){const p=gR(1,5),r=gR(2,7);if(p===r)return mtkQ(g);const k=gR(2,8);q=`A : B = ${p} : ${r}. Jika A = ${p*k}, B =`;a=r*k}
+  else{const h=gR(2,20)*10000,d=gPk([10,20,25,50]),b=h-h*d/100;q=`Harga Rp${h.toLocaleString('id-ID')} diskon ${d}%. Bayar:`;a='Rp'+b.toLocaleString('id-ID');w=gNear(b/1000,false).map(v=>'Rp'+(v*1000).toLocaleString('id-ID'))}break}
+ case 8:{const t=gPk(['pyth','fx','kuadrat','grad']);if(t==='pyth'){const [x,y,z]=gPk([[3,4,5],[5,12,13],[8,15,17],[7,24,25]]),k=x===3?gR(1,4):1;q=`Sisi siku-siku ${x*k} dan ${y*k}. Sisi miring =`;a=z*k}
+  else if(t==='fx'){const m=gR(2,7),c=gR(-9,9),x=gR(-4,6);neg=true;q=`f(x) = ${m}x ${c<0?'− '+(-c):'+ '+c}. f(${gNum(x)}) =`;a=m*x+c}
+  else if(t==='kuadrat'){const x=gR(11,25);q=`${x}²`;a=x*x}
+  else{const m=gR(-4,5)||2,x1=gR(-3,3),y1=gR(-5,5),dx=gR(1,4);neg=true;q=`Gradien garis melalui (${x1}, ${y1}) dan (${x1+dx}, ${y1+m*dx})`;a=m}break}
+ default:{const t=gPk(['akar','pangkat','sqrt','tabung','peluang']);if(t==='akar'){let p=gR(1,7),r=gR(1,8);if(p===r)r++;q=`Akar-akar x² − ${p+r}x + ${p*r} = 0`;a=`${Math.min(p,r)} dan ${Math.max(p,r)}`;w=[`−${Math.min(p,r)} dan −${Math.max(p,r)}`,`${p*r} dan 1`,`${Math.min(p,r)} dan ${Math.max(p,r)+1}`]}
+  else if(t==='pangkat'){const b=gPk([2,3,5]),e=b===2?gR(4,8):b===3?gR(2,4):gR(2,3);q=`${b}${'⁰¹²³⁴⁵⁶⁷⁸⁹'[e]}`;a=b**e}
+  else if(t==='sqrt'){const x=gR(11,20);q=`√${x*x}`;a=x}
+  else if(t==='tabung'){const r=7*gR(1,2),ti=gR(2,10);q=`Volume tabung r = ${r} cm, t = ${ti} cm (π = 22/7)`;a=22*r*r*ti/7;u=' cm³'}
+  else{const [qq,aa,...ww]=gPk([['Peluang muncul angka genap pada dadu','1/2','1/3','1/6','2/3'],['Peluang muncul angka 6 pada dadu','1/6','1/2','1/3','6/6'],['Peluang muncul gambar pada koin','1/2','1/4','1','2/3'],['Peluang muncul angka prima pada dadu','1/2','1/3','2/3','1/6']]);q=qq;a=aa;w=ww}break}}
+ const isNum=typeof a==='number',opts=w||(isNum?gNear(a,neg):[]);
+ const fmt=v=>typeof v==='number'?gNum(v)+u:v,A=fmt(a);
+ return{q:q+(/[=:]$/.test(q)?' ?':' = ?'),a:A,o:gShuf([...new Set([A,...opts.map(fmt)])]),short:q.length<=13&&!u?q:null}}
+
+// --- data & state ---
+let GM={scr:'home',kid:null,lvl:null,mapel:'mtk'},gTick=null,gMute=false;try{gMute=localStorage.getItem('lp_gmute')==='1'}catch(e){}
+const gLvlOf=m=>{const s=String(m?.kelas||''),x=s.match(/(\d+)/);if(!x)return 3;const n=+x[1];if(/smp/i.test(s))return Math.min(9,6+n);if(/sma|smk/i.test(s))return 9;return Math.max(1,Math.min(9,n))};
+const gDoc=mid=>S.game.find(x=>x.id==='gm_'+mid);
+const gXp=mid=>gDoc(mid)?.xp||0;
+const GTITLE=['Pemula','Penjelajah','Pejuang Ilmu','Juara Kelas','Bintang Sekolah','Master LesGo!'];
+const gLevel=xp=>{const l=Math.floor(xp/250)+1;return{l,t:GTITLE[Math.min(GTITLE.length-1,l-1)],p:Math.round(xp%250/250*100)}};
+function gSnd(ok){if(gMute)return;try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return;const c=gSnd.c||(gSnd.c=new C()),o=c.createOscillator(),g=c.createGain();o.type=ok?'triangle':'sawtooth';const t=c.currentTime;
+ o.frequency.setValueAtTime(ok?660:220,t);o.frequency.exponentialRampToValueAtTime(ok?990:140,t+.18);g.gain.setValueAtTime(.12,t);g.gain.exponentialRampToValueAtTime(.001,t+.3);o.connect(g).connect(c.destination);o.start(t);o.stop(t+.3)}catch(e){}}
+function gArea(){const e=$('gArea');if(e&&view==='game')e.innerHTML=gScreen();else render()}
+function gStop(){GM.scr='home';if(gTick){clearInterval(gTick);gTick=null}}
+function gStartTick(){if(gTick)clearInterval(gTick);gTick=setInterval(()=>{if(view!=='game'||!['kuis','balap','pasang'].includes(GM.scr)){clearInterval(gTick);gTick=null;return}const now=Date.now();
+ if(GM.scr==='kuis'&&GM.pick==null){const left=Math.max(0,GM.dl-now),b=$('gTime');if(b)b.style.width=(left/GM.dur*100)+'%';if(!left)gAnswer(-1)}
+ if(GM.scr==='balap'){const left=Math.max(0,GM.end-now),b=$('gTime'),s=$('gSec');if(b)b.style.width=(left/60000*100)+'%';if(s)s.textContent=Math.ceil(left/1000);if(!left)gFinish()}
+ if(GM.scr==='pasang'){const s=$('gSec');if(s)s.textContent=Math.floor((now-GM.t0)/1000)}},200)}
+
+function o_game(){const kids=myKids();
+ if(GM.kid&&!kids.find(k=>k.id===GM.kid))GM.kid=null;if(!GM.kid&&kids.length)GM.kid=kids[0].id;
+ if(GM.lvl==null)GM.lvl=GM.kid?gLvlOf(M(GM.kid)):3;
+ return`<div id="gArea">${gScreen()}</div>`}
+function gPickKid(id){GM.kid=id;GM.lvl=gLvlOf(M(id));gArea()}
+function gScreen(){
+ if(GM.scr==='kuis')return gKuisV();if(GM.scr==='balap')return gBalapV();if(GM.scr==='pasang')return gPasangV();if(GM.scr==='susun')return gSusunV();if(GM.scr==='done')return gDoneV();
+ const kids=myKids(),m=M(GM.kid),xp=GM.kid?gXp(GM.kid):0,L=gLevel(xp),sis=O(myId())?.tipe==='murid',d=GM.kid&&gDoc(GM.kid),band=gBand(GM.lvl);
+ const best=k=>d?.best?.[k];const stars=n=>n?'⭐'.repeat(n)+'<span style="opacity:.25">'+'⭐'.repeat(3-n)+'</span>':'<span class="mut">Belum dimainkan</span>';
+ return`<div class="ghero"><div class="in"><div class="row between" style="align-items:flex-start"><div><div class="hi">🎮 Game Belajar LesGo!</div><h2>${m?`Ayo main, ${esc(m.nama.split(' ')[0])}!`:'Belajar sambil bermain'}</h2><p>Soal disesuaikan dengan kelas — dari 1 SD sampai 3 SMP.</p></div>
+  <button class="gmute" onclick="gMute=!gMute;try{localStorage.setItem('lp_gmute',gMute?'1':'0')}catch(e){};gArea()" title="Suara">${gMute?'🔇':'🔊'}</button></div>
+  ${kids.length>1?`<div class="gkids">${kids.map(k=>`<button class="${k.id===GM.kid?'on':''}" onclick="gPickKid('${k.id}')">${esc(k.nama.split(' ')[0])}</button>`).join('')}</div>`:''}
+  <div class="glv"><div><small>Level ${L.l} · ${L.t}</small><div class="gxp"><i style="width:${L.p}%"></i></div><small>${xp} XP${GM.kid?'':' · tidak disimpan'}</small></div>
+  <label style="color:#fff;margin:0">Kelas<select onchange="GM.lvl=+this.value;gArea()" style="margin-top:4px">${GL.map((t,i)=>`<option value="${i+1}" ${GM.lvl===i+1?'selected':''}>${t}</option>`).join('')}</select></label></div></div></div>
+ ${!kids.length?`<div class="card row between"><div><b>${sis?'Lengkapi profil belajarmu':'Tambahkan anak dulu'}</b><div class="mut">Supaya skor & XP tersimpan dan tampil di Taman Belajar. Untuk sekarang tetap bisa main.</div></div>${sis?'':'<button class="btn sm or" onclick="formAnak()">Tambah anak</button>'}</div>`:''}
+ <div class="sech"><h3>Pilih pelajaran</h3><span class="mut">${GBAND[band]}</span></div>
+ <div class="gmapel">${GMAPEL.map(([k,ic,t,c])=>`<button class="${GM.mapel===k?'on':''}" onclick="GM.mapel='${k}';gArea()"><i style="background:${c}">${ic}</i>${t}</button>`).join('')}</div>
+ <div class="sech"><h3>Pilih permainan</h3></div>
+ <div class="gmodes">${GMODES[GM.mapel].map(md=>{const [ic,t,ds,c]=GMODE[md],k=`${md}_${GM.mapel}_${GM.lvl}`;return`<div class="bn ${c} gmode" onclick="gStart('${md}')"><h4>${t}</h4><p>${ds}</p><div class="gbest">${stars(best(k))}</div><span class="go">Main ›</span><div class="emo">${ic}</div></div>`}).join('')}</div>
+ ${d&&d.hist&&d.hist.length?`<div class="sech"><h3>📒 Riwayat main ${esc(m.nama.split(' ')[0])}</h3></div><div class="card">${tw(`<table><tr><th>Tanggal</th><th>Game</th><th>Pelajaran</th><th>Kelas</th><th>Hasil</th></tr>${d.hist.slice().reverse().slice(0,10).map(h=>`<tr><td>${fdate(h.t)}</td><td>${GMODE[h.md]?.[0]||''} ${GMODE[h.md]?.[1]||''}</td><td>${GMAPEL.find(x=>x[0]===h.mp)?.[2]||''}</td><td>${GL[h.lv-1]||''}</td><td>${'⭐'.repeat(h.s)} <span class="mut">${esc(h.r)}</span></td></tr>`).join('')}</table>`)}</div>`:''}
+ <div class="card" style="background:linear-gradient(90deg,#fff,#f5f3ff)"><b>💡 Tips untuk orang tua</b><div class="mut" style="margin-top:4px">Main bersama anak 10–15 menit sehari. Setiap 100 XP menambah ⭐ bintang emas di pohon anak pada menu 🌳 Taman Belajar.</div></div>`}
+
+function gQuestions(n){const mp=GM.mapel,g=GM.lvl;if(mp==='mtk'){const out=[],seen=new Set();for(let k=0;out.length<n&&k<200;k++){const q=mtkQ(g);if(seen.has(q.q))continue;seen.add(q.q);out.push(q)}return out}
+ return gShuf(GQ[mp][gBand(g)]).slice(0,n).map(([q,a,...w])=>({q,a,o:gShuf([a,...w])}))}
+function gStart(md){const b=gBand(GM.lvl);Object.assign(GM,{scr:md,md,i:0,ok:0,xp:0,pick:null,saved:false,t0:Date.now(),miss:0});
+ if(md==='kuis'){GM.qs=gQuestions(10);GM.hp=3;GM.streak=0;GM.dur=(GM.lvl<=2?30:GM.lvl<=6?25:20)*1000;GM.dl=Date.now()+GM.dur;gStartTick()}
+ if(md==='balap'){GM.cur=mtkQ(GM.lvl);GM.n=0;GM.end=Date.now()+60000;GM.flash=null;gStartTick()}
+ if(md==='pasang'){let P;if(GM.mapel==='mtk'){P=[];const sa=new Set();for(let k=0;P.length<6&&k<400;k++){const q=mtkQ(GM.lvl);if(!q.short||sa.has(q.a))continue;sa.add(q.a);P.push([q.short,q.a])}}else P=gShuf(GPAIR[GM.mapel][b]).slice(0,6);
+  GM.cards=gShuf(P.flatMap(([x,y],k)=>[{t:x,k},{t:y,k}])).map(c=>({...c,open:false,done:false}));GM.sel=[];GM.moves=0;GM.lock=false;gStartTick()}
+ if(md==='susun'){GM.words=gShuf(GWORD[GM.mapel][b]).slice(0,5);gSusunNext(true)}
+ gArea();window.scrollTo&&window.scrollTo(0,0)}
+function gHead(extra){const mp=GMAPEL.find(x=>x[0]===GM.mapel);return`<div class="ghead"><button class="btn sm gh" onclick="gStop();gArea()">✕ Keluar</button><div class="ghtitle">${GMODE[GM.md][0]} ${GMODE[GM.md][1]}<small>${mp[1]} ${mp[2]} · ${GL[GM.lvl-1]}</small></div><div class="ghx">${extra||''}</div></div>`}
+function gOptBtns(o,on,pick,ans){const long=o.some(x=>String(x).length>22);return`<div class="gopts ${long?'one':''}">${o.map((x,k)=>{let c='';if(pick!=null){if(x===ans)c='ok';else if(k===pick)c='no'}return`<button class="${c}" ${pick!=null?'disabled':''} onclick="${on}(${k})">${esc(x)}</button>`}).join('')}</div>`}
+// Kuis
+function gKuisV(){const q=GM.qs[GM.i],fb=GM.pick==null?'':GM.pick>=0&&q.o[GM.pick]===q.a?`<div class="gfb ok">🎉 Benar! +${GM.lastXp} XP${GM.streak>=3?` · 🔥 ${GM.streak}x beruntun`:''}</div>`:`<div class="gfb no">${GM.pick<0?'⏰ Waktu habis!':'😅 Belum tepat.'} Jawabannya: <b>${esc(q.a)}</b></div>`;
+ return`<div class="gbox">${gHead(`<span class="ghp">${'❤️'.repeat(GM.hp)}${'🤍'.repeat(3-GM.hp)}</span>`)}
+ <div class="row between" style="margin-top:12px"><small class="mut">Soal ${GM.i+1} dari ${GM.qs.length}</small><small class="mut">⭐ ${GM.xp} XP</small></div>
+ <div class="gtime"><i id="gTime" style="width:${GM.pick==null?Math.max(0,(GM.dl-Date.now())/GM.dur*100):0}%"></i></div>
+ <div class="gq">${esc(q.q)}</div>${gOptBtns(q.o,'gAnswer',GM.pick,q.a)}${fb}
+ ${GM.pick!=null?`<div style="text-align:center;margin-top:14px"><button class="btn or lg" onclick="gNext()">${GM.hp<=0||GM.i>=GM.qs.length-1?'Lihat hasil 🏁':'Soal berikutnya ›'}</button></div>`:''}</div>`}
+function gAnswer(k){if(GM.scr!=='kuis'||GM.pick!=null)return;const q=GM.qs[GM.i],ok=k>=0&&q.o[k]===q.a;GM.pick=k;
+ if(ok){GM.ok++;GM.streak++;GM.lastXp=10+(GM.streak>=3?5:0);GM.xp+=GM.lastXp}else{GM.hp--;GM.streak=0}gSnd(ok);gArea()}
+function gNext(){if(GM.hp<=0||GM.i>=GM.qs.length-1)return gFinish();GM.i++;GM.pick=null;GM.dl=Date.now()+GM.dur;gArea()}
+// Balap Hitung
+function gBalapV(){const left=Math.max(0,GM.end-Date.now());return`<div class="gbox">${gHead(`<span class="gsec">⏱️ <b id="gSec">${Math.ceil(left/1000)}</b>s</span>`)}
+ <div class="row between" style="margin-top:12px"><small class="mut">Benar: <b style="color:var(--ok)">${GM.ok}</b> · Dijawab: ${GM.n}</small><small class="mut">⭐ ${GM.xp} XP</small></div>
+ <div class="gtime"><i id="gTime" style="width:${left/600}%"></i></div>
+ <div class="gq ${GM.flash||''}">${esc(GM.cur.q)}</div>${gOptBtns(GM.cur.o,'gRace',null)}</div>`}
+function gRace(k){if(GM.scr!=='balap')return;const ok=GM.cur.o[k]===GM.cur.a;GM.n++;if(ok){GM.ok++;GM.xp+=5}gSnd(ok);GM.flash=ok?'flok':'flno';GM.cur=mtkQ(GM.lvl);gArea()}
+// Kartu Pasangan
+function gPasangV(){const ttl=GM.mapel==='ind'?GPAIRT.ind[gBand(GM.lvl)]:GPAIRT[GM.mapel];
+ return`<div class="gbox">${gHead(`<span class="gsec">⏱️ <b id="gSec">${Math.floor((Date.now()-GM.t0)/1000)}</b>s</span>`)}
+ <div class="row between" style="margin:12px 0"><small class="mut">${ttl}</small><small class="mut">Langkah: <b>${GM.moves}</b></small></div>
+ <div class="gcards">${GM.cards.map((c,k)=>`<button class="gc ${c.open||c.done?'up':''} ${c.done?'done':''}" onclick="gFlip(${k})"><span>${c.open||c.done?esc(c.t):'?'}</span></button>`).join('')}</div></div>`}
+function gFlip(k){const c=GM.cards[k];if(GM.scr!=='pasang'||GM.lock||c.open||c.done)return;c.open=true;GM.sel.push(k);
+ if(GM.sel.length===2){GM.moves++;const [a,b]=GM.sel.map(i=>GM.cards[i]);if(a.k===b.k){a.done=b.done=true;a.open=b.open=false;GM.sel=[];gSnd(true);if(GM.cards.every(x=>x.done))return setTimeout(gFinish,500)}
+  else{GM.lock=true;setTimeout(()=>{a.open=b.open=false;GM.sel=[];GM.lock=false;if(GM.scr==='pasang')gArea()},850)}}
+ gArea()}
+// Susun Kata
+function gSusunNext(first){if(!first)GM.i++;if(GM.i>=GM.words.length)return gFinish();const w=GM.words[GM.i][0];let t;do{t=gShuf(w.split(''))}while(t.join('')===w&&w.length>1);GM.tiles=t.map(c=>({c,u:false}));GM.ans=[];GM.wrong=false;GM.got=false}
+function gSusunV(){const [w,h]=GM.words[GM.i],emo=/^\p{Extended_Pictographic}/u.test(h);
+ return`<div class="gbox">${gHead(`<span class="gsec">${GM.i+1}/${GM.words.length}</span>`)}
+ <div class="row between" style="margin-top:12px"><small class="mut">Benar: <b style="color:var(--ok)">${GM.ok}</b></small><small class="mut">⭐ ${GM.xp} XP</small></div>
+ <div class="ghint">${emo?`<span style="font-size:64px">${h}</span>`:`💡 ${esc(h)}`}</div>
+ <div class="gslots ${GM.wrong?'shake':''} ${GM.got?'got':''}">${w.split('').map((_,k)=>{const ti=GM.ans[k];return`<button onclick="gUntile(${k})">${ti!=null?GM.tiles[ti].c:''}</button>`}).join('')}</div>
+ <div class="gtiles">${GM.tiles.map((t,k)=>`<button ${t.u?'disabled':''} onclick="gTile(${k})">${t.c}</button>`).join('')}</div>
+ ${GM.got?`<div class="gfb ok">🎉 Hebat! Kata: <b>${w}</b></div>`:''}
+ <div class="row" style="justify-content:center;margin-top:14px;gap:8px">${GM.got?`<button class="btn or" onclick="gSusunNext();gArea()">${GM.i>=GM.words.length-1?'Lihat hasil 🏁':'Kata berikutnya ›'}</button>`:`<button class="btn sm gh" onclick="GM.tiles.forEach(t=>t.u=false);GM.ans=[];gArea()">↺ Ulangi</button><button class="btn sm gh" onclick="GM.miss++;gSusunNext();gArea()">Lewati ›</button>`}</div></div>`}
+function gTile(k){if(GM.got||GM.tiles[k].u)return;const w=GM.words[GM.i][0];GM.tiles[k].u=true;GM.ans.push(k);GM.wrong=false;
+ if(GM.ans.length===w.length){if(GM.ans.map(i=>GM.tiles[i].c).join('')===w){GM.got=true;GM.ok++;GM.xp+=20;gSnd(true)}else{GM.wrong=true;gSnd(false);setTimeout(()=>{if(GM.scr!=='susun'||!GM.wrong)return;GM.tiles.forEach(t=>t.u=false);GM.ans=[];GM.wrong=false;gArea()},700)}}
+ gArea()}
+function gUntile(k){if(GM.got||GM.ans[k]==null)return;GM.ans.splice(k).forEach(i=>GM.tiles[i].u=false);gArea()}
+// Selesai & simpan
+async function gFinish(){if(['done','home'].includes(GM.scr))return;const md=GM.md;let s,r;
+ if(md==='kuis'){const p=GM.ok/GM.qs.length;s=p>=.9?3:p>=.6?2:GM.ok?1:0;r=`${GM.ok}/${GM.qs.length} benar`}
+ if(md==='balap'){const t=GM.lvl<=2?[8,14]:GM.lvl<=6?[6,11]:[4,8];s=GM.ok>=t[1]?3:GM.ok>=t[0]?2:GM.ok?1:0;r=`${GM.ok} benar dalam 60 detik`}
+ if(md==='pasang'){s=GM.moves<=9?3:GM.moves<=13?2:1;GM.xp=30+s*10;r=`${GM.moves} langkah · ${Math.floor((Date.now()-GM.t0)/1000)} detik`}
+ if(md==='susun'){s=GM.ok>=5?3:GM.ok>=3?2:GM.ok?1:0;r=`${GM.ok}/${GM.words.length} kata`}
+ if(s===3)GM.xp+=20;GM.stars=s;GM.res=r;GM.scr='done';if(gTick){clearInterval(gTick);gTick=null}gSnd(s>=2);gArea();
+ if(!GM.kid||GM.saved)return;GM.saved=true;const m=M(GM.kid),old=gDoc(GM.kid)||{id:'gm_'+GM.kid,muridId:GM.kid,ortuId:m?.ortuId||myId(),xp:0,best:{},hist:[]};
+ const k=`${md}_${GM.mapel}_${GM.lvl}`,before=gLevel(old.xp).l,doc={...old,xp:(old.xp||0)+GM.xp,best:{...(old.best||{}),[k]:Math.max(old.best?.[k]||0,s)},hist:[...(old.hist||[]),{t:TODAY,md,mp:GM.mapel,lv:GM.lvl,s,r,xp:GM.xp}].slice(-40),updated:Date.now()};
+ GM.lvUp=gLevel(doc.xp).l>before?gLevel(doc.xp):null;await put('game',doc);if(GM.scr==='done')gArea()}
+function gDoneV(){const s=GM.stars,msg=['Ayo coba lagi, pasti bisa! 💪','Bagus! Terus berlatih ya 👍','Hebat sekali! 🎉','Luar biasa, juara! 🏆'][s];
+ return`<div class="gbox gdone">${s>=2?`<div class="gconf">${Array.from({length:18},(_,k)=>`<i style="left:${k*5.5+2}%;animation-delay:${(k%6)*.15}s">${['🎉','⭐','🎊','✨'][k%4]}</i>`).join('')}</div>`:''}
+ <div style="font-size:54px">${GMODE[GM.md][0]}</div><h2 style="margin:6px 0">${msg}</h2>
+ <div class="gstars">${[0,1,2].map(k=>`<span class="${k<s?'on':''}" style="animation-delay:${k*.2}s">⭐</span>`).join('')}</div>
+ <p class="mut" style="font-size:15px">${esc(GM.res)}</p><div class="gxpwin">+${GM.xp} XP</div>
+ ${GM.lvUp?`<div class="gfb ok">🆙 Naik ke Level ${GM.lvUp.l} — ${GM.lvUp.t}!</div>`:''}${!GM.kid?'<p class="mut">Skor tidak disimpan karena belum ada anak terdaftar.</p>':''}
+ <div class="row" style="justify-content:center;gap:8px;margin-top:16px"><button class="btn or lg" onclick="gStart('${GM.md}')">🔁 Main lagi</button><button class="btn sec lg" onclick="gStop();gArea()">🎮 Game lain</button></div></div>`}
 
 init();
 </script>

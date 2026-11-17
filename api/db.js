@@ -2,7 +2,7 @@
 const crypto = require('crypto');
 const URL_ = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
 const TOK_ = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
-const COLS = ['dokumen','potongan','cabang','guru','ortu','murid','kelas','materi','pr','kumpul','absensi','laporan','spp','lowongan','lamaran','req','notif','ulasan','config'];
+const COLS = ['dokumen','potongan','cabang','guru','ortu','murid','kelas','materi','pr','kumpul','absensi','laporan','spp','lowongan','lamaran','req','notif','ulasan','config','game'];
 const ADMIN_ONLY = ['config','cabang'];
 const P = 'lg:';
 
@@ -113,6 +113,10 @@ module.exports = async (req, res) => {
       if (col === 'dokumen' && !isA) {
         const gid = op === 'put' ? b.doc.guruId : old?.guruId;
         if (!(auth.r === 'g' && gid === auth.id) || (old && old.guruId !== auth.id)) return res.status(403).json({ ok: false });
+      }
+      if (col === 'game' && !isA) {
+        const mid = op === 'put' ? b.doc.muridId : old?.muridId, mur = mid ? await getDoc('murid', mid) : null;
+        if (auth.r !== 'o' || !mur || mur.ortuId !== auth.id || (old && old.ortuId !== auth.id) || (op === 'put' && (b.doc.ortuId !== auth.id || id !== 'gm_' + mid))) return res.status(403).json({ ok: false, error: 'Tidak diizinkan' });
       }
       if (col === 'murid' && auth.r === 'o') { const oid = op === 'put' ? b.doc.ortuId : old?.ortuId; if (oid !== auth.id && old) return res.status(403).json({ ok: false }); }
       if (op === 'del') { await redis([['HDEL', P + col, id], ['INCR', P + 'ver']]); return res.json({ ok: true }); }

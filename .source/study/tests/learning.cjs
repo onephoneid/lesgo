@@ -16,7 +16,7 @@ const shared={problem,session:async()=>{if(!actor)problem(401,'Unauthorized');re
  }
  throw Error(op);
 }};
-function handler(environment=env){const mod={exports:{}};vm.runInNewContext(fs.readFileSync('lesgo-study/api/study.js','utf8'),{require:id=>id==='./profile-media'?{shared}:require(id),module:mod,console,Date,Buffer,process:{env:environment}});return mod.exports}
+function handler(environment=env){const mod={exports:{}};vm.runInNewContext(fs.readFileSync('api/study.js','utf8'),{require:id=>id==='./profile-media'?{shared}:require(id),module:mod,console,Date,Buffer,process:{env:environment}});return mod.exports}
 const run=handler();
 async function call(body,fn=run){let status=200,data;await fn({method:'POST',headers:actor?{authorization:'test'}:{},body},{setHeader(){},status(s){status=s;return this},json(v){data=v}});return {status,...data}}
 (async()=>{

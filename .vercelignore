@@ -1,0 +1,5 @@
+.source/
+features/
+node_modules/
+.env
+.env.*

@@ -1,5 +1,5 @@
 import ctypes,re,pathlib
-source=pathlib.Path('lesgo-study/api/study.js').read_text();script=re.search(r'const progressLua=`([\s\S]*?)`;',source).group(1)
+source=pathlib.Path('api/study.js').read_text();script=re.search(r'const progressLua=`([\s\S]*?)`;',source).group(1)
 lib=ctypes.CDLL('liblua5.4.so.0');lib.luaL_newstate.restype=ctypes.c_void_p;lib.luaL_openlibs.argtypes=[ctypes.c_void_p];lib.luaL_loadstring.argtypes=[ctypes.c_void_p,ctypes.c_char_p];lib.lua_pcallk.argtypes=[ctypes.c_void_p,ctypes.c_int,ctypes.c_int,ctypes.c_int,ctypes.c_longlong,ctypes.c_void_p];lib.lua_tolstring.argtypes=[ctypes.c_void_p,ctypes.c_int,ctypes.c_void_p];lib.lua_tolstring.restype=ctypes.c_char_p
 fixture='''
 local hashes,strings,sets={},{},{}

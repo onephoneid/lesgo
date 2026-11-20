@@ -22,7 +22,7 @@ async function call(body,fn=run){let status=200,data;await fn({method:'POST',hea
 (async()=>{
  const catalog=await call({op:'catalog'});assert.equal(catalog.status,200);assert.equal(catalog.grades.length,15);assert.ok(catalog.courses.every(c=>c.published&&c.lessonCount>=4));
  let modules=0;for(const base of catalog.courses){const c=curriculum.build(base);modules+=c.lessons.length;for(let i=0;i<c.lessons.length;i++)for(const seed of [1,23,9999]){const qs=curriculum.exercise(c,i,seed);assert.equal(qs.length,3);for(const q of qs){assert.equal(q.options.length,4);assert.equal(new Set(q.options).size,4,c.id);assert.ok(q.answer>=0&&q.answer<4);assert.ok(q.explanation.length>10)}}}
- assert.ok(modules>750);assert.ok(!JSON.stringify(catalog).includes('PAHAMI KONSEPNYA'));
+ assert.ok(modules>750);const grade1=curriculum.build(catalog.courses.find(c=>c.id==='sd1-matematika'));assert.equal(grade1.lessons.length,12);assert.ok(grade1.lessons.some(l=>l.title.includes('jam tepat')));assert.ok(grade1.lessons.some(l=>l.title.includes('uang rupiah')));assert.ok(!JSON.stringify(catalog).includes('PAHAMI KONSEPNYA'));
  let r=await call({op:'lesson',course:'sd1-matematika',lesson:0});assert.equal(r.status,200);assert.ok(r.lesson.content.includes('CONTOH'));
  assert.equal((await call({op:'lesson',course:'sd1-matematika',lesson:1})).status,403);
  const start=await call({op:'startExercise',course:'sd1-matematika',lesson:0});assert.equal(start.status,200);assert.ok(start.questions.every(q=>!('answer'in q)&&!('explanation'in q)));

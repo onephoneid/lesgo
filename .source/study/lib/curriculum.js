@@ -1,5 +1,5 @@
 // Original LesGo! foundation modules. Fase mapping is a learning guide, not a claim of complete official curriculum coverage.
-const VERSION='2026.11.20-grade1-math-full';
+const VERSION='2026.11.20-grade1-story-voice-exam';
 const units={};
 function unit(id,title,explanation,example,facts,visual='book'){
  units[id]={id,title,explanation,example,visual,facts:facts.map(([question,answer,wrong,why])=>({question,answer:String(answer),wrong:wrong.map(String),explanation:why||explanation}))};
@@ -391,14 +391,24 @@ unit("weather","Cuaca dan Perubahannya","Cuaca dapat cerah, berawan, hujan, atau
 unit("bodyParts","Bagian Tubuh dan Fungsinya","Mata membantu melihat, telinga mendengar, hidung mencium, tangan memegang, dan kaki berjalan. Rawat tubuh dengan menjaga kebersihan.","Gunakan mata untuk membaca gambar dan telinga untuk mendengarkan cerita.",[["Kita mendengar menggunakan …","telinga",["hidung","kaki","jari"],"Telinga membantu kita mendengar."]],"body");
 unit("waterUse","Air dan Kegunaannya","Air dibutuhkan manusia, hewan, dan tumbuhan. Gunakan air secukupnya. Jangan minum air yang tidak diketahui kebersihannya.","Tutup keran setelah mencuci tangan. Siram tanaman secukupnya dan minumlah air bersih.",[["Setelah memakai keran, kita harus …","menutupnya",["membiarkannya terbuka","merusaknya","menutup saluran dengan sampah"],"Menutup keran menghemat air."]],"water");
 
+
+const grade1Paths={
+ indonesia:['huruf','kalimat','tanya','cerita','menulis','tandaBaca','kosakata','mendengar'],
+ inggris:['greetings','colors','family','places','classroom','numbersEnglish','animalsEnglish','greetingsPractice'],
+ pancasila:['rules','pancasila','diversity','deliberation','homeRules','respect','cooperation','nationalSymbols'],
+ agama:['integrity','care','reflection','rules','goodHabits','gratitude','honesty','helping'],
+ pjok:['hygiene','movement','fairplay','fitness','warmup','locomotor','balance','healthyFood'],
+ seni:['colorart','rhythm','craft','design','linesShapes','colorMix','musicSound','danceMove'],
+ ipas:['senses','living','plants','matter','animals','weather','bodyParts','waterUse']
+};
 for(const id of ["menulis","tandaBaca","kosakata","mendengar","classroom","numbersEnglish","animalsEnglish","greetingsPractice","homeRules","respect","cooperation","nationalSymbols","goodHabits","gratitude","honesty","helping","warmup","locomotor","balance","healthyFood","linesShapes","colorMix","musicSound","danceMove","animals","weather","bodyParts","waterUse"]){
- const u=units[id],f=u.facts[0],answer=f.answer;
- const extra=[
-  {question:`Dalam materi "${u.title}", pilih jawaban yang benar.`,answer,wrong:[...f.wrong],explanation:f.explanation},
-  {question:`Ingat kembali pelajaran "${u.title}". Jawaban yang tepat adalah …`,answer,wrong:[...f.wrong],explanation:f.explanation},
-  {question:`Coba lagi: manakah pilihan yang sesuai dengan contoh "${u.title}"?`,answer,wrong:[...f.wrong],explanation:f.explanation}
+ const u=units[id],f=u.facts[0],answer=f.answer,wrong=[...f.wrong],why=f.explanation;
+ u.facts=[
+  {question:f.question,answer,wrong,explanation:why},
+  {question:`Manakah jawaban yang sesuai dengan materi "${u.title}"?`,answer,wrong:[...wrong],explanation:why},
+  {question:`Jika mengingat kembali pelajaran "${u.title}", pilihan yang tepat adalah …`,answer,wrong:[...wrong],explanation:why},
+  {question:`Pilih jawaban yang benar tentang "${u.title}".`,answer,wrong:[...wrong],explanation:why}
  ];
- u.facts.push(...extra);
 }
 const common={
  indonesia:{SD:[['huruf','kalimat','tanya','cerita'],['kalimat','tanya','cerita','deskripsi'],['cerita','tanya','ide','prosedur'],['ide','deskripsi','prosedur','ringkas'],['ide','fakta','laporan','ringkas'],['ringkas','fakta','argumen','laporan']],SMP:[['deskripsi','cerita','prosedur','ide','fakta','ringkas'],['ide','fakta','laporan','argumen','prosedur','ringkas'],['ringkas','argumen','fakta','laporan','kerja','cerita']],senior:[['laporan','fakta','argumen','prosedur','ringkas','kerja'],['argumen','laporan','ringkas','kerja','fakta','deskripsi'],['kerja','argumen','laporan','ringkas','prosedur','fakta']]},
@@ -421,6 +431,33 @@ const common={
 };
 function gradeInfo(grade){const num=+grade.match(/\d+/)[0],level=grade.replace(/\d+/,'').toUpperCase();return {num,level,phase:num<=2?'A':num<=4?'B':num<=6?'C':num<=9?'D':num===10?'E':'F'};}
 function paths(subject,g){if(g.level==='SD'&&g.num===1&&grade1Paths[subject])return grade1Paths[subject];const p=common[subject];if(!p)return [];if(p.SD)return (g.level==='SD'?p.SD[g.num-1]:g.level==='SMP'?p.SMP[g.num-7]:p.senior[g.num-10]);if(p.low)return g.num<=3?p.low:p.high;const all=p.all;if(g.level==='SMP'){const start=(g.num-7)*2;return [...all.slice(start),...all.slice(0,start)].slice(0,6)}if(g.num>=10){const start=(g.num-10)*2;return [...all.slice(start),...all.slice(0,start)].slice(0,6)}return all;}
+
+function learningStory(subject,title,explanation,example,isMath){
+ if(isMath)return `Pagi ini, Naya membantu keluarganya menghitung benda di rumah. Ia membaca contoh, menuliskan langkahnya satu per satu, lalu memeriksa kembali hasil hitungannya. Dengan cara itu, Naya memahami bahwa matematika membantu kegiatan sehari-hari. Contoh yang diamati Naya: ${example}`;
+ const stories={
+ indonesia:`Pagi hari, Lala membaca sebuah cerita bersama gurunya. Ia memperhatikan kata-kata penting, tokoh, dan urutan kejadian. Setelah selesai, Lala menceritakan kembali isi bacaan dengan kalimatnya sendiri. Hari ini Lala berlatih tentang ${title.toLowerCase()}.`,
+ inggris:`Di kelas, Bima bermain kartu kata bersama teman-temannya. Guru mengucapkan kata dalam bahasa Inggris, lalu Bima mengulanginya sambil menunjuk gambar. Ia mencoba menggunakan kata itu dalam percakapan sederhana. Hari ini Bima berlatih ${title.toLowerCase()}.`,
+ pancasila:`Di kelas, Rani dan teman-temannya memiliki pendapat yang berbeda. Mereka bergiliran berbicara, mendengarkan, lalu mencari kesepakatan. Semua ikut menjaga suasana kelas tetap rukun. Dari kegiatan itu, mereka belajar ${title.toLowerCase()}.`,
+ agama:`Dina melihat temannya membutuhkan bantuan. Ia memilih berkata jujur, bersikap baik, dan menghormati keyakinan setiap orang. Guru mengajak murid berdiskusi tentang perilaku baik sesuai agama dan kepercayaan masing-masing. Hari ini mereka belajar ${title.toLowerCase()}.`,
+ pjok:`Sebelum bermain, Edo memastikan tempatnya aman dan tubuhnya siap bergerak. Ia mengikuti arahan guru, melakukan gerakan dengan tertib, lalu beristirahat saat lelah. Edo belajar bahwa aktivitas jasmani perlu dilakukan dengan aman. Hari ini ia berlatih ${title.toLowerCase()}.`,
+ seni:`Di ruang seni, Sita mengamati warna, bentuk, bunyi, dan gerakan di sekitarnya. Ia mencoba membuat karya sederhana, lalu menceritakan ide di balik karyanya. Teman-temannya saling menghargai hasil karya yang berbeda. Hari ini Sita belajar ${title.toLowerCase()}.`,
+ ipas:`Di halaman sekolah, Arga mengamati lingkungan dengan rasa ingin tahu. Ia memperhatikan benda, tumbuhan, hewan, dan perubahan alam. Arga mencatat temuannya lalu membandingkannya dengan penjelasan guru. Hari ini Arga belajar ${title.toLowerCase()}.`
+ };
+ return stories[subject]||`Ayo belajar bersama! Perhatikan contoh di sekitar kita, amati apa yang terjadi, lalu ceritakan kembali hal yang kamu temukan. Hari ini kita akan mengenal ${title.toLowerCase()}.`;
+}
+function learningActivity(subject,title,isMath){
+ const activities={
+ indonesia:'Bacalah contoh dengan suara pelan. Temukan satu kata atau informasi penting, lalu ceritakan kembali kepada orang di rumah.',
+ inggris:'Ucapkan kosakata atau kalimat contoh sebanyak tiga kali. Coba gunakan satu kata untuk menyapa atau menjawab teman.',
+ pancasila:'Ceritakan satu contoh sikap baik yang dapat kamu lakukan di rumah atau sekolah. Dengarkan juga pendapat orang lain.',
+ agama:'Pilih satu perilaku baik yang sesuai dengan keyakinanmu. Praktikkan dengan tetap menghormati teman yang berbeda agama atau kepercayaan.',
+ pjok:'Lakukan gerakan ringan hanya jika aman, ada ruang cukup, dan sesuai arahan guru atau pendamping. Berhenti jika terasa sakit atau pusing.',
+ seni:'Buat gambar, pola, tepukan, atau gerakan sederhana yang berhubungan dengan materi. Ceritakan ide karyamu.',
+ ipas:'Amati satu contoh di rumah atau halaman. Sebutkan apa yang kamu lihat dan jelaskan dengan satu kalimat.'
+ };
+ return isMath?'Coba buat satu soal serupa dengan angka berbeda. Tuliskan langkah pengerjaan, hitung jawabannya, lalu periksa kembali.':activities[subject]||'Amati contoh di sekitarmu dan ceritakan kembali apa yang kamu pelajari.';
+}
+
 function build(base){
  const g=gradeInfo(base.grade),subject=base.id.slice(base.grade.length+1),isMath=subject==='matematika';
  const ids=isMath?mathPaths[g.num]:paths(subject,g);
@@ -431,10 +468,11 @@ function build(base){
  const title=isMath?m[0]:u.title,explanation=isMath?m[1]:u.explanation,example=isMath?m[2]:u.example;
  return {id:`${id}-${i}`,unit:id,title,free:i===0,visual:isMath?m[3]:u.visual,minutes:g.num<=2?7:g.num<=6?10:15,
  objective:`Memahami ${title.toLowerCase()} dan menerapkannya pada contoh yang sesuai.`,
- content:`TUJUAN BELAJAR\nMemahami ${title.toLowerCase()} melalui contoh dan latihan.\n\nPAHAMI KONSEPNYA\n${explanation}\n\nCONTOH DAN PEMBAHASAN\n${example}\n\nCOBA TERAPKAN\n${isMath?'Tuliskan satu contoh hitungan sejenis memakai angka lain. Kerjakan langkah demi langkah, lalu periksa kembali hasil dan satuannya.':'Jelaskan kembali konsep utama dengan kata-katamu sendiri. Buat satu contoh berbeda dari kehidupan sehari-hari, lalu tunjukkan bagian yang sesuai dengan konsep.'}\n\nCEK PEMAHAMAN\nKerjakan latihan di bawah untuk mendapat skor dan pembahasan. Jika masih keliru, baca kembali konsep dan coba paket latihan berikutnya.`,
+ content:`TUJUAN BELAJAR\\nMemahami ${title.toLowerCase()} melalui cerita, contoh, pengamatan, dan latihan.\\n\\nCERITA PEMBELAJARAN\\n${learningStory(subject,title,explanation,example,isMath)}\\n\\nPAHAMI KONSEPNYA\\n${explanation}\\n\\nCONTOH DAN PEMBAHASAN\\n${example}\\n\\nAKTIVITAS INTERAKTIF\\n${learningActivity(subject,title,isMath)}\\n\\nCEK PEMAHAMAN\\nKerjakan latihan untuk mendapat skor langsung dan pembahasan. Jika masih keliru, baca kembali cerita dan konsep, lalu coba paket latihan baru.`,
  tags:[subject,g.phase],version:VERSION};
  });
- return {...base,published:true,phase:g.phase,contentVersion:VERSION,scope:'Paket fondasi belajar mandiri; urutan sekolah dan kebutuhan jurusan dapat berbeda.',description:subject==='agama'?'Budi pekerti bersama: kejujuran, empati, refleksi, dan penghormatan keyakinan. Materi tata ibadah perlu disesuaikan dengan agama murid.':`${lessons.length} modul fondasi dengan contoh, latihan bervariasi, dan pembahasan. Fase ${g.phase}.`,lessons,quiz:[],questionCount:lessons.length*4};
+ const quiz=lessons.map((l,i)=>{const bank=isMath?mathQuestions(l.unit,g.num,rng(2026+i)):units[l.unit]?.facts||[];const q=bank[0];if(!q)return null;const options=shuffle([...new Set([q.answer,...q.wrong])].slice(0,4),rng(90210+i));return {question:q.question,options,answer:options.indexOf(q.answer),explanation:q.explanation||'Baca kembali materi dan contoh pada pelajaran ini.'};}).filter(Boolean);
+ return {...base,published:true,phase:g.phase,contentVersion:VERSION,scope:'Paket fondasi belajar mandiri; urutan sekolah dan kebutuhan jurusan dapat berbeda.',description:subject==='agama'?'Budi pekerti bersama: kejujuran, empati, refleksi, dan penghormatan keyakinan. Materi tata ibadah perlu disesuaikan dengan agama murid.':`${lessons.length} modul dengan cerita, materi, aktivitas, latihan, dan evaluasi akhir. Fase ${g.phase}.`,lessons,quiz,questionCount:lessons.length*4};
 }
 function shuffle(arr,r){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a;}
 function rng(seed){let s=seed>>>0;return()=>{s=(Math.imul(1664525,s)+1013904223)>>>0;return s/4294967296}}

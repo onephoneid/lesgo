@@ -2,3 +2,4 @@
 
 /* Grade 1 learning illustrations */
 .animated-scene svg{overflow:visible}.animated-scene .bob{transform-box:fill-box;transform-origin:center;animation:lesson-bob 3.4s ease-in-out infinite}.animated-scene .sun{transform-origin:center;animation:lesson-sun 4s ease-in-out infinite}.animated-scene .flow{stroke-dasharray:8 8;animation:lesson-flow 2.5s linear infinite}@keyframes lesson-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}@keyframes lesson-sun{0%,100%{opacity:1}50%{opacity:.78}}@keyframes lesson-flow{to{stroke-dashoffset:-32}}
+.final-exam-card{margin-top:24px;background:#f7f3ff;border:1px solid #ded3f1}.final-exam-card h2{margin:8px 0}.toolbar .row{gap:8px;flex-wrap:wrap}.toolbar .row button{font-size:13px}@media(max-width:620px){.toolbar .row{justify-content:flex-end}.toolbar .row .pill{display:none}.toolbar .row button{padding:8px 10px;font-size:12px}}

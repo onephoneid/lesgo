@@ -13,7 +13,7 @@ const subjects=[['matematika','Matematika'],['indonesia','Bahasa Indonesia'],['i
 function catalog(){return grades.flatMap(g=>[...subjects,...(g.level==='SD'?[['ipas','IPAS']]:g.level==='SMP'?[['ipa','IPA'],['ips','IPS'],['informatika','Informatika']]:[['fisika','Fisika'],['kimia','Kimia'],['biologi','Biologi'],['sejarah','Sejarah'],['informatika','Informatika']]),...(g.level==='SMK'?[['rpl','Dasar RPL'],['tkj','Dasar TKJ'],['akuntansi','Dasar Akuntansi']]:[])].map(([subject,title])=>({id:g.id+'-'+subject,grade:g.id,gradeLabel:g.label,title,price:PRICE,days:DAYS,published:false,lessons:[]})))}
 const curriculum=(()=>{
 // Original LesGo! foundation modules. Fase mapping is a learning guide, not a claim of complete official curriculum coverage.
-const VERSION='2026.11.19-foundations';
+const VERSION='2026.11.20-grade1-math-full';
 const units={};
 function unit(id,title,explanation,example,facts,visual='book'){
  units[id]={id,title,explanation,example,visual,facts:facts.map(([question,answer,wrong,why])=>({question,answer:String(answer),wrong:wrong.map(String),explanation:why||explanation}))};
@@ -266,7 +266,7 @@ unit('trade','Perdagangan, kelangkaan, dan biaya peluang','Kelangkaan terjadi ke
 ],'map');
 const question=(question,answer,wrong,explanation)=>({question,answer:String(answer),wrong:wrong.map(String),explanation});
 const mathPaths={
-1:['count','add','subtract','compare','shape','time'],
+1:['count','numberline','add','subtract','compare','tens','pattern','shape','length','clock','money','dataMath'],
 2:['place','add','subtract','multiply','divide','measure'],
 3:['multiply','divide','fraction','measure','perimeter','dataMath'],
 4:['fraction','equivalent','area','perimeter','angle','dataMath'],
@@ -313,17 +313,24 @@ trig:['Perbandingan trigonometri dasar','Pada segitiga siku-siku, sinus sudut ad
 matrix:['Matriks dan operasi penjumlahan','Matriks adalah susunan bilangan dalam baris dan kolom. Dua matriks dapat dijumlahkan jika ordonya sama. Jumlahkan elemen yang berada pada posisi bersesuaian.','[[1,2],[3,4]] + [[5,6],[7,8]] = [[6,8],[10,12]]. Matriks tersebut berordo 2 × 2.','code'],
 dataMath:['Rata-rata, median, dan modus','Rata-rata adalah jumlah nilai dibagi banyak data. Median adalah nilai tengah setelah data diurutkan; untuk jumlah data genap, rata-ratakan dua nilai tengah. Modus adalah nilai yang paling sering muncul.','Data 2, 3, 3, 8 memiliki rata-rata 4, median 3, dan modus 3. Satu kumpulan data dapat tidak memiliki modus tunggal.','chart'],
 probability:['Peluang kejadian sederhana','Jika semua hasil dasar sama mungkin, peluang = banyak hasil yang mendukung kejadian ÷ banyak seluruh hasil. Peluang berada antara 0 dan 1. Model kesamaan peluang perlu dinyatakan, bukan diasumsikan untuk semua situasi.','Pada dadu adil bersisi enam, peluang muncul bilangan genap adalah 3/6 = 1/2 karena hasil genapnya 2, 4, dan 6.','chart'],
-financeMath:['Bunga tunggal dan perencanaan sederhana','Pada model bunga tunggal, bunga = pokok × tingkat bunga per periode × banyak periode. Satuan waktu harus sesuai. Model ini berbeda dari bunga majemuk serta tidak otomatis mencakup biaya atau pajak.','Pokok Rp1.000.000 dengan bunga tunggal 2% per tahun selama 3 tahun menghasilkan bunga Rp60.000 dalam model tanpa biaya dan pajak. Ini latihan hitung, bukan penawaran produk.','chart']};
+financeMath:['Bunga tunggal dan perencanaan sederhana','Pada model bunga tunggal, bunga = pokok × tingkat bunga per periode × banyak periode. Satuan waktu harus sesuai. Model ini berbeda dari bunga majemuk serta tidak otomatis mencakup biaya atau pajak.','Pokok Rp1.000.000 dengan bunga tunggal 2% per tahun selama 3 tahun menghasilkan bunga Rp60.000 dalam model tanpa biaya dan pajak. Ini latihan hitung, bukan penawaran produk.','chart']
+numberline:['Garis bilangan 0 sampai 20','Garis bilangan membantu kita melihat urutan bilangan. Angka yang berada lebih ke kanan nilainya lebih besar. Kita dapat melompat satu langkah untuk menemukan bilangan berikutnya atau sebelumnya.','Mulai dari angka 6, maju satu langkah menjadi 7. Mulai dari 10, mundur satu langkah menjadi 9.','count'],
+tens:['Mengenal puluhan dan satuan','Bilangan 10 sampai 19 terdiri dari satu puluhan dan beberapa satuan. Sepuluh benda dapat dikelompokkan menjadi satu ikat puluhan. Sisa benda dihitung sebagai satuan.','Angka 14 terdiri dari 1 puluhan dan 4 satuan. Artinya 10 + 4 = 14.','count'],
+pattern:['Pola bilangan sederhana','Pola adalah susunan yang berulang atau mengikuti aturan tertentu. Perhatikan perubahan dari satu bilangan ke bilangan berikutnya untuk menemukan aturan pola.','Pola 2, 4, 6, 8 bertambah 2 setiap langkah. Setelah 8 adalah 10.','count'],
+length:['Membandingkan panjang benda','Panjang benda dapat dibandingkan dengan melihat atau mengukur menggunakan satuan tidak baku, seperti klip kertas, lalu satuan baku seperti sentimeter. Letakkan benda pada titik awal yang sama agar perbandingan adil.','Pensil A panjangnya 8 klip dan pensil B 5 klip. Pensil A lebih panjang 3 klip.','geometry'],
+clock:['Mengenal jam tepat','Jam membantu kita mengetahui waktu kegiatan. Pada jam tepat, jarum panjang menunjuk angka 12 dan jarum pendek menunjuk angka jam. Contohnya, jarum pendek di angka 7 berarti pukul 07.00.','Jika jarum pendek menunjuk angka 3 dan jarum panjang menunjuk angka 12, waktunya pukul 03.00.','clock'],
+money:['Mengenal nilai uang rupiah','Uang digunakan untuk membayar barang atau jasa. Kenali angka pada uang rupiah dan jumlahkan nilainya saat menggunakan lebih dari satu lembar atau keping uang. Belajar uang juga berarti berlatih memilih dan menghitung dengan teliti.','Satu keping Rp500 ditambah satu keping Rp500 menjadi Rp1.000. Jika memiliki Rp2.000 lalu membeli pensil Rp1.000, sisanya Rp1.000.','count'],
+};
 const rand=(r,min,max)=>min+Math.floor(r()*(max-min+1));
 function mathQuestions(topic,grade,r){
- const max=grade===1?9:grade===2?30:grade<5?60:100,a=rand(r,1,max),b=rand(r,1,grade===1?Math.max(1,10-a):max),k=rand(r,2,9),x=rand(r,1,12),n=rand(r,2,9);
+ const max=grade===1?20:grade===2?30:grade<5?60:100,a=rand(r,1,max),b=rand(r,1,grade===1?Math.max(1,10-a):max),k=rand(r,2,9),x=rand(r,1,12),n=rand(r,2,9);
  const numeric=(prompt,answer,why)=>question(prompt,answer,[answer+1,answer-1,answer+Math.max(2,k)],why);
  const q=[];
  for(let i=0;i<8;i++){
  const p=rand(r,1,max),v=rand(r,1,grade===1?Math.max(1,10-p):max),m=rand(r,2,9),z=rand(r,1,12);
  switch(topic){
- case 'count':q.push(numeric(`Ada ${p%9+1} bintang dan ditambah 1 bintang. Jumlahnya …`,p%9+2,'Hitung semua bintang satu per satu.'));break;
- case 'add':q.push(numeric(`${p} + ${v} = …`,p+v,`${p} ditambah ${v} menjadi ${p+v}.`));break;
+ case 'count':{const total=p%20+1;q.push(numeric(`Ada ${total} bintang. Berapa banyak bintang semuanya?`,total,'Hitung setiap bintang satu kali.'));break;}
+ case 'add':{const left=grade===1?rand(r,0,10):p,right=grade===1?rand(r,0,20-left):v;q.push(numeric(`${left} + ${right} = …`,left+right,`${left} ditambah ${right} menjadi ${left+right}.`));break;}
  case 'subtract':q.push(numeric(`${Math.max(p,v)} − ${Math.min(p,v)} = …`,Math.abs(p-v),'Kurangi nilai yang lebih besar dengan yang lebih kecil.'));break;
  case 'compare':q.push(question(`Bilangan ${p} dibanding ${p+m} adalah …`,'lebih kecil',['lebih besar','sama dengan','tidak dapat dibandingkan'],'Pada garis bilangan, nilai yang lebih kecil berada di sebelah kiri.'));break;
  case 'shape':{const shapes=[['Segitiga','3'],['Persegi','4'],['Persegi panjang','4'],['Lingkaran (sisi lurus)','0']],shape=shapes[i%4];q.push(question(`${shape[0]} memiliki berapa sisi${i%4===3?' lurus':''}?`,shape[1],['0','3','4','5'].filter(v=>v!==shape[1]),'Amati batas bangun. Segitiga punya 3 sisi, persegi dan persegi panjang 4 sisi, lingkaran tidak punya sisi lurus.'));break;}
@@ -356,6 +363,13 @@ function mathQuestions(topic,grade,r){
  case 'matrix':q.push(numeric(`Elemen baris 1 kolom 1 matriks A adalah ${m}, pada B adalah ${z}. Elemen yang sama pada A+B adalah …`,m+z,'Penjumlahan matriks menjumlahkan elemen bersesuaian.'));break;
  case 'dataMath':q.push(numeric(`Rata-rata dari ${z}, ${z+2}, dan ${z+4} adalah …`,z+2,'Jumlahkan ketiga data lalu bagi tiga.'));break;
  case 'probability':{const variants=[['bilangan genap','1/2'],['angka lebih dari 4','1/3'],['angka 6','1/6'],['angka kurang dari 4','1/2']],v=variants[i%4];q.push(question(`Peluang muncul ${v[0]} pada dadu adil bersisi enam …`,v[1],['1/2','1/3','1/6','2/3'].filter(x=>x!==v[1]),'Hitung hasil yang memenuhi syarat lalu bagi enam.'));break;}
+
+ case 'numberline':{const start=rand(r,0,19);q.push(numeric(\`Bilangan setelah \${start} adalah …\`,start+1,'Pada garis bilangan, maju satu langkah berarti bertambah satu.'));break;}
+ case 'tens':{const value=10+rand(r,0,9);q.push(question(\`Bilangan \${value} terdiri dari berapa puluhan?\`,'1',['0','2','3'],'Sepuluh satuan membentuk satu puluhan. Bilangan 10 sampai 19 memiliki satu puluhan.'));break;}
+ case 'pattern':{const step=[1,2,5][i%3],start=rand(r,0,5),v1=start+step,v2=start+2*step;q.push(numeric(\`Lanjutkan pola \${start}, \${v1}, \${v2}, …\`,v2+step,\`Pola bertambah \${step} setiap langkah.\`));break;}
+ case 'length':{const long=rand(r,6,12),short=rand(r,1,5);q.push(question(\`Pita A panjangnya \${long} cm dan pita B \${short} cm. Pita yang lebih panjang adalah …\`,'Pita A',['Pita B','Sama panjang','Tidak bisa dibandingkan'],'Bandingkan angka sentimeter. Angka yang lebih besar menunjukkan panjang yang lebih besar.'));break;}
+ case 'clock':{const hour=rand(r,1,12),answer=String(hour).padStart(2,'0')+'.00';q.push(question(\`Jarum pendek menunjuk angka \${hour} dan jarum panjang menunjuk 12. Pukul berapa?\`,answer,[String((hour%12)+1).padStart(2,'0')+'.00',String(hour).padStart(2,'0')+'.30',String((hour+2)%12||12).padStart(2,'0')+'.00'],'Pada jam tepat, jarum panjang menunjuk angka 12. Jarum pendek menunjukkan angka jam.'));break;}
+ case 'money':{const coins=[500,1000,2000,5000],a=coins[i%4],b=coins[(i+1)%4],answer=a+b;q.push(numeric(\`Uang \${a.toLocaleString('id-ID')} rupiah ditambah \${b.toLocaleString('id-ID')} rupiah menjadi … rupiah\`,answer,'Jumlahkan nilai kedua uang rupiah.'));break;}
  case 'financeMath':q.push(numeric(`Bunga tunggal ${m}% dari pokok Rp${z*100000} selama 1 tahun adalah Rp…`,m*z*1000,'Bunga = pokok × tingkat bunga × waktu dengan satuan periode yang sama.'));break;
  default:throw Error('Unknown math topic '+topic);
  }
